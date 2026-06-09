@@ -1,6 +1,6 @@
 {
   "name": "@ai-tutor/extension",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": true,
   "type": "module",
   "scripts": {
@@ -31,14 +31,14 @@
     "vitest": "^2.1.9"
   },
   "manifest": {
-    "name": "AI Тьютор",
-    "description": "Read-only AI-тьютор для Synergy LMS",
-    "version": "0.1.3",
+    "name": "Семейс AI",
+    "short_name": "Семейс AI",
+    "description": "AI-тьютор для Synergy LMS: маршрут недели, разбор PDF, мини-конспект, глоссарий и практические задания.",
+    "version": "0.1.4",
     "manifest_version": 3,
     "permissions": ["storage", "activeTab", "scripting"],
     "host_permissions": [
       "https://*.synergy.ru/*",
-      "http://localhost:8787/*",
       "https://bba9tns6u21vsn66e7fq.containers.yandexcloud.net/*"
     ]
   }
