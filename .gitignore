@@ -8,3 +8,4 @@ build
 coverage
 *.log
 apps/backend/data/*.json
+pilot-package/
