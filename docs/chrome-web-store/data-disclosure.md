@@ -4,7 +4,7 @@ Use this text when filling out the Privacy tab in Chrome Web Store Developer Das
 
 ## Single purpose
 
-Семейс AI helps students study in Synergy LMS by reading visible LMS learning context, generating a weekly study route, and providing AI tutoring for user-uploaded learning materials.
+Семпейс AI helps students study in Synergy LMS by reading visible LMS learning context, generating a weekly study route, and providing AI tutoring for user-uploaded learning materials.
 
 ## Permission justification
 
@@ -26,7 +26,7 @@ Used to read visible study context from Synergy LMS pages, including discipline 
 
 ### Host permission: backend URL
 
-Used to send user-initiated AI requests to the Семейс AI backend.
+Used to send user-initiated AI requests to the Семпейс AI backend.
 
 ## Data types to disclose
 
@@ -57,4 +57,3 @@ Recommended statements:
 Select: No, the extension does not execute remote code.
 
 Reasoning: The extension sends API requests to the backend AI service, but it does not download or execute remote JavaScript code.
-

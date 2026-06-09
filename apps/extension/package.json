@@ -31,8 +31,8 @@
     "vitest": "^2.1.9"
   },
   "manifest": {
-    "name": "Семейс AI",
-    "short_name": "Семейс AI",
+    "name": "Семпейс AI",
+    "short_name": "Семпейс AI",
     "description": "AI-тьютор для Synergy LMS: маршрут недели, разбор PDF, мини-конспект, глоссарий и практические задания.",
     "version": "0.1.4",
     "manifest_version": 3,
