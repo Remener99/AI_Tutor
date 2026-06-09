@@ -1,0 +1,1431 @@
+{
+  "pageTitle": "Synergy Learning System",
+  "pageUrl": "https://lms.synergy.ru/student/up",
+  "extractedAt": "2026-05-12T23:26:27.019Z",
+  "group": "группа ОБМз-42311МОтп",
+  "semestersCount": 7,
+  "currentSemester": {
+    "semesterNumber": 6,
+    "semesterTitle": "6 Семестр",
+    "isCurrent": true,
+    "declaredCoursesCount": 14,
+    "parsedCoursesCount": 14,
+    "sectionsCount": 1,
+    "courses": [
+      {
+        "index": 1,
+        "type": "course",
+        "title": "Бизнес-планирование в инновационной деятельности",
+        "controlType": "Экзамен",
+        "currentScore": "",
+        "finalGrade": "",
+        "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146437",
+        "cells": [
+          "Бизнес-планирование в инновационной деятельности",
+          "Экзамен"
+        ],
+        "rawText": "Бизнес-планирование в инновационной деятельности Экзамен"
+      },
+      {
+        "index": 2,
+        "type": "course",
+        "title": "Программы государственной поддержки и финансирования инновационной деятельности",
+        "controlType": "Зачёт",
+        "currentScore": "",
+        "finalGrade": "",
+        "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146439",
+        "cells": [
+          "Программы государственной поддержки и финансирования инновационной деятельности",
+          "Зачёт"
+        ],
+        "rawText": "Программы государственной поддержки и финансирования инновационной деятельности Зачёт"
+      },
+      {
+        "index": 3,
+        "type": "course",
+        "title": "Основы опытно-конструкторских работ",
+        "controlType": "Зачёт",
+        "currentScore": "",
+        "finalGrade": "",
+        "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146441",
+        "cells": [
+          "Основы опытно-конструкторских работ",
+          "Зачёт"
+        ],
+        "rawText": "Основы опытно-конструкторских работ Зачёт"
+      },
+      {
+        "index": 4,
+        "type": "course",
+        "title": "Риск-менеджмент в инновационной деятельности",
+        "controlType": "Зачёт",
+        "currentScore": "",
+        "finalGrade": "",
+        "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146443",
+        "cells": [
+          "Риск-менеджмент в инновационной деятельности",
+          "Зачёт"
+        ],
+        "rawText": "Риск-менеджмент в инновационной деятельности Зачёт"
+      },
+      {
+        "index": 5,
+        "type": "course",
+        "title": "PR (public relations) в технологическом предпринимательстве",
+        "controlType": "Зачёт",
+        "currentScore": "",
+        "finalGrade": "",
+        "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146445",
+        "cells": [
+          "PR (public relations) в технологическом предпринимательстве",
+          "Зачёт"
+        ],
+        "rawText": "PR (public relations) в технологическом предпринимательстве Зачёт"
+      },
+      {
+        "index": 6,
+        "type": "course",
+        "title": "Коммерциализация продуктов и услуг, основанных на технологиях",
+        "controlType": "Экзамен",
+        "currentScore": "",
+        "finalGrade": "",
+        "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146447",
+        "cells": [
+          "Коммерциализация продуктов и услуг, основанных на технологиях",
+          "Экзамен"
+        ],
+        "rawText": "Коммерциализация продуктов и услуг, основанных на технологиях Экзамен"
+      },
+      {
+        "index": 7,
+        "type": "course",
+        "title": "Привлечение инвестиций в технологический проект и основы инвестиционной презентации",
+        "controlType": "Экзамен",
+        "currentScore": "",
+        "finalGrade": "",
+        "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146449",
+        "cells": [
+          "Привлечение инвестиций в технологический проект и основы инвестиционной презентации",
+          "Экзамен"
+        ],
+        "rawText": "Привлечение инвестиций в технологический проект и основы инвестиционной презентации Экзамен"
+      },
+      {
+        "index": 8,
+        "type": "course",
+        "title": "Защита проекта перед потенциальным инвестором",
+        "controlType": "Зачёт",
+        "currentScore": "",
+        "finalGrade": "",
+        "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146451",
+        "cells": [
+          "Защита проекта перед потенциальным инвестором",
+          "Зачёт"
+        ],
+        "rawText": "Защита проекта перед потенциальным инвестором Зачёт"
+      },
+      {
+        "index": 9,
+        "type": "course",
+        "title": "Партнерство с технологическими командами из технологической среды",
+        "controlType": "Зачёт",
+        "currentScore": "",
+        "finalGrade": "",
+        "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146453",
+        "cells": [
+          "Партнерство с технологическими командами из технологической среды",
+          "Зачёт"
+        ],
+        "rawText": "Партнерство с технологическими командами из технологической среды Зачёт"
+      },
+      {
+        "index": 10,
+        "type": "course",
+        "title": "Теория оптимального управления",
+        "controlType": "Зачёт",
+        "currentScore": "",
+        "finalGrade": "",
+        "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146455",
+        "cells": [
+          "Теория оптимального управления",
+          "Зачёт"
+        ],
+        "rawText": "Теория оптимального управления Зачёт"
+      },
+      {
+        "index": 11,
+        "type": "course",
+        "title": "Технологическая (проектно-технологическая) практика | П.В | Производственная практика",
+        "controlType": "Практика",
+        "currentScore": "",
+        "finalGrade": "",
+        "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146463",
+        "cells": [
+          "Технологическая (проектно-технологическая) практика | П.В | Производственная практика",
+          "Практика"
+        ],
+        "rawText": "Технологическая (проектно-технологическая) практика | П.В | Производственная практика Практика"
+      },
+      {
+        "index": 12,
+        "type": "section",
+        "title": "Элективные дисциплины:",
+        "controlType": "",
+        "currentScore": "",
+        "finalGrade": "",
+        "href": null,
+        "cells": [
+          "Элективные дисциплины:"
+        ],
+        "rawText": "Элективные дисциплины:"
+      },
+      {
+        "index": 13,
+        "type": "course",
+        "title": "Искусственный интеллект",
+        "controlType": "Экзамен",
+        "currentScore": "",
+        "finalGrade": "",
+        "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146457",
+        "cells": [
+          "Искусственный интеллект",
+          "Экзамен"
+        ],
+        "rawText": "Искусственный интеллект Экзамен"
+      },
+      {
+        "index": 14,
+        "type": "course",
+        "title": "Программирование на Python для сбора и анализа данных",
+        "controlType": "Зачёт",
+        "currentScore": "",
+        "finalGrade": "",
+        "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146459",
+        "cells": [
+          "Программирование на Python для сбора и анализа данных",
+          "Зачёт"
+        ],
+        "rawText": "Программирование на Python для сбора и анализа данных Зачёт"
+      },
+      {
+        "index": 15,
+        "type": "course",
+        "title": "Машинное обучение",
+        "controlType": "Зачёт",
+        "currentScore": "",
+        "finalGrade": "",
+        "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146461",
+        "cells": [
+          "Машинное обучение",
+          "Зачёт"
+        ],
+        "rawText": "Машинное обучение Зачёт"
+      }
+    ]
+  },
+  "semesters": [
+    {
+      "semesterNumber": 1,
+      "semesterTitle": "1 Семестр",
+      "isCurrent": false,
+      "declaredCoursesCount": 12,
+      "parsedCoursesCount": 12,
+      "sectionsCount": 0,
+      "courses": [
+        {
+          "index": 1,
+          "type": "course",
+          "title": "История России",
+          "controlType": "Зачёт",
+          "currentScore": "80 из 100",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22130669",
+          "cells": [
+            "История России",
+            "Зачёт",
+            "80 из 100",
+            "«Зачтено»"
+          ],
+          "rawText": "История России Зачёт 80 из 100 «Зачтено»"
+        },
+        {
+          "index": 2,
+          "type": "course",
+          "title": "Иностранный язык",
+          "controlType": "Зачёт",
+          "currentScore": "80 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22130641",
+          "cells": [
+            "Иностранный язык",
+            "Зачёт",
+            "80 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Иностранный язык Зачёт 80 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 3,
+          "type": "course",
+          "title": "Русский язык и культура речи",
+          "controlType": "Зачёт",
+          "currentScore": "66 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22130657",
+          "cells": [
+            "Русский язык и культура речи",
+            "Зачёт",
+            "66 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Русский язык и культура речи Зачёт 66 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 4,
+          "type": "course",
+          "title": "Цифровая трансформация",
+          "controlType": "Зачёт",
+          "currentScore": "63 из 100",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22130673",
+          "cells": [
+            "Цифровая трансформация",
+            "Зачёт",
+            "63 из 100",
+            "«Зачтено»"
+          ],
+          "rawText": "Цифровая трансформация Зачёт 63 из 100 «Зачтено»"
+        },
+        {
+          "index": 5,
+          "type": "course",
+          "title": "Правоведение",
+          "controlType": "Зачёт",
+          "currentScore": "72 из 100",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22130653",
+          "cells": [
+            "Правоведение",
+            "Зачёт",
+            "72 из 100",
+            "«Зачтено»"
+          ],
+          "rawText": "Правоведение Зачёт 72 из 100 «Зачтено»"
+        },
+        {
+          "index": 6,
+          "type": "course",
+          "title": "Командная работа и лидерство",
+          "controlType": "Зачёт",
+          "currentScore": "73 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22130675",
+          "cells": [
+            "Командная работа и лидерство",
+            "Зачёт",
+            "73 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Командная работа и лидерство Зачёт 73 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 7,
+          "type": "course",
+          "title": "Финансовая грамотность",
+          "controlType": "Зачёт",
+          "currentScore": "50 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22130647",
+          "cells": [
+            "Финансовая грамотность",
+            "Зачёт",
+            "50 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Финансовая грамотность Зачёт 50 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 8,
+          "type": "course",
+          "title": "Теория менеджмента",
+          "controlType": "Экзамен",
+          "currentScore": "70 из 100 Сертификат",
+          "finalGrade": "«Хорошо»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22130629",
+          "cells": [
+            "Теория менеджмента",
+            "Экзамен",
+            "70 из 100 Сертификат",
+            "«Хорошо»"
+          ],
+          "rawText": "Теория менеджмента Экзамен 70 из 100 Сертификат «Хорошо»"
+        },
+        {
+          "index": 9,
+          "type": "course",
+          "title": "Экономическая теория",
+          "controlType": "Экзамен",
+          "currentScore": "58 из 100 Сертификат",
+          "finalGrade": "«Удовлетворительно»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22130661",
+          "cells": [
+            "Экономическая теория",
+            "Экзамен",
+            "58 из 100 Сертификат",
+            "«Удовлетворительно»"
+          ],
+          "rawText": "Экономическая теория Экзамен 58 из 100 Сертификат «Удовлетворительно»"
+        },
+        {
+          "index": 10,
+          "type": "course",
+          "title": "Физическая культура и спорт",
+          "controlType": "Зачёт",
+          "currentScore": "83 из 100",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22130621",
+          "cells": [
+            "Физическая культура и спорт",
+            "Зачёт",
+            "83 из 100",
+            "«Зачтено»"
+          ],
+          "rawText": "Физическая культура и спорт Зачёт 83 из 100 «Зачтено»"
+        },
+        {
+          "index": 11,
+          "type": "course",
+          "title": "Роль и устройство экосистемы технологического предпринимательства",
+          "controlType": "Зачёт",
+          "currentScore": "55 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22130637",
+          "cells": [
+            "Роль и устройство экосистемы технологического предпринимательства",
+            "Зачёт",
+            "55 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Роль и устройство экосистемы технологического предпринимательства Зачёт 55 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 12,
+          "type": "course",
+          "title": "Управление командой стартапа",
+          "controlType": "Зачёт",
+          "currentScore": "63 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22130639",
+          "cells": [
+            "Управление командой стартапа",
+            "Зачёт",
+            "63 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Управление командой стартапа Зачёт 63 из 100 Сертификат «Зачтено»"
+        }
+      ]
+    },
+    {
+      "semesterNumber": 2,
+      "semesterTitle": "2 Семестр",
+      "isCurrent": false,
+      "declaredCoursesCount": 9,
+      "parsedCoursesCount": 9,
+      "sectionsCount": 0,
+      "courses": [
+        {
+          "index": 1,
+          "type": "course",
+          "title": "История России",
+          "controlType": "Зачет",
+          "currentScore": "",
+          "finalGrade": "",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146349",
+          "cells": [
+            "История России",
+            "Зачет с оценкой",
+            "84 из 100",
+            "«Хорошо»"
+          ],
+          "rawText": "История России Зачет с оценкой 84 из 100 «Хорошо»"
+        },
+        {
+          "index": 2,
+          "type": "course",
+          "title": "Безопасность жизнедеятельности",
+          "controlType": "Зачёт",
+          "currentScore": "87 из 100",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146351",
+          "cells": [
+            "Безопасность жизнедеятельности",
+            "Зачёт",
+            "87 из 100",
+            "«Зачтено»"
+          ],
+          "rawText": "Безопасность жизнедеятельности Зачёт 87 из 100 «Зачтено»"
+        },
+        {
+          "index": 3,
+          "type": "course",
+          "title": "Иностранный язык в профессиональной деятельности",
+          "controlType": "Экзамен",
+          "currentScore": "77 из 100 Сертификат",
+          "finalGrade": "«Хорошо»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146353",
+          "cells": [
+            "Иностранный язык в профессиональной деятельности",
+            "Экзамен",
+            "77 из 100 Сертификат",
+            "«Хорошо»"
+          ],
+          "rawText": "Иностранный язык в профессиональной деятельности Экзамен 77 из 100 Сертификат «Хорошо»"
+        },
+        {
+          "index": 4,
+          "type": "course",
+          "title": "Управление человеческими ресурсами",
+          "controlType": "Экзамен",
+          "currentScore": "94 из 100 Сертификат",
+          "finalGrade": "«Отлично»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146355",
+          "cells": [
+            "Управление человеческими ресурсами",
+            "Экзамен",
+            "94 из 100 Сертификат",
+            "«Отлично»"
+          ],
+          "rawText": "Управление человеческими ресурсами Экзамен 94 из 100 Сертификат «Отлично»"
+        },
+        {
+          "index": 5,
+          "type": "course",
+          "title": "Организационная психология",
+          "controlType": "Экзамен",
+          "currentScore": "78 из 100 Сертификат",
+          "finalGrade": "«Хорошо»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146357",
+          "cells": [
+            "Организационная психология",
+            "Экзамен",
+            "78 из 100 Сертификат",
+            "«Хорошо»"
+          ],
+          "rawText": "Организационная психология Экзамен 78 из 100 Сертификат «Хорошо»"
+        },
+        {
+          "index": 6,
+          "type": "course",
+          "title": "Высшая математика",
+          "controlType": "Экзамен",
+          "currentScore": "82 из 100 Сертификат",
+          "finalGrade": "«Хорошо»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146359",
+          "cells": [
+            "Высшая математика",
+            "Экзамен",
+            "82 из 100 Сертификат",
+            "«Хорошо»"
+          ],
+          "rawText": "Высшая математика Экзамен 82 из 100 Сертификат «Хорошо»"
+        },
+        {
+          "index": 7,
+          "type": "course",
+          "title": "Методы генерации и тестирования идей",
+          "controlType": "Зачёт",
+          "currentScore": "90 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146361",
+          "cells": [
+            "Методы генерации и тестирования идей",
+            "Зачёт",
+            "90 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Методы генерации и тестирования идей Зачёт 90 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 8,
+          "type": "course",
+          "title": "Инновационный менеджмент",
+          "controlType": "Зачёт",
+          "currentScore": "92 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146363",
+          "cells": [
+            "Инновационный менеджмент",
+            "Зачёт",
+            "92 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Инновационный менеджмент Зачёт 92 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 9,
+          "type": "course",
+          "title": "Ознакомительная практика | У.О | Учебная практика",
+          "controlType": "Практика",
+          "currentScore": "90 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146365",
+          "cells": [
+            "Ознакомительная практика | У.О | Учебная практика",
+            "Практика",
+            "90 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Ознакомительная практика | У.О | Учебная практика Практика 90 из 100 Сертификат «Зачтено»"
+        }
+      ]
+    },
+    {
+      "semesterNumber": 3,
+      "semesterTitle": "3 Семестр",
+      "isCurrent": false,
+      "declaredCoursesCount": 13,
+      "parsedCoursesCount": 13,
+      "sectionsCount": 0,
+      "courses": [
+        {
+          "index": 1,
+          "type": "course",
+          "title": "Управление проектами",
+          "controlType": "Зачёт",
+          "currentScore": "82 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146367",
+          "cells": [
+            "Управление проектами",
+            "Зачёт",
+            "82 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Управление проектами Зачёт 82 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 2,
+          "type": "course",
+          "title": "Инклюзивные технологии в социальной и профессиональной деятельности",
+          "controlType": "Зачёт",
+          "currentScore": "58 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146369",
+          "cells": [
+            "Инклюзивные технологии в социальной и профессиональной деятельности",
+            "Зачёт",
+            "58 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Инклюзивные технологии в социальной и профессиональной деятельности Зачёт 58 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 3,
+          "type": "course",
+          "title": "Индивидуальные траектории профессионального развития",
+          "controlType": "Зачёт",
+          "currentScore": "97 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146371",
+          "cells": [
+            "Индивидуальные траектории профессионального развития",
+            "Зачёт",
+            "97 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Индивидуальные траектории профессионального развития Зачёт 97 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 4,
+          "type": "course",
+          "title": "Маркетинг",
+          "controlType": "Экзамен",
+          "currentScore": "68 из 100 Сертификат",
+          "finalGrade": "«Удовлетворительно»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146373",
+          "cells": [
+            "Маркетинг",
+            "Экзамен",
+            "68 из 100 Сертификат",
+            "«Удовлетворительно»"
+          ],
+          "rawText": "Маркетинг Экзамен 68 из 100 Сертификат «Удовлетворительно»"
+        },
+        {
+          "index": 5,
+          "type": "course",
+          "title": "Управленческие решения",
+          "controlType": "Экзамен",
+          "currentScore": "84 из 100 Сертификат",
+          "finalGrade": "«Хорошо»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146375",
+          "cells": [
+            "Управленческие решения",
+            "Экзамен",
+            "84 из 100 Сертификат",
+            "«Хорошо»"
+          ],
+          "rawText": "Управленческие решения Экзамен 84 из 100 Сертификат «Хорошо»"
+        },
+        {
+          "index": 6,
+          "type": "course",
+          "title": "Информационно-коммуникационные технологии для профессиональной деятельности",
+          "controlType": "Зачёт",
+          "currentScore": "78 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146377",
+          "cells": [
+            "Информационно-коммуникационные технологии для профессиональной деятельности",
+            "Зачёт",
+            "78 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Информационно-коммуникационные технологии для профессиональной деятельности Зачёт 78 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 7,
+          "type": "course",
+          "title": "Экономика и финансы организации",
+          "controlType": "Зачёт",
+          "currentScore": "82 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146379",
+          "cells": [
+            "Экономика и финансы организации",
+            "Зачёт",
+            "82 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Экономика и финансы организации Зачёт 82 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 8,
+          "type": "course",
+          "title": "Финансовая математика",
+          "controlType": "Зачёт",
+          "currentScore": "76 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146381",
+          "cells": [
+            "Финансовая математика",
+            "Зачёт",
+            "76 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Финансовая математика Зачёт 76 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 9,
+          "type": "course",
+          "title": "Жизненные циклы продукта, стартапа в технологической области",
+          "controlType": "Зачёт",
+          "currentScore": "73 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146383",
+          "cells": [
+            "Жизненные циклы продукта, стартапа в технологической области",
+            "Зачёт",
+            "73 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Жизненные циклы продукта, стартапа в технологической области Зачёт 73 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 10,
+          "type": "course",
+          "title": "Субсидирование инновационных проектов",
+          "controlType": "Зачёт",
+          "currentScore": "85 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146385",
+          "cells": [
+            "Субсидирование инновационных проектов",
+            "Зачёт",
+            "85 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Субсидирование инновационных проектов Зачёт 85 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 11,
+          "type": "course",
+          "title": "Теория вероятностей и математическая статистика",
+          "controlType": "Зачёт",
+          "currentScore": "93 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146387",
+          "cells": [
+            "Теория вероятностей и математическая статистика",
+            "Зачёт",
+            "93 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Теория вероятностей и математическая статистика Зачёт 93 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 12,
+          "type": "course",
+          "title": "Продакт-менеджмент технологических продуктов и инноваций",
+          "controlType": "Экзамен",
+          "currentScore": "90 из 100 Сертификат",
+          "finalGrade": "«Отлично»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146389",
+          "cells": [
+            "Продакт-менеджмент технологических продуктов и инноваций",
+            "Экзамен",
+            "90 из 100 Сертификат",
+            "«Отлично»"
+          ],
+          "rawText": "Продакт-менеджмент технологических продуктов и инноваций Экзамен 90 из 100 Сертификат «Отлично»"
+        },
+        {
+          "index": 13,
+          "type": "course",
+          "title": "Анализ инвестиционных проектов",
+          "controlType": "Зачёт",
+          "currentScore": "88 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146391",
+          "cells": [
+            "Анализ инвестиционных проектов",
+            "Зачёт",
+            "88 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Анализ инвестиционных проектов Зачёт 88 из 100 Сертификат «Зачтено»"
+        }
+      ]
+    },
+    {
+      "semesterNumber": 4,
+      "semesterTitle": "4 Семестр",
+      "isCurrent": false,
+      "declaredCoursesCount": 11,
+      "parsedCoursesCount": 11,
+      "sectionsCount": 0,
+      "courses": [
+        {
+          "index": 1,
+          "type": "course",
+          "title": "Философия",
+          "controlType": "Экзамен",
+          "currentScore": "80 из 100 Сертификат",
+          "finalGrade": "«Хорошо»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146393",
+          "cells": [
+            "Философия",
+            "Экзамен",
+            "80 из 100 Сертификат",
+            "«Хорошо»"
+          ],
+          "rawText": "Философия Экзамен 80 из 100 Сертификат «Хорошо»"
+        },
+        {
+          "index": 2,
+          "type": "course",
+          "title": "Интеллектуальные информационные системы",
+          "controlType": "Экзамен",
+          "currentScore": "100 из 100 Сертификат",
+          "finalGrade": "«Отлично»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146395",
+          "cells": [
+            "Интеллектуальные информационные системы",
+            "Экзамен",
+            "100 из 100 Сертификат",
+            "«Отлично»"
+          ],
+          "rawText": "Интеллектуальные информационные системы Экзамен 100 из 100 Сертификат «Отлично»"
+        },
+        {
+          "index": 3,
+          "type": "course",
+          "title": "Системы обработки больших данных (Big Data)",
+          "controlType": "Зачёт",
+          "currentScore": "80 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146397",
+          "cells": [
+            "Системы обработки больших данных (Big Data)",
+            "Зачёт",
+            "80 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Системы обработки больших данных (Big Data) Зачёт 80 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 4,
+          "type": "course",
+          "title": "Минимальный жизнеспособный продукт (MVP)",
+          "controlType": "Зачёт",
+          "currentScore": "90 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146399",
+          "cells": [
+            "Минимальный жизнеспособный продукт (MVP)",
+            "Зачёт",
+            "90 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Минимальный жизнеспособный продукт (MVP) Зачёт 90 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 5,
+          "type": "course",
+          "title": "Эмоциональный интеллект",
+          "controlType": "Зачёт",
+          "currentScore": "85 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146401",
+          "cells": [
+            "Эмоциональный интеллект",
+            "Зачёт",
+            "85 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Эмоциональный интеллект Зачёт 85 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 6,
+          "type": "course",
+          "title": "Информационный менеджмент",
+          "controlType": "Зачёт",
+          "currentScore": "73 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146403",
+          "cells": [
+            "Информационный менеджмент",
+            "Зачёт",
+            "73 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Информационный менеджмент Зачёт 73 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 7,
+          "type": "course",
+          "title": "Программное обеспечение инновационной деятельности",
+          "controlType": "Зачёт",
+          "currentScore": "93 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146405",
+          "cells": [
+            "Программное обеспечение инновационной деятельности",
+            "Зачёт",
+            "93 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Программное обеспечение инновационной деятельности Зачёт 93 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 8,
+          "type": "course",
+          "title": "Маркетинг инноваций",
+          "controlType": "Зачёт",
+          "currentScore": "98 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146407",
+          "cells": [
+            "Маркетинг инноваций",
+            "Зачёт",
+            "98 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Маркетинг инноваций Зачёт 98 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 9,
+          "type": "course",
+          "title": "Патентоведение",
+          "controlType": "Зачёт",
+          "currentScore": "95 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146409",
+          "cells": [
+            "Патентоведение",
+            "Зачёт",
+            "95 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Патентоведение Зачёт 95 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 10,
+          "type": "course",
+          "title": "Информационный поиск",
+          "controlType": "Зачёт",
+          "currentScore": "67 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146411",
+          "cells": [
+            "Информационный поиск",
+            "Зачёт",
+            "67 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Информационный поиск Зачёт 67 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 11,
+          "type": "course",
+          "title": "Технологическая (проектно-технологическая) практика | П.В | Производственная практика",
+          "controlType": "Практика",
+          "currentScore": "100 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146413",
+          "cells": [
+            "Технологическая (проектно-технологическая) практика | П.В | Производственная практика",
+            "Практика",
+            "100 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Технологическая (проектно-технологическая) практика | П.В | Производственная практика Практика 100 из 100 Сертификат «Зачтено»"
+        }
+      ]
+    },
+    {
+      "semesterNumber": 5,
+      "semesterTitle": "5 Семестр",
+      "isCurrent": false,
+      "declaredCoursesCount": 11,
+      "parsedCoursesCount": 11,
+      "sectionsCount": 0,
+      "courses": [
+        {
+          "index": 1,
+          "type": "course",
+          "title": "Стратегический менеджмент",
+          "controlType": "Экзамен",
+          "currentScore": "66 из 100 Сертификат",
+          "finalGrade": "«Удовлетворительно»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146415",
+          "cells": [
+            "Стратегический менеджмент",
+            "Экзамен",
+            "66 из 100 Сертификат",
+            "«Удовлетворительно»"
+          ],
+          "rawText": "Стратегический менеджмент Экзамен 66 из 100 Сертификат «Удовлетворительно»"
+        },
+        {
+          "index": 2,
+          "type": "course",
+          "title": "Управление инвестиционным проектом",
+          "controlType": "Экзамен",
+          "currentScore": "96 из 100 Сертификат",
+          "finalGrade": "«Отлично»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146417",
+          "cells": [
+            "Управление инвестиционным проектом",
+            "Экзамен",
+            "96 из 100 Сертификат",
+            "«Отлично»"
+          ],
+          "rawText": "Управление инвестиционным проектом Экзамен 96 из 100 Сертификат «Отлично»"
+        },
+        {
+          "index": 3,
+          "type": "course",
+          "title": "Процедура создания юридического лица",
+          "controlType": "Зачёт",
+          "currentScore": "88 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146419",
+          "cells": [
+            "Процедура создания юридического лица",
+            "Зачёт",
+            "88 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Процедура создания юридического лица Зачёт 88 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 4,
+          "type": "course",
+          "title": "Теория решения изобретательских задач",
+          "controlType": "Зачёт",
+          "currentScore": "68 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146421",
+          "cells": [
+            "Теория решения изобретательских задач",
+            "Зачёт",
+            "68 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Теория решения изобретательских задач Зачёт 68 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 5,
+          "type": "course",
+          "title": "Финансовая модель технологической компании",
+          "controlType": "Экзамен",
+          "currentScore": "84 из 100 Сертификат",
+          "finalGrade": "«Хорошо»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146423",
+          "cells": [
+            "Финансовая модель технологической компании",
+            "Экзамен",
+            "84 из 100 Сертификат",
+            "«Хорошо»"
+          ],
+          "rawText": "Финансовая модель технологической компании Экзамен 84 из 100 Сертификат «Хорошо»"
+        },
+        {
+          "index": 6,
+          "type": "course",
+          "title": "Основы научно-исследовательских работ",
+          "controlType": "Зачёт",
+          "currentScore": "90 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146425",
+          "cells": [
+            "Основы научно-исследовательских работ",
+            "Зачёт",
+            "90 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Основы научно-исследовательских работ Зачёт 90 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 7,
+          "type": "course",
+          "title": "Юридическая поддержка технологических стартапов",
+          "controlType": "Зачёт",
+          "currentScore": "87 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146427",
+          "cells": [
+            "Юридическая поддержка технологических стартапов",
+            "Зачёт",
+            "87 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Юридическая поддержка технологических стартапов Зачёт 87 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 8,
+          "type": "course",
+          "title": "Устройство венчурного финансирования технологических проектов в России и мире",
+          "controlType": "Зачёт",
+          "currentScore": "90 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146429",
+          "cells": [
+            "Устройство венчурного финансирования технологических проектов в России и мире",
+            "Зачёт",
+            "90 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Устройство венчурного финансирования технологических проектов в России и мире Зачёт 90 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 9,
+          "type": "course",
+          "title": "Самопрезентация, саморазвитие и навыки публичных выступлений",
+          "controlType": "Зачёт",
+          "currentScore": "95 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146431",
+          "cells": [
+            "Самопрезентация, саморазвитие и навыки публичных выступлений",
+            "Зачёт",
+            "95 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Самопрезентация, саморазвитие и навыки публичных выступлений Зачёт 95 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 10,
+          "type": "course",
+          "title": "Программы государственной поддержки и финансирования инновационной деятельности",
+          "controlType": "Зачёт",
+          "currentScore": "95 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146433",
+          "cells": [
+            "Программы государственной поддержки и финансирования инновационной деятельности",
+            "Зачёт",
+            "95 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Программы государственной поддержки и финансирования инновационной деятельности Зачёт 95 из 100 Сертификат «Зачтено»"
+        },
+        {
+          "index": 11,
+          "type": "course",
+          "title": "Технологическая (проектно-технологическая) практика | П.В | Производственная практика",
+          "controlType": "Практика",
+          "currentScore": "95 из 100 Сертификат",
+          "finalGrade": "«Зачтено»",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146435",
+          "cells": [
+            "Технологическая (проектно-технологическая) практика | П.В | Производственная практика",
+            "Практика",
+            "95 из 100 Сертификат",
+            "«Зачтено»"
+          ],
+          "rawText": "Технологическая (проектно-технологическая) практика | П.В | Производственная практика Практика 95 из 100 Сертификат «Зачтено»"
+        }
+      ]
+    },
+    {
+      "semesterNumber": 6,
+      "semesterTitle": "6 Семестр",
+      "isCurrent": true,
+      "declaredCoursesCount": 14,
+      "parsedCoursesCount": 14,
+      "sectionsCount": 1,
+      "courses": [
+        {
+          "index": 1,
+          "type": "course",
+          "title": "Бизнес-планирование в инновационной деятельности",
+          "controlType": "Экзамен",
+          "currentScore": "",
+          "finalGrade": "",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146437",
+          "cells": [
+            "Бизнес-планирование в инновационной деятельности",
+            "Экзамен"
+          ],
+          "rawText": "Бизнес-планирование в инновационной деятельности Экзамен"
+        },
+        {
+          "index": 2,
+          "type": "course",
+          "title": "Программы государственной поддержки и финансирования инновационной деятельности",
+          "controlType": "Зачёт",
+          "currentScore": "",
+          "finalGrade": "",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146439",
+          "cells": [
+            "Программы государственной поддержки и финансирования инновационной деятельности",
+            "Зачёт"
+          ],
+          "rawText": "Программы государственной поддержки и финансирования инновационной деятельности Зачёт"
+        },
+        {
+          "index": 3,
+          "type": "course",
+          "title": "Основы опытно-конструкторских работ",
+          "controlType": "Зачёт",
+          "currentScore": "",
+          "finalGrade": "",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146441",
+          "cells": [
+            "Основы опытно-конструкторских работ",
+            "Зачёт"
+          ],
+          "rawText": "Основы опытно-конструкторских работ Зачёт"
+        },
+        {
+          "index": 4,
+          "type": "course",
+          "title": "Риск-менеджмент в инновационной деятельности",
+          "controlType": "Зачёт",
+          "currentScore": "",
+          "finalGrade": "",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146443",
+          "cells": [
+            "Риск-менеджмент в инновационной деятельности",
+            "Зачёт"
+          ],
+          "rawText": "Риск-менеджмент в инновационной деятельности Зачёт"
+        },
+        {
+          "index": 5,
+          "type": "course",
+          "title": "PR (public relations) в технологическом предпринимательстве",
+          "controlType": "Зачёт",
+          "currentScore": "",
+          "finalGrade": "",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146445",
+          "cells": [
+            "PR (public relations) в технологическом предпринимательстве",
+            "Зачёт"
+          ],
+          "rawText": "PR (public relations) в технологическом предпринимательстве Зачёт"
+        },
+        {
+          "index": 6,
+          "type": "course",
+          "title": "Коммерциализация продуктов и услуг, основанных на технологиях",
+          "controlType": "Экзамен",
+          "currentScore": "",
+          "finalGrade": "",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146447",
+          "cells": [
+            "Коммерциализация продуктов и услуг, основанных на технологиях",
+            "Экзамен"
+          ],
+          "rawText": "Коммерциализация продуктов и услуг, основанных на технологиях Экзамен"
+        },
+        {
+          "index": 7,
+          "type": "course",
+          "title": "Привлечение инвестиций в технологический проект и основы инвестиционной презентации",
+          "controlType": "Экзамен",
+          "currentScore": "",
+          "finalGrade": "",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146449",
+          "cells": [
+            "Привлечение инвестиций в технологический проект и основы инвестиционной презентации",
+            "Экзамен"
+          ],
+          "rawText": "Привлечение инвестиций в технологический проект и основы инвестиционной презентации Экзамен"
+        },
+        {
+          "index": 8,
+          "type": "course",
+          "title": "Защита проекта перед потенциальным инвестором",
+          "controlType": "Зачёт",
+          "currentScore": "",
+          "finalGrade": "",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146451",
+          "cells": [
+            "Защита проекта перед потенциальным инвестором",
+            "Зачёт"
+          ],
+          "rawText": "Защита проекта перед потенциальным инвестором Зачёт"
+        },
+        {
+          "index": 9,
+          "type": "course",
+          "title": "Партнерство с технологическими командами из технологической среды",
+          "controlType": "Зачёт",
+          "currentScore": "",
+          "finalGrade": "",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146453",
+          "cells": [
+            "Партнерство с технологическими командами из технологической среды",
+            "Зачёт"
+          ],
+          "rawText": "Партнерство с технологическими командами из технологической среды Зачёт"
+        },
+        {
+          "index": 10,
+          "type": "course",
+          "title": "Теория оптимального управления",
+          "controlType": "Зачёт",
+          "currentScore": "",
+          "finalGrade": "",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146455",
+          "cells": [
+            "Теория оптимального управления",
+            "Зачёт"
+          ],
+          "rawText": "Теория оптимального управления Зачёт"
+        },
+        {
+          "index": 11,
+          "type": "course",
+          "title": "Технологическая (проектно-технологическая) практика | П.В | Производственная практика",
+          "controlType": "Практика",
+          "currentScore": "",
+          "finalGrade": "",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146463",
+          "cells": [
+            "Технологическая (проектно-технологическая) практика | П.В | Производственная практика",
+            "Практика"
+          ],
+          "rawText": "Технологическая (проектно-технологическая) практика | П.В | Производственная практика Практика"
+        },
+        {
+          "index": 12,
+          "type": "section",
+          "title": "Элективные дисциплины:",
+          "controlType": "",
+          "currentScore": "",
+          "finalGrade": "",
+          "href": null,
+          "cells": [
+            "Элективные дисциплины:"
+          ],
+          "rawText": "Элективные дисциплины:"
+        },
+        {
+          "index": 13,
+          "type": "course",
+          "title": "Искусственный интеллект",
+          "controlType": "Экзамен",
+          "currentScore": "",
+          "finalGrade": "",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146457",
+          "cells": [
+            "Искусственный интеллект",
+            "Экзамен"
+          ],
+          "rawText": "Искусственный интеллект Экзамен"
+        },
+        {
+          "index": 14,
+          "type": "course",
+          "title": "Программирование на Python для сбора и анализа данных",
+          "controlType": "Зачёт",
+          "currentScore": "",
+          "finalGrade": "",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146459",
+          "cells": [
+            "Программирование на Python для сбора и анализа данных",
+            "Зачёт"
+          ],
+          "rawText": "Программирование на Python для сбора и анализа данных Зачёт"
+        },
+        {
+          "index": 15,
+          "type": "course",
+          "title": "Машинное обучение",
+          "controlType": "Зачёт",
+          "currentScore": "",
+          "finalGrade": "",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146461",
+          "cells": [
+            "Машинное обучение",
+            "Зачёт"
+          ],
+          "rawText": "Машинное обучение Зачёт"
+        }
+      ]
+    },
+    {
+      "semesterNumber": 7,
+      "semesterTitle": "7 Семестр",
+      "isCurrent": false,
+      "declaredCoursesCount": 2,
+      "parsedCoursesCount": 2,
+      "sectionsCount": 0,
+      "courses": [
+        {
+          "index": 1,
+          "type": "course",
+          "title": "Технологическая (проектно-технологическая) практика | П.В | Производственная практика",
+          "controlType": "Практика",
+          "currentScore": "",
+          "finalGrade": "",
+          "href": null,
+          "cells": [
+            "Технологическая (проектно-технологическая) практика | П.В | Производственная практика",
+            "Практика"
+          ],
+          "rawText": "Технологическая (проектно-технологическая) практика | П.В | Производственная практика Практика"
+        },
+        {
+          "index": 2,
+          "type": "course",
+          "title": "Выполнение и защита выпускной квалификационной работы",
+          "controlType": "Экзамен",
+          "currentScore": "",
+          "finalGrade": "",
+          "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146467",
+          "cells": [
+            "Выполнение и защита выпускной квалификационной работы",
+            "Экзамен"
+          ],
+          "rawText": "Выполнение и защита выпускной квалификационной работы Экзамен"
+        }
+      ]
+    }
+  ]
+}

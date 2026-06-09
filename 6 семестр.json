@@ -1,0 +1,1877 @@
+{
+  "version": "0.1",
+  "source": "synergy_lms_dom_extractor",
+  "extractedAt": "2026-05-13T00:04:22.571Z",
+  "extractionDurationMs": 104270,
+  "page": {
+    "title": "Synergy Learning System",
+    "url": "https://lms.synergy.ru/student/up"
+  },
+  "studentContext": {
+    "group": "группа ОБМз-42311МОтп"
+  },
+  "currentSemester": {
+    "semesterNumber": 6,
+    "semesterTitle": "6 Семестр",
+    "declaredCoursesCount": 14,
+    "parsedCoursesCount": 14
+  },
+  "semestersSummary": [
+    {
+      "semesterNumber": 1,
+      "semesterTitle": "1 Семестр",
+      "isCurrent": false,
+      "declaredCoursesCount": 12,
+      "parsedCoursesCount": 12,
+      "sectionsCount": 0
+    },
+    {
+      "semesterNumber": 2,
+      "semesterTitle": "2 Семестр",
+      "isCurrent": false,
+      "declaredCoursesCount": 9,
+      "parsedCoursesCount": 9,
+      "sectionsCount": 0
+    },
+    {
+      "semesterNumber": 3,
+      "semesterTitle": "3 Семестр",
+      "isCurrent": false,
+      "declaredCoursesCount": 13,
+      "parsedCoursesCount": 13,
+      "sectionsCount": 0
+    },
+    {
+      "semesterNumber": 4,
+      "semesterTitle": "4 Семестр",
+      "isCurrent": false,
+      "declaredCoursesCount": 11,
+      "parsedCoursesCount": 11,
+      "sectionsCount": 0
+    },
+    {
+      "semesterNumber": 5,
+      "semesterTitle": "5 Семестр",
+      "isCurrent": false,
+      "declaredCoursesCount": 11,
+      "parsedCoursesCount": 11,
+      "sectionsCount": 0
+    },
+    {
+      "semesterNumber": 6,
+      "semesterTitle": "6 Семестр",
+      "isCurrent": true,
+      "declaredCoursesCount": 14,
+      "parsedCoursesCount": 14,
+      "sectionsCount": 1
+    },
+    {
+      "semesterNumber": 7,
+      "semesterTitle": "7 Семестр",
+      "isCurrent": false,
+      "declaredCoursesCount": 2,
+      "parsedCoursesCount": 2,
+      "sectionsCount": 0
+    }
+  ],
+  "summary": {
+    "subjectsCount": 14,
+    "subjectsFetchedCount": 14,
+    "topicsCount": 0,
+    "sectionsCount": 75,
+    "materialsCount": 84,
+    "availableMaterialsCount": 84,
+    "lockedMaterialsCount": 0,
+    "notLoadedTopicsCount": 0
+  },
+  "subjects": [
+    {
+      "index": 1,
+      "type": "course",
+      "title": "Бизнес-планирование в инновационной деятельности",
+      "controlType": "Экзамен",
+      "currentScore": "",
+      "finalGrade": "",
+      "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146437",
+      "semesterNumber": 6,
+      "semesterTitle": "6 Семестр",
+      "fetchOk": true,
+      "fetchStatus": 200,
+      "fetchUrl": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146437",
+      "pageUrl": "https://lms.synergy.ru/student/updiscipline/5463213/1354923/1/1",
+      "subjectTitleFromPage": "Бизнес-планирование в инновационной деятельности",
+      "topicsCount": 0,
+      "sectionsCount": 7,
+      "materialsCount": 6,
+      "availableMaterialsCount": 6,
+      "lockedMaterialsCount": 0,
+      "notLoadedTopicsCount": 0,
+      "lockedTopicsCount": 6,
+      "availableTopicsCount": 1,
+      "topics": [
+        {
+          "index": 1,
+          "type": "section",
+          "title": "Т1 Тема 1. Введение в бизнес-планирование У Учебные материалы З1.1 Занятие 1.1 З1.2 Занятие 1.2 З1.3 Занятие 1.3 К1 Конспект 1 Г1 Глоссарий 1 Т1 Тест для самопроверки 1 Т1 Тест 1",
+          "accessStatus": "available",
+          "materialsCount": 6,
+          "availableMaterialsCount": 6,
+          "lockedMaterialsCount": 0,
+          "materials": [
+            {
+              "index": 1,
+              "title": "Занятие 1.1",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/260026/?groupPeriodId=1354923&disciplineVersionId=52404&start=1"
+            },
+            {
+              "index": 2,
+              "title": "Занятие 1.2",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/260027/?groupPeriodId=1354923&disciplineVersionId=52404&start=1"
+            },
+            {
+              "index": 3,
+              "title": "Занятие 1.3",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/260028/?groupPeriodId=1354923&disciplineVersionId=52404&start=1"
+            },
+            {
+              "index": 4,
+              "title": "Конспект 1",
+              "type": "conspect",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/260029/?groupPeriodId=1354923&disciplineVersionId=52404&start=1"
+            },
+            {
+              "index": 5,
+              "title": "Глоссарий 1",
+              "type": "glossary",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/260030/?groupPeriodId=1354923&disciplineVersionId=52404&start=1"
+            },
+            {
+              "index": 6,
+              "title": "Тест 1",
+              "type": "test",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/event/view/61036351/0/1/?groupPeriodId=1354923"
+            }
+          ],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463213/1354923/1/1"
+        },
+        {
+          "index": 2,
+          "type": "section",
+          "title": "Т2 Тема 2. Содержание и структура бизнес-плана У Учебные материалы З2.1 Занятие 2.1 З2.2 Занятие 2.2 З2.3 Занятие 2.3 З2.4 Занятие 2.4 З2.5 Занятие 2.5 К2 Конспект 2 Г2 Глоссарий 2 Т2 Тест для самопроверки 2 Т2 Тест 2",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463213/1354923/2/1"
+        },
+        {
+          "index": 3,
+          "type": "section",
+          "title": "Т3 Тема 3. Маркетинговый и производственный план У Учебные материалы З3.1 Занятие 3.1 З3.2 Занятие 3.2 З3.3 Занятие 3.3 З3.4 Занятие 3.4 К3 Конспект 3 Г3 Глоссарий 3 Т3 Тест для самопроверки 3 Т3 Тест 3",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463213/1354923/3/1"
+        },
+        {
+          "index": 4,
+          "type": "section",
+          "title": "Т4 Тема 4. Организационный и финансовый план У Учебные материалы З4.1 Занятие 4.1 З4.2 Занятие 4.2 З4.3 Занятие 4.3 З4.4 Занятие 4.4 К4 Конспект 4 Г4 Глоссарий 4 Т4 Тест для самопроверки 4 Т4 Тест 4",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463213/1354923/4/1"
+        },
+        {
+          "index": 5,
+          "type": "section",
+          "title": "Т5 Тема 5. Оценка экономической эффективности и рисков бизнес проектов. Структура бизнес-плана для инновационного проекта. У Учебные материалы З5.1 Занятие 5.1 З5.2 Занятие 5.2 З5.3 Занятие 5.3 З5.4 Занятие 5.4 З5.5 Занятие 5.5 К5 Конспект 5 Г5 Глоссарий 5 Т5 Тест для самопроверки 5 Т5 Тест 5",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463213/1354923/5/1"
+        },
+        {
+          "index": 6,
+          "type": "section",
+          "title": "И Итоговая аттестация И Итоговый тест",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463213/1354923/6/1"
+        },
+        {
+          "index": 7,
+          "type": "section",
+          "title": "О Обратная связь А Анкета с обратной связью",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463213/1354923/7/1"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "type": "course",
+      "title": "Программы государственной поддержки и финансирования инновационной деятельности",
+      "controlType": "Зачёт",
+      "currentScore": "",
+      "finalGrade": "",
+      "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146439",
+      "semesterNumber": 6,
+      "semesterTitle": "6 Семестр",
+      "fetchOk": true,
+      "fetchStatus": 200,
+      "fetchUrl": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146439",
+      "pageUrl": "https://lms.synergy.ru/student/updiscipline/5463219/1354923/1/1",
+      "subjectTitleFromPage": "АНКЕТИРОВАНИЕ ОБУЧАЮЩИХСЯ",
+      "topicsCount": 0,
+      "sectionsCount": 3,
+      "materialsCount": 9,
+      "availableMaterialsCount": 9,
+      "lockedMaterialsCount": 0,
+      "notLoadedTopicsCount": 0,
+      "lockedTopicsCount": 2,
+      "availableTopicsCount": 1,
+      "topics": [
+        {
+          "index": 1,
+          "type": "section",
+          "title": "Т4 Тема 4. Софинансирование инновационных проектов У Учебные материалы З4.1 Занятие 4.1 З4.2 Занятие 4.2 З4.3 Занятие 4.3 З4.4 Занятие 4.4 З4.5 Занятие 4.5 З4.6 Занятие 4.6 З4.7 Занятие 4.7 К4 Конспект 4 Т Тест для самопроверки Т4 Тест 4",
+          "accessStatus": "available",
+          "materialsCount": 9,
+          "availableMaterialsCount": 9,
+          "lockedMaterialsCount": 0,
+          "materials": [
+            {
+              "index": 1,
+              "title": "Занятие 4.1",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/231115/?groupPeriodId=1354923&disciplineVersionId=46939&start=1"
+            },
+            {
+              "index": 2,
+              "title": "Занятие 4.2",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/231117/?groupPeriodId=1354923&disciplineVersionId=46939&start=1"
+            },
+            {
+              "index": 3,
+              "title": "Занятие 4.3",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/231119/?groupPeriodId=1354923&disciplineVersionId=46939&start=1"
+            },
+            {
+              "index": 4,
+              "title": "Занятие 4.4",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/231121/?groupPeriodId=1354923&disciplineVersionId=46939&start=1"
+            },
+            {
+              "index": 5,
+              "title": "Занятие 4.5",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/231123/?groupPeriodId=1354923&disciplineVersionId=46939&start=1"
+            },
+            {
+              "index": 6,
+              "title": "Занятие 4.6",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/231125/?groupPeriodId=1354923&disciplineVersionId=46939&start=1"
+            },
+            {
+              "index": 7,
+              "title": "Занятие 4.7",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/231127/?groupPeriodId=1354923&disciplineVersionId=46939&start=1"
+            },
+            {
+              "index": 8,
+              "title": "Конспект 4",
+              "type": "conspect",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/231095/?groupPeriodId=1354923&disciplineVersionId=46939&start=1"
+            },
+            {
+              "index": 9,
+              "title": "Тест 4",
+              "type": "test",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/event/view/61423308/0/1/?groupPeriodId=1354923"
+            }
+          ],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463219/1354923/1/1"
+        },
+        {
+          "index": 2,
+          "type": "section",
+          "title": "Т5 Тема 5. Меры поддержки и развития инновационных проектов У Учебные материалы З5.1 Занятие 5.1 З5.2 Занятие 5.2 З5.3 Занятие 5.3 З5.4 Занятие 5.4 К5 Конспект 5 Т Тест для самопроверки Т5 Тест 5",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463219/1354923/2/1"
+        },
+        {
+          "index": 3,
+          "type": "section",
+          "title": "И Итоговая аттестация И Итоговый тест",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463219/1354923/3/1"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "type": "course",
+      "title": "Основы опытно-конструкторских работ",
+      "controlType": "Зачёт",
+      "currentScore": "",
+      "finalGrade": "",
+      "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146441",
+      "semesterNumber": 6,
+      "semesterTitle": "6 Семестр",
+      "fetchOk": true,
+      "fetchStatus": 200,
+      "fetchUrl": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146441",
+      "pageUrl": "https://lms.synergy.ru/student/updiscipline/5463221/1354923/1/1",
+      "subjectTitleFromPage": "АНКЕТИРОВАНИЕ ОБУЧАЮЩИХСЯ",
+      "topicsCount": 0,
+      "sectionsCount": 6,
+      "materialsCount": 12,
+      "availableMaterialsCount": 12,
+      "lockedMaterialsCount": 0,
+      "notLoadedTopicsCount": 0,
+      "lockedTopicsCount": 4,
+      "availableTopicsCount": 2,
+      "topics": [
+        {
+          "index": 1,
+          "type": "section",
+          "title": "Т1 Тема 1. Формы организации и управления наукой У Учебные материалы З1.1 Занятие 1.1 З1.2 Занятие 1.2 З1.3 Занятие 1.3 З1.4 Занятие 1.4 З1.5 Занятие 1.5 З1.6 Занятие 1.6 З1.7 Занятие 1.7 З1.8 Занятие 1.8 Г1 Глоссарий 1 К1 Конспект 1 Т Тест для самопроверки Т1 Тест 1",
+          "accessStatus": "available",
+          "materialsCount": 11,
+          "availableMaterialsCount": 11,
+          "lockedMaterialsCount": 0,
+          "materials": [
+            {
+              "index": 1,
+              "title": "Занятие 1.1",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/264910/?groupPeriodId=1354923&disciplineVersionId=52902&start=1"
+            },
+            {
+              "index": 2,
+              "title": "Занятие 1.2",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/264911/?groupPeriodId=1354923&disciplineVersionId=52902&start=1"
+            },
+            {
+              "index": 3,
+              "title": "Занятие 1.3",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/264912/?groupPeriodId=1354923&disciplineVersionId=52902&start=1"
+            },
+            {
+              "index": 4,
+              "title": "Занятие 1.4",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/264913/?groupPeriodId=1354923&disciplineVersionId=52902&start=1"
+            },
+            {
+              "index": 5,
+              "title": "Занятие 1.5",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/264914/?groupPeriodId=1354923&disciplineVersionId=52902&start=1"
+            },
+            {
+              "index": 6,
+              "title": "Занятие 1.6",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/264915/?groupPeriodId=1354923&disciplineVersionId=52902&start=1"
+            },
+            {
+              "index": 7,
+              "title": "Занятие 1.7",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/264916/?groupPeriodId=1354923&disciplineVersionId=52902&start=1"
+            },
+            {
+              "index": 8,
+              "title": "Занятие 1.8",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/264917/?groupPeriodId=1354923&disciplineVersionId=52902&start=1"
+            },
+            {
+              "index": 9,
+              "title": "Глоссарий 1",
+              "type": "glossary",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/264919/?groupPeriodId=1354923&disciplineVersionId=52902&start=1"
+            },
+            {
+              "index": 10,
+              "title": "Конспект 1",
+              "type": "conspect",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/264922/?groupPeriodId=1354923&disciplineVersionId=52902&start=1"
+            },
+            {
+              "index": 11,
+              "title": "Тест 1",
+              "type": "test",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/event/view/61423311/0/1/?groupPeriodId=1354923"
+            }
+          ],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463221/1354923/1/1"
+        },
+        {
+          "index": 2,
+          "type": "section",
+          "title": "Т2 Тема 2. ОКР: виды, этапы, обеспечение У Учебные материалы З2.1 Занятие 2.1 З2.2 Занятие 2.2 З2.3 Занятие 2.3 З2.4 Занятие 2.4 З2.5 Занятие 2.5 Г2 Глоссарий 2 К2 Конспект 2 Т Тест для самопроверки Т2 Тест 2",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463221/1354923/2/1"
+        },
+        {
+          "index": 3,
+          "type": "section",
+          "title": "Т3 Тема 3. Нормативные документы при проведении ОКР У Учебные материалы З3.1 Занятие 3.1 З3.2 Занятие 3.2 З3.3 Занятие 3.3 З3.4 Занятие 3.4 Г3 Глоссарий 3 К3 Конспект 3 Т Тест для самопроверки Т3 Тест 3",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463221/1354923/3/1"
+        },
+        {
+          "index": 4,
+          "type": "section",
+          "title": "Т4 Тема 4. Финансовое обеспечение ОКР У Учебные материалы З4.1 Занятие 4.1 З4.2 Занятие 4.2 З4.3 Занятие 4.3 З4.4 Занятие 4.4 Г4 Глоссарий 4 К4 Конспект 4 Т Тест для самопроверки Т4 Тест 4",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463221/1354923/4/1"
+        },
+        {
+          "index": 5,
+          "type": "section",
+          "title": "И Итоговая аттестация И Итоговый тест",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463221/1354923/5/1"
+        },
+        {
+          "index": 6,
+          "type": "section",
+          "title": "А Анкета обратной связи О Оцените пройденный материал",
+          "accessStatus": "available",
+          "materialsCount": 1,
+          "availableMaterialsCount": 1,
+          "lockedMaterialsCount": 0,
+          "materials": [
+            {
+              "index": 1,
+              "title": "О Оцените пройденный материал",
+              "type": "material",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/264949/?groupPeriodId=1354923&disciplineVersionId=52902&start=1"
+            }
+          ],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463221/1354923/6/1"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "type": "course",
+      "title": "Риск-менеджмент в инновационной деятельности",
+      "controlType": "Зачёт",
+      "currentScore": "",
+      "finalGrade": "",
+      "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146443",
+      "semesterNumber": 6,
+      "semesterTitle": "6 Семестр",
+      "fetchOk": true,
+      "fetchStatus": 200,
+      "fetchUrl": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146443",
+      "pageUrl": "https://lms.synergy.ru/student/updiscipline/5463197/1354923/1/1",
+      "subjectTitleFromPage": "Риск-менеджмент в инновационной деятельности",
+      "topicsCount": 0,
+      "sectionsCount": 6,
+      "materialsCount": 4,
+      "availableMaterialsCount": 4,
+      "lockedMaterialsCount": 0,
+      "notLoadedTopicsCount": 0,
+      "lockedTopicsCount": 5,
+      "availableTopicsCount": 1,
+      "topics": [
+        {
+          "index": 1,
+          "type": "section",
+          "title": "Т1 Тема 1. Риски в инновационной деятельности У Учебные материалы З1.1 Занятие 1.1 З1.2 Занятие 1.2 К1 Конспект 1 Т Тест для самопроверки Т1 Тест 1",
+          "accessStatus": "available",
+          "materialsCount": 4,
+          "availableMaterialsCount": 4,
+          "lockedMaterialsCount": 0,
+          "materials": [
+            {
+              "index": 1,
+              "title": "Занятие 1.1",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/178089/?groupPeriodId=1354923&disciplineVersionId=40353&start=1"
+            },
+            {
+              "index": 2,
+              "title": "Занятие 1.2",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/178091/?groupPeriodId=1354923&disciplineVersionId=40353&start=1"
+            },
+            {
+              "index": 3,
+              "title": "Конспект 1",
+              "type": "conspect",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/178079/?groupPeriodId=1354923&disciplineVersionId=40353&start=1"
+            },
+            {
+              "index": 4,
+              "title": "Тест 1",
+              "type": "test",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/event/view/61423316/0/1/?groupPeriodId=1354923"
+            }
+          ],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463197/1354923/1/1"
+        },
+        {
+          "index": 2,
+          "type": "section",
+          "title": "Т2 Тема 2. Оценка рисков в инновационной деятельности У Учебные материалы З2.1 Занятие 2.1 З2.2 Занятие 2.2 З2.3 Занятие 2.3 К2 Конспект 2 Т Тест для самопроверки Т2 Тест 2",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463197/1354923/2/1"
+        },
+        {
+          "index": 3,
+          "type": "section",
+          "title": "Т3 Тема 3. Анализ рисков в инновационной деятельности У Учебные материалы З3.1 Занятие 3.1 З3.2 Занятие 3.2 З3.3 Занятие 3.3 З3.4 Занятие 3.4 З3.5 Занятие 3.5 К3 Конспект 3 Т Тест для самопроверки Т3 Тест 3",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463197/1354923/3/1"
+        },
+        {
+          "index": 4,
+          "type": "section",
+          "title": "Т4 Тема 4. Управление рисками в инновационной деятельности У Учебные материалы З4.1 Занятие 4.1 З4.2 Занятие 4.2 З4.3 Занятие 4.3 З4.4 Занятие 4.4 З4.5 Занятие 4.5 К4 Конспект 4 Т Тест для самопроверки Т4 Тест 4",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463197/1354923/4/1"
+        },
+        {
+          "index": 5,
+          "type": "section",
+          "title": "Т5 Тема 5. Рисковое предпринимательство в инновационной деятельности У Учебные материалы З5.1 Занятие 5.1 З5.2 Занятие 5.2 З5.3 Занятие 5.3 К5 Конспект 5 Т Тест для самопроверки Т5 Тест 5",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463197/1354923/5/1"
+        },
+        {
+          "index": 6,
+          "type": "section",
+          "title": "И Итоговая аттестация И Итоговый тест",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463197/1354923/6/1"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "type": "course",
+      "title": "PR (public relations) в технологическом предпринимательстве",
+      "controlType": "Зачёт",
+      "currentScore": "",
+      "finalGrade": "",
+      "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146445",
+      "semesterNumber": 6,
+      "semesterTitle": "6 Семестр",
+      "fetchOk": true,
+      "fetchStatus": 200,
+      "fetchUrl": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146445",
+      "pageUrl": "https://lms.synergy.ru/student/updiscipline/5463311/1354923/1/1",
+      "subjectTitleFromPage": "PR (public relations) в технологическом предпринимательстве",
+      "topicsCount": 0,
+      "sectionsCount": 8,
+      "materialsCount": 10,
+      "availableMaterialsCount": 10,
+      "lockedMaterialsCount": 0,
+      "notLoadedTopicsCount": 0,
+      "lockedTopicsCount": 6,
+      "availableTopicsCount": 2,
+      "topics": [
+        {
+          "index": 1,
+          "type": "section",
+          "title": "Т1 Тема 1. PR: цели, решаемые задачи и современные средства коммуникации У Учебные материалы З1.1 Занятие 1.1 З1.2 Занятие 1.2 З1.3 Занятие 1.3 З1.4 Занятие 1.4 З1.5 Занятие 1.5 З1.6 Занятие 1.6 Г1 Глоссарий 1 К1 Конспект 1 Т Тест для самопроверки Т1 Тест 1",
+          "accessStatus": "available",
+          "materialsCount": 9,
+          "availableMaterialsCount": 9,
+          "lockedMaterialsCount": 0,
+          "materials": [
+            {
+              "index": 1,
+              "title": "Занятие 1.1",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/280759/?groupPeriodId=1354923&disciplineVersionId=54323&start=1"
+            },
+            {
+              "index": 2,
+              "title": "Занятие 1.2",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/280760/?groupPeriodId=1354923&disciplineVersionId=54323&start=1"
+            },
+            {
+              "index": 3,
+              "title": "Занятие 1.3",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/280761/?groupPeriodId=1354923&disciplineVersionId=54323&start=1"
+            },
+            {
+              "index": 4,
+              "title": "Занятие 1.4",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/280762/?groupPeriodId=1354923&disciplineVersionId=54323&start=1"
+            },
+            {
+              "index": 5,
+              "title": "Занятие 1.5",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/280763/?groupPeriodId=1354923&disciplineVersionId=54323&start=1"
+            },
+            {
+              "index": 6,
+              "title": "Занятие 1.6",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/280764/?groupPeriodId=1354923&disciplineVersionId=54323&start=1"
+            },
+            {
+              "index": 7,
+              "title": "Глоссарий 1",
+              "type": "glossary",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/280765/?groupPeriodId=1354923&disciplineVersionId=54323&start=1"
+            },
+            {
+              "index": 8,
+              "title": "Конспект 1",
+              "type": "conspect",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/280766/?groupPeriodId=1354923&disciplineVersionId=54323&start=1"
+            },
+            {
+              "index": 9,
+              "title": "Тест 1",
+              "type": "test",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/event/view/61423322/0/1/?groupPeriodId=1354923"
+            }
+          ],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463311/1354923/1/1"
+        },
+        {
+          "index": 2,
+          "type": "section",
+          "title": "Т2 Тема 2. Основные этапы PR-деятельности У Учебные материалы З2.1 Занятие 2.1 З2.2 Занятие 2.2 З2.3 Занятие 2.3 З2.4 Занятие 2.4 З2.5 Занятие 2.5 Г2 Глоссарий 2 К2 Конспект 2 Т Тест для самопроверки Т2 Тест 2",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463311/1354923/2/1"
+        },
+        {
+          "index": 3,
+          "type": "section",
+          "title": "Т3 Тема 3. Формирование и развитие связей со СМИ: подготовка пресс-релиза и проведение пресс-конференций У Учебные материалы З3.1 Занятие 3.1 З3.2 Занятие 3.2 З3.3 Занятие 3.3 Г3 Глоссарий 3 К3 Конспект 3 Т Тест для самопроверки Т3 Тест 3",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463311/1354923/3/1"
+        },
+        {
+          "index": 4,
+          "type": "section",
+          "title": "Т4 Тема 4. PR-технологии: «черный» PR и управление слухами У Учебные материалы З4.1 Занятие 4.1 З4.2 Занятие 4.2 З4.3 Занятие 4.3 З4.4 Занятие 4.4 Г4 Глоссарий 4 К4 Конспект 4 Т Тест для самопроверки Т4 Тест 4",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463311/1354923/4/1"
+        },
+        {
+          "index": 5,
+          "type": "section",
+          "title": "Т5 Тема 5. Внутрифирменный PR и корпоративная культура У Учебные материалы З5.1 Занятие 5.1 З5.2 Занятие 5.2 З5.3 Занятие 5.3 Г5 Глоссарий 5 К5 Конспект 5 Т Тест для самопроверки Т5 Тест 5",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463311/1354923/5/1"
+        },
+        {
+          "index": 6,
+          "type": "section",
+          "title": "Т6 Тема 6. Антикризисный PR У Учебные материалы З6.1 Занятие 6.1 З6.2 Занятие 6.2 З6.3 Занятие 6.3 Г6 Глоссарий 6 К6 Конспект 6 Т Тест для самопроверки Т6 Тест 6",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463311/1354923/6/1"
+        },
+        {
+          "index": 7,
+          "type": "section",
+          "title": "И Итоговая аттестация И Итоговый тест",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463311/1354923/7/1"
+        },
+        {
+          "index": 8,
+          "type": "section",
+          "title": "А Анкета обратной связи О Оцените пройденный материал",
+          "accessStatus": "available",
+          "materialsCount": 1,
+          "availableMaterialsCount": 1,
+          "lockedMaterialsCount": 0,
+          "materials": [
+            {
+              "index": 1,
+              "title": "О Оцените пройденный материал",
+              "type": "material",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/280795/?groupPeriodId=1354923&disciplineVersionId=54323&start=1"
+            }
+          ],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463311/1354923/8/1"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "type": "course",
+      "title": "Коммерциализация продуктов и услуг, основанных на технологиях",
+      "controlType": "Экзамен",
+      "currentScore": "",
+      "finalGrade": "",
+      "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146447",
+      "semesterNumber": 6,
+      "semesterTitle": "6 Семестр",
+      "fetchOk": true,
+      "fetchStatus": 200,
+      "fetchUrl": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146447",
+      "pageUrl": "https://lms.synergy.ru/student/updiscipline/5463223/1354923/1/1",
+      "subjectTitleFromPage": "Коммерциализация продуктов и услуг, основанных на технологиях",
+      "topicsCount": 0,
+      "sectionsCount": 6,
+      "materialsCount": 4,
+      "availableMaterialsCount": 4,
+      "lockedMaterialsCount": 0,
+      "notLoadedTopicsCount": 0,
+      "lockedTopicsCount": 5,
+      "availableTopicsCount": 1,
+      "topics": [
+        {
+          "index": 1,
+          "type": "section",
+          "title": "Т1 Тема 1. Переход от идеи к рынку: коммерциализация продуктов и услуг, основанных на технологиях У Учебные материалы З1 Занятие 1 Г1 Глоссарий 1 К1 Конспект 1 Т Тест для самопроверки Т1 Тест 1",
+          "accessStatus": "available",
+          "materialsCount": 4,
+          "availableMaterialsCount": 4,
+          "lockedMaterialsCount": 0,
+          "materials": [
+            {
+              "index": 1,
+              "title": "Занятие 1",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/254637/?groupPeriodId=1354923&disciplineVersionId=50814&start=1"
+            },
+            {
+              "index": 2,
+              "title": "Глоссарий 1",
+              "type": "glossary",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/254628/?groupPeriodId=1354923&disciplineVersionId=50814&start=1"
+            },
+            {
+              "index": 3,
+              "title": "Конспект 1",
+              "type": "conspect",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/254625/?groupPeriodId=1354923&disciplineVersionId=50814&start=1"
+            },
+            {
+              "index": 4,
+              "title": "Тест 1",
+              "type": "test",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/event/view/61423338/0/1/?groupPeriodId=1354923"
+            }
+          ],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463223/1354923/1/1"
+        },
+        {
+          "index": 2,
+          "type": "section",
+          "title": "Т2 Тема 2. Стоимость инновации в процессе коммерциализации У Учебные материалы З2 Занятие 2 Г2 Глоссарий 2 К2 Конспект 2 Т Тест для самопроверки Т2 Тест 2",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463223/1354923/2/1"
+        },
+        {
+          "index": 3,
+          "type": "section",
+          "title": "Т3 Тема 3. Оценка коммерческого потенциала результатов инновационной деятельности У Учебные материалы З3 Занятие 3 Г3 Глоссарий 3 К3 Конспект 3 Т Тест для самопроверки Т3 Тест 3",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463223/1354923/3/1"
+        },
+        {
+          "index": 4,
+          "type": "section",
+          "title": "Т4 Тема 4. Модели коммерциализации технологических продуктов У Учебные материалы З4 Занятие 4 Г4 Глоссарий 4 К4 Конспект 4 Т Тест для самопроверки Т4 Тест 4",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463223/1354923/4/1"
+        },
+        {
+          "index": 5,
+          "type": "section",
+          "title": "И Итоговая аттестация И Итоговый тест",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463223/1354923/5/1"
+        },
+        {
+          "index": 6,
+          "type": "section",
+          "title": "А Анкета обратной связи А Анкета обратной связи",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463223/1354923/6/1"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "type": "course",
+      "title": "Привлечение инвестиций в технологический проект и основы инвестиционной презентации",
+      "controlType": "Экзамен",
+      "currentScore": "",
+      "finalGrade": "",
+      "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146449",
+      "semesterNumber": 6,
+      "semesterTitle": "6 Семестр",
+      "fetchOk": true,
+      "fetchStatus": 200,
+      "fetchUrl": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146449",
+      "pageUrl": "https://lms.synergy.ru/student/updiscipline/5463225/1354923/1/1",
+      "subjectTitleFromPage": "Привлечение инвестиций в технологический проект и основы инвестиционной презентации",
+      "topicsCount": 0,
+      "sectionsCount": 11,
+      "materialsCount": 7,
+      "availableMaterialsCount": 7,
+      "lockedMaterialsCount": 0,
+      "notLoadedTopicsCount": 0,
+      "lockedTopicsCount": 10,
+      "availableTopicsCount": 1,
+      "topics": [
+        {
+          "index": 1,
+          "type": "section",
+          "title": "Т1 Тема 1. Структура и позиционирование технологического проекта У Учебные материалы З1.1 Занятие 1.1 З1.2 Занятие 1.2 З1.3 Занятие 1.3 З1.4 Занятие 1.4 Г1 Глоссарий 1 К1 Конспект 1 Т Тест для самопроверки Т1 Тест 1",
+          "accessStatus": "available",
+          "materialsCount": 7,
+          "availableMaterialsCount": 7,
+          "lockedMaterialsCount": 0,
+          "materials": [
+            {
+              "index": 1,
+              "title": "Занятие 1.1",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/255728/?groupPeriodId=1354923&disciplineVersionId=50973&start=1"
+            },
+            {
+              "index": 2,
+              "title": "Занятие 1.2",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/255731/?groupPeriodId=1354923&disciplineVersionId=50973&start=1"
+            },
+            {
+              "index": 3,
+              "title": "Занятие 1.3",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/255733/?groupPeriodId=1354923&disciplineVersionId=50973&start=1"
+            },
+            {
+              "index": 4,
+              "title": "Занятие 1.4",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/255737/?groupPeriodId=1354923&disciplineVersionId=50973&start=1"
+            },
+            {
+              "index": 5,
+              "title": "Глоссарий 1",
+              "type": "glossary",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/255738/?groupPeriodId=1354923&disciplineVersionId=50973&start=1"
+            },
+            {
+              "index": 6,
+              "title": "Конспект 1",
+              "type": "conspect",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/255742/?groupPeriodId=1354923&disciplineVersionId=50973&start=1"
+            },
+            {
+              "index": 7,
+              "title": "Тест 1",
+              "type": "test",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/event/view/61423343/0/1/?groupPeriodId=1354923"
+            }
+          ],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463225/1354923/1/1"
+        },
+        {
+          "index": 2,
+          "type": "section",
+          "title": "Т2 Тема 2. Показатели для оценки технологического проекта У Учебные материалы З2.1 Занятие 2.1 З2.2 Занятие 2.2 З2.3 Занятие 2.3 З2.4 Занятие 2.4 З2.5 Занятие 2.5 З2.6 Занятие 2.6 Г2 Глоссарий 2 К2 Конспект 2 Т Тест для самопроверки Т2 Тест 2",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463225/1354923/2/1"
+        },
+        {
+          "index": 3,
+          "type": "section",
+          "title": "Т3 Тема 3. Цели финансирования технологического проекта и планируемые показатели У Учебные материалы З3.1 Занятие 3.1 З3.2 Занятие 3.2 З3.3 Занятие 3.3 З3.4 Занятие 3.4 З3.5 Занятие 3.5 З3.6 Занятие 3.6 З3.7 Занятие 3.7 Г3 Глоссарий 3 К3 Конспект 3 Т Тест для самопроверки Т3 Тест 3",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463225/1354923/3/1"
+        },
+        {
+          "index": 4,
+          "type": "section",
+          "title": "Т4 Тема 4. Корпоративное финансирование технологического проекта У Учебные материалы З4.1 Занятие 4.1 З4.2 Занятие 4.2 З4.3 Занятие 4.3 З4.4 Занятие 4.4 З4.5 Занятие 4.5 Г4 Глоссарий 4 К4 Конспект 4 Т Тест для самопроверки Т4 Тест 4",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463225/1354923/4/1"
+        },
+        {
+          "index": 5,
+          "type": "section",
+          "title": "Т5 Тема 5. Государственное финансирование технологического проекта У Учебные материалы З5.1 Занятие 5.1 З5.2 Занятие 5.2 З5.3 Занятие 5.3 З5.4 Занятие 5.4 Г5 Глоссарий 5 К5 Конспект 5 Т Тест для самопроверки Т5 Тест 5",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463225/1354923/5/1"
+        },
+        {
+          "index": 6,
+          "type": "section",
+          "title": "Т6 Тема 6. Частное финансирование технологического проекта У Учебные материалы З6.1 Занятие 6.1 З6.2 Занятие 6.2 З6.3 Занятие 6.3 З6.4 Занятие 6.4 Г6 Глоссарий 6 К6 Конспект 6 Т Тест для самопроверки Т6 Тест 6",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463225/1354923/6/1"
+        },
+        {
+          "index": 7,
+          "type": "section",
+          "title": "Т7 Тема 7. Инструменты законной оптимизации налогообложения технологических проектов У Учебные материалы З7.1 Занятие 7.1 З7.2 Занятие 7.2 З7.3 Занятие 7.3 Г7 Глоссарий 7 К7 Конспект 7 Т Тест для самопроверки Т7 Тест 7",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463225/1354923/7/1"
+        },
+        {
+          "index": 8,
+          "type": "section",
+          "title": "Т8 Тема 8. Стратегия привлечения финансирования в технологический проект У Учебные материалы З8.1 Занятие 8.1 З8.2 Занятие 8.2 З8.3 Занятие 8.3 З8.4 Занятие 8.4 З8.5 Занятие 8.5 З8.6 Занятие 8.6 Г8 Глоссарий 8 К8 Конспект 8 Т Тест для самопроверки Т8 Тест 8",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463225/1354923/8/1"
+        },
+        {
+          "index": 9,
+          "type": "section",
+          "title": "Т9 Тема 9. Сроки / накладные расходы технологического проекта У Учебные материалы З9.1 Занятие 9.1 З9.2 Занятие 9.2 З9.3 Занятие 9.3 З9.4 Занятие 9.4 Г9 Глоссарий 9 К9 Конспект 9 Т Тест для самопроверки Т9 Тест 9",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463225/1354923/9/1"
+        },
+        {
+          "index": 10,
+          "type": "section",
+          "title": "И Итоговая аттестация И Итоговый тест",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463225/1354923/10/1"
+        },
+        {
+          "index": 11,
+          "type": "section",
+          "title": "А Анкета обратной связи О Оцените пройденный материал",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463225/1354923/11/1"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "type": "course",
+      "title": "Защита проекта перед потенциальным инвестором",
+      "controlType": "Зачёт",
+      "currentScore": "",
+      "finalGrade": "",
+      "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146451",
+      "semesterNumber": 6,
+      "semesterTitle": "6 Семестр",
+      "fetchOk": true,
+      "fetchStatus": 200,
+      "fetchUrl": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146451",
+      "pageUrl": "https://lms.synergy.ru/student/updiscipline/5463227/1354923/1/1",
+      "subjectTitleFromPage": "АНКЕТИРОВАНИЕ ОБУЧАЮЩИХСЯ",
+      "topicsCount": 0,
+      "sectionsCount": 5,
+      "materialsCount": 8,
+      "availableMaterialsCount": 8,
+      "lockedMaterialsCount": 0,
+      "notLoadedTopicsCount": 0,
+      "lockedTopicsCount": 3,
+      "availableTopicsCount": 2,
+      "topics": [
+        {
+          "index": 1,
+          "type": "section",
+          "title": "Т1 Тема 1. Оценка степени готовности проекта У Учебные материалы З1.1 Занятие 1.1 З1.2 Занятие 1.2 З1.3 Занятие 1.3 З1.4 Занятие 1.4 Г1 Глоссарий 1 К1 Конспект 1 Т Тест для самопроверки Т1 Тест 1",
+          "accessStatus": "available",
+          "materialsCount": 7,
+          "availableMaterialsCount": 7,
+          "lockedMaterialsCount": 0,
+          "materials": [
+            {
+              "index": 1,
+              "title": "Занятие 1.1",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/255842/?groupPeriodId=1354923&disciplineVersionId=50978&start=1"
+            },
+            {
+              "index": 2,
+              "title": "Занятие 1.2",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/255843/?groupPeriodId=1354923&disciplineVersionId=50978&start=1"
+            },
+            {
+              "index": 3,
+              "title": "Занятие 1.3",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/255844/?groupPeriodId=1354923&disciplineVersionId=50978&start=1"
+            },
+            {
+              "index": 4,
+              "title": "Занятие 1.4",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/255845/?groupPeriodId=1354923&disciplineVersionId=50978&start=1"
+            },
+            {
+              "index": 5,
+              "title": "Глоссарий 1",
+              "type": "glossary",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/255846/?groupPeriodId=1354923&disciplineVersionId=50978&start=1"
+            },
+            {
+              "index": 6,
+              "title": "Конспект 1",
+              "type": "conspect",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/255847/?groupPeriodId=1354923&disciplineVersionId=50978&start=1"
+            },
+            {
+              "index": 7,
+              "title": "Тест 1",
+              "type": "test",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/event/view/61423353/0/1/?groupPeriodId=1354923"
+            }
+          ],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463227/1354923/1/1"
+        },
+        {
+          "index": 2,
+          "type": "section",
+          "title": "Т2 Тема 2. Защита проекта перед инвестором У Учебные материалы З2.1 Занятие 2.1 З2.2 Занятие 2.2 З2.3 Занятие 2.3 Г2 Глоссарий 2 К2 Конспект 2 Т Тест для самопроверки Т2 Тест 2",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463227/1354923/2/1"
+        },
+        {
+          "index": 3,
+          "type": "section",
+          "title": "Т3 Тема 3. Основы грамотного питча и презентации проекта У Учебные материалы З3.1 Занятие 3.1 З3.2 Занятие 3.2 З3.3 Занятие 3.3 Г3 Глоссарий 3 К3 Конспект 3 Т Тест для самопроверки Т3 Тест 3",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463227/1354923/3/1"
+        },
+        {
+          "index": 4,
+          "type": "section",
+          "title": "И Итоговая аттестация И Итоговый тест",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463227/1354923/4/1"
+        },
+        {
+          "index": 5,
+          "type": "section",
+          "title": "А Анкета обратной связи О Оцените пройденный материал",
+          "accessStatus": "available",
+          "materialsCount": 1,
+          "availableMaterialsCount": 1,
+          "lockedMaterialsCount": 0,
+          "materials": [
+            {
+              "index": 1,
+              "title": "О Оцените пройденный материал",
+              "type": "material",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/255858/?groupPeriodId=1354923&disciplineVersionId=50978&start=1"
+            }
+          ],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463227/1354923/5/1"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "type": "course",
+      "title": "Партнерство с технологическими командами из технологической среды",
+      "controlType": "Зачёт",
+      "currentScore": "",
+      "finalGrade": "",
+      "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146453",
+      "semesterNumber": 6,
+      "semesterTitle": "6 Семестр",
+      "fetchOk": true,
+      "fetchStatus": 200,
+      "fetchUrl": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146453",
+      "pageUrl": "https://lms.synergy.ru/student/updiscipline/5463313/1354923/1/1",
+      "subjectTitleFromPage": "Партнерство с технологическими командами из технологической среды",
+      "topicsCount": 0,
+      "sectionsCount": 11,
+      "materialsCount": 5,
+      "availableMaterialsCount": 5,
+      "lockedMaterialsCount": 0,
+      "notLoadedTopicsCount": 0,
+      "lockedTopicsCount": 10,
+      "availableTopicsCount": 1,
+      "topics": [
+        {
+          "index": 1,
+          "type": "section",
+          "title": "Т1 Тема 1. Особенности предпринимательства в сфере научно-технического бизнеса и инноваций. У Учебные материалы З1.1 Занятие 1.1.1 З1.1 Занятие 1.1.2 З1.2 Занятие 1.2 З1.3 Занятие 1.3 К1 Конспект 1 Т Тест для самопроверки Т1 Тест 1",
+          "accessStatus": "available",
+          "materialsCount": 5,
+          "availableMaterialsCount": 5,
+          "lockedMaterialsCount": 0,
+          "materials": [
+            {
+              "index": 1,
+              "title": "Занятие 1.1.1",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/148201/?groupPeriodId=1354923&disciplineVersionId=37003&start=1"
+            },
+            {
+              "index": 2,
+              "title": "Занятие 1.2",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/148205/?groupPeriodId=1354923&disciplineVersionId=37003&start=1"
+            },
+            {
+              "index": 3,
+              "title": "Занятие 1.3",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/148207/?groupPeriodId=1354923&disciplineVersionId=37003&start=1"
+            },
+            {
+              "index": 4,
+              "title": "Конспект 1",
+              "type": "conspect",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/147963/?groupPeriodId=1354923&disciplineVersionId=37003&start=1"
+            },
+            {
+              "index": 5,
+              "title": "Тест 1",
+              "type": "test",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/event/view/61423357/0/1/?groupPeriodId=1354923"
+            }
+          ],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463313/1354923/1/1"
+        },
+        {
+          "index": 2,
+          "type": "section",
+          "title": "Т2 Тема 2. Партнерство - способ решения технологических задач У Учебные материалы З2.1 Занятие 2.1 З2.2 Занятие 2.2 З2.3 Занятие 2.3 К2 Конспект 2 Т Тест для самопроверки Т2 Тест 2",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463313/1354923/2/1"
+        },
+        {
+          "index": 3,
+          "type": "section",
+          "title": "Т3 Тема 3. Современные формы партнерства их задачи и преимущества У Учебные материалы З3.1 Занятие 3.1 З3.2 Занятие 3.2 З3.3 Занятие 3.3 З3.4 Занятие 3.4 З3.5 Занятие 3.5 К3 Конспект 3 Т Тест для самопроверки Т3 Тест 3",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463313/1354923/3/1"
+        },
+        {
+          "index": 4,
+          "type": "section",
+          "title": "Т4 Тема 4. Технологические альянсы крупных компаний и партнёрства малых и средних предприятий, в том числе с научными учреждениями У Учебные материалы З4.1 Занятие 4.1 З4.2 Занятие 4.2 З4.3 Занятие 4.3 К4 Конспект 4 Т Тест для самопроверки Т4 Тест 4",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463313/1354923/4/1"
+        },
+        {
+          "index": 5,
+          "type": "section",
+          "title": "Т5 Тема 5. Основы управления партнерством У Учебные материалы З5.1 Занятие 5.1.1 З5.1 Занятие 5.1.2 З5.2 Занятие 5.2 К5 Конспект 5 Т Тест для самопроверки Т5 Тест 5",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463313/1354923/5/1"
+        },
+        {
+          "index": 6,
+          "type": "section",
+          "title": "Т6 Тема 6. Правовые аспекты деятельности партнерств У Учебные материалы З6.1 Занятие 6.1.1 З6.1 Занятие 6.1.2 З6.2 Занятие 6.2 К6 Конспект 6 Т Тест для самопроверки Т6 Тест 6",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463313/1354923/6/1"
+        },
+        {
+          "index": 7,
+          "type": "section",
+          "title": "Т7 Тема 7. Международные технологические партнёрства МСП У Учебные материалы З7.1 Занятие 7.1.1 З7.1 Занятие 7.1.2 З7.2 Занятие 7.2 З7.3 Занятие 7.3 К7 Конспект 7 Т Тест для самопроверки Т7 Тест 7",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463313/1354923/7/1"
+        },
+        {
+          "index": 8,
+          "type": "section",
+          "title": "Т8 Тема 8. Государственная поддержка и перспективы развития технологического партнерства У Учебные материалы З8.1 Занятие 8.1 З8.2 Занятие 8.2 З8.3 Занятие 8.3 К8 Конспект 8 Т Тест для самопроверки Т8 Тест 8",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463313/1354923/8/1"
+        },
+        {
+          "index": 9,
+          "type": "section",
+          "title": "Т9 Тема 9. Экспертная оценка технологий компаний, включенных в партнерства У Учебные материалы З9.1 Занятие 9.1.1 З9.1 Занятие 9.1.2 З9.2 Занятие 9.2 З9.3 Занятие 9.3 К9 Конспект 9 Т Тест для самопроверки Т9 Тест 9",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463313/1354923/9/1"
+        },
+        {
+          "index": 10,
+          "type": "section",
+          "title": "Т10 Тема 10. Основные направления для совместной разработки технологий внутри партнерств У Учебные материалы З10.1 Занятие 10.1 З10.2 Занятие 10.2.1 З10.2 Занятие 10.2.2 З10.3 Занятие 10.3 К10 Конспект 10 Т Тест для самопроверки Т10 Тест 10",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463313/1354923/10/1"
+        },
+        {
+          "index": 11,
+          "type": "section",
+          "title": "И Итоговая аттестация И Итоговый тест",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463313/1354923/11/1"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "type": "course",
+      "title": "Теория оптимального управления",
+      "controlType": "Зачёт",
+      "currentScore": "",
+      "finalGrade": "",
+      "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146455",
+      "semesterNumber": 6,
+      "semesterTitle": "6 Семестр",
+      "fetchOk": true,
+      "fetchStatus": 200,
+      "fetchUrl": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146455",
+      "pageUrl": "https://lms.synergy.ru/student/updiscipline/5463271/1354923/1/1",
+      "subjectTitleFromPage": "Теория оптимального управления",
+      "topicsCount": 0,
+      "sectionsCount": 0,
+      "materialsCount": 0,
+      "availableMaterialsCount": 0,
+      "lockedMaterialsCount": 0,
+      "notLoadedTopicsCount": 0,
+      "lockedTopicsCount": 0,
+      "availableTopicsCount": 0,
+      "topics": []
+    },
+    {
+      "index": 11,
+      "type": "course",
+      "title": "Технологическая (проектно-технологическая) практика | П.В | Производственная практика",
+      "controlType": "Практика",
+      "currentScore": "",
+      "finalGrade": "",
+      "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146463",
+      "semesterNumber": 6,
+      "semesterTitle": "6 Семестр",
+      "fetchOk": true,
+      "fetchStatus": 200,
+      "fetchUrl": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146463",
+      "pageUrl": "https://lms.synergy.ru/student/updiscipline/5463175/1354923/1/1",
+      "subjectTitleFromPage": "Технологическая (проектно-технологическая) практика",
+      "topicsCount": 0,
+      "sectionsCount": 0,
+      "materialsCount": 0,
+      "availableMaterialsCount": 0,
+      "lockedMaterialsCount": 0,
+      "notLoadedTopicsCount": 0,
+      "lockedTopicsCount": 0,
+      "availableTopicsCount": 0,
+      "topics": []
+    },
+    {
+      "index": 13,
+      "type": "course",
+      "title": "Искусственный интеллект",
+      "controlType": "Экзамен",
+      "currentScore": "",
+      "finalGrade": "",
+      "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146457",
+      "semesterNumber": 6,
+      "semesterTitle": "6 Семестр",
+      "fetchOk": true,
+      "fetchStatus": 200,
+      "fetchUrl": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146457",
+      "pageUrl": "https://lms.synergy.ru/student/updiscipline/5463179/1354923/1/1",
+      "subjectTitleFromPage": "Искусственный интеллект",
+      "topicsCount": 0,
+      "sectionsCount": 6,
+      "materialsCount": 8,
+      "availableMaterialsCount": 8,
+      "lockedMaterialsCount": 0,
+      "notLoadedTopicsCount": 0,
+      "lockedTopicsCount": 5,
+      "availableTopicsCount": 1,
+      "topics": [
+        {
+          "index": 1,
+          "type": "section",
+          "title": "Т1 Тема 1. Основные определения, история проблемы, современные направления развития искусственного интеллекта. У Учебные материалы З1.1 Занятие 1.1 З1.2 Занятие 1.2 З1.3 Занятие 1.3 З1.4 Занятие 1.4 З1.5 Занятие 1.5 Г1 Глоссарий 1 К1 Конспект 1 Т Тест для самопроверки Т1 Тест 1",
+          "accessStatus": "available",
+          "materialsCount": 8,
+          "availableMaterialsCount": 8,
+          "lockedMaterialsCount": 0,
+          "materials": [
+            {
+              "index": 1,
+              "title": "Занятие 1.1",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/263761/?groupPeriodId=1354923&disciplineVersionId=52828&start=1"
+            },
+            {
+              "index": 2,
+              "title": "Занятие 1.2",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/263762/?groupPeriodId=1354923&disciplineVersionId=52828&start=1"
+            },
+            {
+              "index": 3,
+              "title": "Занятие 1.3",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/263763/?groupPeriodId=1354923&disciplineVersionId=52828&start=1"
+            },
+            {
+              "index": 4,
+              "title": "Занятие 1.4",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/263764/?groupPeriodId=1354923&disciplineVersionId=52828&start=1"
+            },
+            {
+              "index": 5,
+              "title": "Занятие 1.5",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/263765/?groupPeriodId=1354923&disciplineVersionId=52828&start=1"
+            },
+            {
+              "index": 6,
+              "title": "Глоссарий 1",
+              "type": "glossary",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/263766/?groupPeriodId=1354923&disciplineVersionId=52828&start=1"
+            },
+            {
+              "index": 7,
+              "title": "Конспект 1",
+              "type": "conspect",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/263767/?groupPeriodId=1354923&disciplineVersionId=52828&start=1"
+            },
+            {
+              "index": 8,
+              "title": "Тест 1",
+              "type": "test",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/event/view/61036323/0/1/?groupPeriodId=1354923"
+            }
+          ],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463179/1354923/1/1"
+        },
+        {
+          "index": 2,
+          "type": "section",
+          "title": "Т2 Тема 2. Онтологическая инженерия описания предметной области У Учебные материалы З2.1 Занятие 2.1 З2.2 Занятие 2.2 З2.3 Занятие 2.3 З2.4 Занятие 2.4 З2.5 Занятие 2.5 Г2 Глоссарий 2 К2 Конспект 2 Т Тест для самопроверки Т2 Тест 2",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463179/1354923/2/1"
+        },
+        {
+          "index": 3,
+          "type": "section",
+          "title": "Т3 Тема 3. Представление и вывод знаний в системах искусственного интеллекта У Учебные материалы З3.1 Занятие 3.1 З3.2 Занятие 3.2 З3.3 Занятие 3.3 З3.4 Занятие 3.4 З3.5 Занятие 3.5 З3.6 Занятие 3.6 Г3 Глоссарий 3 К3 Конспект 3 Т Тест для самопроверки Т3 Тест 3",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463179/1354923/3/1"
+        },
+        {
+          "index": 4,
+          "type": "section",
+          "title": "Т4 Тема 4. Моделирование в системах искусственного интеллекта У Учебные материалы З4.1 Занятие 4.1 З4.2 Занятие 4.2 З4.3 Занятие 4.3 З4.4 Занятие 4.4 З4.5 Занятие 4.5 З4.6 Занятие 4.6 З4.7 Занятие 4.7 Г4 Глоссарий 4 К4 Конспект 4 Т Тест для самопроверки Т4 Тест 4",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463179/1354923/4/1"
+        },
+        {
+          "index": 5,
+          "type": "section",
+          "title": "И Итоговая аттестация И Итоговый тест",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463179/1354923/5/1"
+        },
+        {
+          "index": 6,
+          "type": "section",
+          "title": "А Анкета обратной связи О Оцените пройденный материал",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463179/1354923/6/1"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "type": "course",
+      "title": "Программирование на Python для сбора и анализа данных",
+      "controlType": "Зачёт",
+      "currentScore": "",
+      "finalGrade": "",
+      "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146459",
+      "semesterNumber": 6,
+      "semesterTitle": "6 Семестр",
+      "fetchOk": true,
+      "fetchStatus": 200,
+      "fetchUrl": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146459",
+      "pageUrl": "https://lms.synergy.ru/student/updiscipline/5463231/1354923/1/1",
+      "subjectTitleFromPage": "Программирование на Python для сбора и анализа данных",
+      "topicsCount": 0,
+      "sectionsCount": 6,
+      "materialsCount": 11,
+      "availableMaterialsCount": 11,
+      "lockedMaterialsCount": 0,
+      "notLoadedTopicsCount": 0,
+      "lockedTopicsCount": 5,
+      "availableTopicsCount": 1,
+      "topics": [
+        {
+          "index": 1,
+          "type": "section",
+          "title": "Т1 Тема 1. Введение в программирование на языке Python У Учебные материалы З1.1 Занятие 1.1 З1.2 Занятие 1.2 З1.3 Занятие 1.3 З1.4 Занятие 1.4 З1.5 Занятие 1.5 З1.6 Занятие 1.6 З1.7 Занятие 1.7 З1.8 Занятие 1.8 Г1 Глоссарий 1 К1 Конспект 1 Т Тест для самопроверки Т1 Тест 1",
+          "accessStatus": "available",
+          "materialsCount": 11,
+          "availableMaterialsCount": 11,
+          "lockedMaterialsCount": 0,
+          "materials": [
+            {
+              "index": 1,
+              "title": "Занятие 1.1",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/259309/?groupPeriodId=1354923&disciplineVersionId=52272&start=1"
+            },
+            {
+              "index": 2,
+              "title": "Занятие 1.2",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/259310/?groupPeriodId=1354923&disciplineVersionId=52272&start=1"
+            },
+            {
+              "index": 3,
+              "title": "Занятие 1.3",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/259311/?groupPeriodId=1354923&disciplineVersionId=52272&start=1"
+            },
+            {
+              "index": 4,
+              "title": "Занятие 1.4",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/259312/?groupPeriodId=1354923&disciplineVersionId=52272&start=1"
+            },
+            {
+              "index": 5,
+              "title": "Занятие 1.5",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/259313/?groupPeriodId=1354923&disciplineVersionId=52272&start=1"
+            },
+            {
+              "index": 6,
+              "title": "Занятие 1.6",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/259314/?groupPeriodId=1354923&disciplineVersionId=52272&start=1"
+            },
+            {
+              "index": 7,
+              "title": "Занятие 1.7",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/259315/?groupPeriodId=1354923&disciplineVersionId=52272&start=1"
+            },
+            {
+              "index": 8,
+              "title": "Занятие 1.8",
+              "type": "lesson",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/259316/?groupPeriodId=1354923&disciplineVersionId=52272&start=1"
+            },
+            {
+              "index": 9,
+              "title": "Глоссарий 1",
+              "type": "glossary",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/259317/?groupPeriodId=1354923&disciplineVersionId=52272&start=1"
+            },
+            {
+              "index": 10,
+              "title": "Конспект 1",
+              "type": "conspect",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/lntools/mcresource/view/259318/?groupPeriodId=1354923&disciplineVersionId=52272&start=1"
+            },
+            {
+              "index": 11,
+              "title": "Тест 1",
+              "type": "test",
+              "accessStatus": "available",
+              "href": "https://lms.synergy.ru/event/view/61036235/0/1/?groupPeriodId=1354923"
+            }
+          ],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463231/1354923/1/1"
+        },
+        {
+          "index": 2,
+          "type": "section",
+          "title": "Т2 Тема 2. Обработка данных. Построение графиков и визуализация данных У Учебные материалы З2.1 Занятие 2.1 З2.2 Занятие 2.2 З2.3 Занятие 2.3 З2.4 Занятие 2.4 Г2 Глоссарий 2 К2 Конспект 2 Т Тест для самопроверки Т2 Тест 2",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463231/1354923/2/1"
+        },
+        {
+          "index": 3,
+          "type": "section",
+          "title": "Т3 Тема 3. Программирование и моделирование в Python У Учебные материалы З3.1 Занятие 3.1 З3.2 Занятие 3.2 З3.3 Занятие 3.3 Г3 Глоссарий 3 К3 Конспект 3 Т Тест для самопроверки Т3 Тест 3",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463231/1354923/3/1"
+        },
+        {
+          "index": 4,
+          "type": "section",
+          "title": "Т4 Тема 4. Специализированные библиотеки Python для анализа данных У Учебные материалы З4.1 Занятие 4.1 З4.2 Занятие 4.2 З4.3 Занятие 4.3 З4.4 Занятие 4.4 Г4 Глоссарий 4 К4 Конспект 4 Т Тест для самопроверки Т4 Тест 4",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463231/1354923/4/1"
+        },
+        {
+          "index": 5,
+          "type": "section",
+          "title": "И Итоговая аттестация И Итоговый тест",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463231/1354923/5/1"
+        },
+        {
+          "index": 6,
+          "type": "section",
+          "title": "А Анкета обратной связи О Оцените пройденный материал",
+          "accessStatus": "locked",
+          "materialsCount": 0,
+          "availableMaterialsCount": 0,
+          "lockedMaterialsCount": 0,
+          "materials": [],
+          "sourceUrl": "https://lms.synergy.ru/student/updiscipline/5463231/1354923/6/1"
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "type": "course",
+      "title": "Машинное обучение",
+      "controlType": "Зачёт",
+      "currentScore": "",
+      "finalGrade": "",
+      "href": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146461",
+      "semesterNumber": 6,
+      "semesterTitle": "6 Семестр",
+      "fetchOk": true,
+      "fetchStatus": 200,
+      "fetchUrl": "https://lms.synergy.ru/lntools/versiongroupassign/contents/student/22146461",
+      "pageUrl": "https://lms.synergy.ru/student/updiscipline/5463181/1354923/1/1",
+      "subjectTitleFromPage": "Машинное обучение",
+      "topicsCount": 0,
+      "sectionsCount": 0,
+      "materialsCount": 0,
+      "availableMaterialsCount": 0,
+      "lockedMaterialsCount": 0,
+      "notLoadedTopicsCount": 0,
+      "lockedTopicsCount": 0,
+      "availableTopicsCount": 0,
+      "topics": []
+    }
+  ]
+}

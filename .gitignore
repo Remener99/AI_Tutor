@@ -1,0 +1,10 @@
+node_modules
+dist
+build
+.plasmo
+.turbo
+.env
+.DS_Store
+coverage
+*.log
+apps/backend/data/*.json

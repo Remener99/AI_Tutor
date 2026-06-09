@@ -1,0 +1,17 @@
+{
+  "name": "ai-tutor-synergy",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@9.15.4",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "dev:extension": "pnpm --filter @ai-tutor/extension dev",
+    "dev:backend": "pnpm --filter @ai-tutor/backend dev",
+    "build": "pnpm -r build",
+    "build:extension": "pnpm --filter @ai-tutor/extension build",
+    "build:backend": "pnpm --filter @ai-tutor/backend build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck"
+  }
+}

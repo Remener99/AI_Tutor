@@ -1,0 +1,1054 @@
+// ==UserScript==
+// @name         Synergy LMS Context Exporter
+// @namespace    synergy-lms-neuro-tutor
+// @version      0.2.0
+// @description  Кнопка выгрузки текущего семестра, предметов, тем, материалов и статусов доступа из LMS Synergy
+// @author       Nekraster
+// @match        https://lms.synergy.ru/student/up*
+// @run-at       document-idle
+// @grant        none
+// ==/UserScript==
+
+/**
+ * Synergy LMS Context Exporter v0.2.0
+ *
+ * Основан на Synergy LMS Final Extractor v0.1.
+ * Скрипт не обходит авторизацию и блокировки LMS: он читает только то,
+ * что доступно в текущей авторизованной сессии студента.
+ */
+
+(() => {
+  "use strict";
+
+  const CONFIG = {
+    ONLY_CURRENT_SEMESTER: true,
+
+    // Делает fetch страниц предметов по href из таблицы.
+    FETCH_COURSE_PAGES: true,
+
+    // Пытается дополнительно открыть URL каждой темы по шаблону /.../{topicIndex}/1.
+    // Это не обходит блокировки. Скрипт только читает то, что LMS отдает авторизованному пользователю.
+    FETCH_TOPIC_PAGES: true,
+
+    REQUEST_DELAY_MS: 300,
+
+    // null = все предметы текущего семестра.
+    // Для теста можно поставить 1 или 2.
+    MAX_SUBJECTS: null,
+
+    INCLUDE_GROUP: true,
+    INCLUDE_RAW_TEXT: false,
+    DOWNLOAD_JSON: true,
+    COPY_TO_CLIPBOARD: true,
+
+    OUTPUT_FILENAME: "synergy-lms-final-context.json"
+  };
+
+  const normalize = (value) => (value || "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const getText = (el) => normalize(el?.innerText || el?.textContent || "");
+
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  const downloadFile = (filename, content, type = "application/json") => {
+    const blob = new Blob([content], { type });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+
+    a.href = url;
+    a.download = filename;
+    a.click();
+
+    URL.revokeObjectURL(url);
+  };
+
+  const safeUrl = (href, baseUrl = location.href) => {
+    if (!href) return null;
+
+    try {
+      const url = new URL(href, baseUrl);
+
+      // Оставляем только LMS-ссылки. Внешние URL не нужны для контекста тьютора.
+      if (url.hostname !== "lms.synergy.ru") {
+        return null;
+      }
+
+      return url.href;
+    } catch (error) {
+      return null;
+    }
+  };
+
+  const CONTROL_TYPES = [
+    "Дифференцированный зачёт",
+    "Дифференцированный зачет",
+    "Зачет с оценкой",
+    "Зачёт с оценкой",
+    "Курсовая работа",
+    "Курсовой проект",
+    "Контрольная работа",
+    "Экзамен",
+    "Практика",
+    "Зачёт",
+    "Зачет"
+  ].sort((a, b) => b.length - a.length);
+
+  const isControlType = (value) => {
+    const text = normalize(value).toLowerCase();
+
+    return CONTROL_TYPES.some((type) => text === type.toLowerCase());
+  };
+
+  const extractControlType = (rowText, cellTexts) => {
+    const exactCell = cellTexts.find(isControlType);
+
+    if (exactCell) return exactCell;
+
+    const startsWithCell = cellTexts.find((cellText) => {
+      const lower = cellText.toLowerCase();
+
+      return CONTROL_TYPES.some((type) => lower.startsWith(type.toLowerCase()));
+    });
+
+    if (startsWithCell) {
+      const matchedType = CONTROL_TYPES.find((type) =>
+        startsWithCell.toLowerCase().startsWith(type.toLowerCase())
+      );
+
+      return matchedType || startsWithCell;
+    }
+
+    return CONTROL_TYPES.find((type) => {
+      const escaped = type.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const regex = new RegExp(`(?:^|\\s)${escaped}(?:\\s|$)`, "i");
+
+      return regex.test(rowText);
+    }) || "";
+  };
+
+  const stripTechnicalPrefix = (value) => {
+    return normalize(
+      value
+        .replace(/^[А-ЯA-Z]\d+(?:\.\d+)?\s+/i, "")
+        .replace(/^Т\d+\s+Тест\s+(\d+)$/i, "Тест для самопроверки $1")
+    );
+  };
+
+  const classifyTopic = (title) => {
+    if (/^Тема\s+\d+\./i.test(title)) return "topic";
+    if (/^Итоговая аттестация$/i.test(title)) return "final_assessment";
+    if (/^Обратная связь$/i.test(title)) return "feedback";
+
+    return "section";
+  };
+
+  const classifyMaterial = (title, href = "") => {
+    const value = `${title} ${href}`.toLowerCase();
+
+    if (/итоговый тест|аттестация|ким|\/event\/view/.test(value)) return "test";
+    if (/тест/.test(value)) return "test";
+    if (/конспект/.test(value)) return "conspect";
+    if (/глоссарий/.test(value)) return "glossary";
+    if (/занятие/.test(value)) return "lesson";
+    if (/анкета|обратная связь/.test(value)) return "feedback";
+
+    return "material";
+  };
+
+  const getTopicTitle = (fullText) => {
+    const text = normalize(fullText);
+
+    if (/^Тема\s+\d+\./i.test(text)) {
+      const match = text.match(
+        /^(Тема\s+\d+\.\s+.*?)(?=\s+Учебные материалы|\s+Занятие\s+\d|\s+Конспект\s+\d|\s+Глоссарий\s+\d|\s+Тест\s+для\s+самопроверки|\s*$)/i
+      );
+
+      return normalize(match?.[1] || text);
+    }
+
+    if (/^Итоговая аттестация/i.test(text)) {
+      return "Итоговая аттестация";
+    }
+
+    if (/^Обратная связь/i.test(text)) {
+      return "Обратная связь";
+    }
+
+    return text;
+  };
+
+  const extractMaterialTitlesFromText = (fullText, topicTitle) => {
+    let text = normalize(fullText);
+
+    if (topicTitle) {
+      text = normalize(text.replace(topicTitle, ""));
+    }
+
+    text = text.replace(/^Учебные материалы\s*/i, "");
+
+    const patterns = [
+      /Занятие\s+\d+(?:\.\d+)?/gi,
+      /Конспект\s+\d+/gi,
+      /Глоссарий\s+\d+/gi,
+      /Тест\s+для\s+самопроверки\s+\d+/gi,
+      /Итоговый\s+тест/gi,
+      /Анкета\s+с\s+обратной\s+связью/gi
+    ];
+
+    const matches = [];
+
+    for (const pattern of patterns) {
+      const found = Array.from(text.matchAll(pattern)).map((match) => ({
+        title: normalize(match[0]),
+        position: match.index
+      }));
+
+      matches.push(...found);
+    }
+
+    return matches
+      .sort((a, b) => a.position - b.position)
+      .map((item) => item.title)
+      .filter(Boolean);
+  };
+
+  const materialKey = (title) => {
+    const normalized = stripTechnicalPrefix(title).toLowerCase();
+
+    const lessonMatch = normalized.match(/занятие\s+(\d+(?:\.\d+)?)/i);
+    if (lessonMatch) return `lesson:${lessonMatch[1]}`;
+
+    const conspectMatch = normalized.match(/конспект\s+(\d+)/i);
+    if (conspectMatch) return `conspect:${conspectMatch[1]}`;
+
+    const glossaryMatch = normalized.match(/глоссарий\s+(\d+)/i);
+    if (glossaryMatch) return `glossary:${glossaryMatch[1]}`;
+
+    const selfTestMatch = normalized.match(/тест\s+для\s+самопроверки\s+(\d+)/i);
+    if (selfTestMatch) return `test:${selfTestMatch[1]}`;
+
+    const shortTestMatch = normalized.match(/тест\s+(\d+)/i);
+    if (shortTestMatch) return `test:${shortTestMatch[1]}`;
+
+    if (/итоговый тест/i.test(normalized)) return "final_test";
+    if (/анкета.*обратной связ/i.test(normalized)) return "feedback_form";
+
+    return normalized;
+  };
+
+  const getDomSignals = (el) => {
+    const html = el.outerHTML || "";
+    const classBlob = Array.from(el.querySelectorAll("*"))
+      .map((node) => typeof node.className === "string" ? node.className : "")
+      .join(" ");
+
+    const signalSource = `${el.className || ""} ${classBlob} ${html}`.toLowerCase();
+
+    return {
+      hasLockSignal: /lock|locked|замок/.test(signalSource),
+      hasCheckSignal: /check|checked|complete|completed|done|success|passed|галоч/.test(signalSource)
+    };
+  };
+
+  const resolveAccessStatus = (materials, domSignals) => {
+    if (!materials.length) {
+      if (domSignals?.hasLockSignal) return "locked";
+      return "not_loaded";
+    }
+
+    const availableCount = materials.filter((item) => item.accessStatus === "available").length;
+    const lockedCount = materials.filter((item) => item.accessStatus === "locked").length;
+
+    if (availableCount > 0 && lockedCount > 0) return "partial";
+    if (availableCount > 0) return "available";
+    if (lockedCount > 0) return "locked";
+
+    return "not_loaded";
+  };
+
+  const parseSemestersAndSubjects = (doc, pageUrl) => {
+    const table = doc.querySelector("table.table-list.student-up-table");
+
+    if (!table) {
+      throw new Error("Таблица table.table-list.student-up-table не найдена. Открой страницу /student/up.");
+    }
+
+    const group = getText(doc.querySelector("#switch-accounts .title"));
+
+    const semesters = Array.from(table.querySelectorAll("tbody.semester")).map((tbody) => {
+      const className = tbody.className || "";
+      const semesterNumber = Number(className.match(/\bs(\d+)\b/)?.[1] || null);
+
+      const headerRow = tbody.querySelector("tr.semtab");
+      const headerText = getText(headerRow);
+
+      const semesterTitleMatch = headerText.match(/\d+\s*Семестр(?:\s*\(текущий\))?/i);
+      const semesterTitle = semesterTitleMatch
+        ? normalize(semesterTitleMatch[0].replace(/\(текущий\)/i, ""))
+        : `${semesterNumber} Семестр`;
+
+      const declaredCoursesCount = Number(headerText.match(/курсы:\s*(\d+)/i)?.[1] || 0);
+
+      const isCurrent =
+        /текущий/i.test(headerText) ||
+        tbody.classList.contains("expanded");
+
+      const rows = Array.from(tbody.querySelectorAll("tr.discipl"));
+
+      const items = rows
+        .map((row, index) => {
+          const rowText = getText(row);
+          if (!rowText) return null;
+
+          const directCells = Array.from(row.children)
+            .filter((child) => child.tagName?.toLowerCase() === "td");
+
+          const cellTexts = directCells
+            .map(getText)
+            .filter(Boolean);
+
+          const links = Array.from(row.querySelectorAll("a[href]"))
+            .map((a) => ({
+              text: getText(a),
+              href: safeUrl(a.getAttribute("href"), pageUrl)
+            }))
+            .filter((item) => item.text && item.href);
+
+          const controlType = extractControlType(rowText, cellTexts);
+
+          const isSection =
+            /элективные дисциплины/i.test(rowText) ||
+            (
+              cellTexts.length <= 1 &&
+              !controlType &&
+              !links.length
+            );
+
+          if (isSection) {
+            return {
+              index: index + 1,
+              type: "section",
+              title: rowText,
+              controlType: "",
+              currentScore: "",
+              finalGrade: "",
+              href: null
+            };
+          }
+
+          let title = "";
+
+          const titleFromLink = links.find((link) => {
+            return !isControlType(link.text) && !/курсы:\s*\d+/i.test(link.text);
+          });
+
+          if (titleFromLink) {
+            title = titleFromLink.text;
+          }
+
+          if (!title) {
+            const titleFromCell = cellTexts.find((cellText) => {
+              return (
+                !isControlType(cellText) &&
+                !/^\d+(\s*%)?$/.test(cellText) &&
+                !/курсы:\s*\d+/i.test(cellText) &&
+                !/семестр/i.test(cellText)
+              );
+            });
+
+            title = titleFromCell || "";
+          }
+
+          const controlIndex = cellTexts.findIndex((cellText) => {
+            const lower = cellText.toLowerCase();
+
+            return CONTROL_TYPES.some((type) =>
+              lower === type.toLowerCase() ||
+              lower.startsWith(type.toLowerCase())
+            );
+          });
+
+          const currentScore = controlIndex >= 0
+            ? cellTexts[controlIndex + 1] || ""
+            : "";
+
+          const finalGrade = controlIndex >= 0
+            ? cellTexts[controlIndex + 2] || ""
+            : "";
+
+          return {
+            index: index + 1,
+            type: "course",
+            title,
+            controlType,
+            currentScore,
+            finalGrade,
+            href: titleFromLink?.href || links[0]?.href || null
+          };
+        })
+        .filter(Boolean)
+        .filter((item) => item.title);
+
+      const courses = items.filter((item) => item.type === "course");
+      const sections = items.filter((item) => item.type === "section");
+
+      return {
+        semesterNumber,
+        semesterTitle,
+        isCurrent,
+        declaredCoursesCount,
+        parsedCoursesCount: courses.length,
+        sectionsCount: sections.length,
+        items
+      };
+    });
+
+    return {
+      group,
+      semesters
+    };
+  };
+
+  const normalizeCourseResult = (course) => {
+    const topics = course.topics || [];
+
+    return {
+      ...course,
+      topicsCount: topics.filter((item) => item.type === "topic").length,
+      sectionsCount: topics.filter((item) => item.type !== "topic").length,
+      materialsCount: topics.reduce((sum, topic) => sum + topic.materialsCount, 0),
+      availableMaterialsCount: topics.reduce((sum, topic) => sum + topic.availableMaterialsCount, 0),
+      lockedMaterialsCount: topics.reduce((sum, topic) => sum + topic.lockedMaterialsCount, 0),
+      notLoadedTopicsCount: topics.filter((topic) => topic.accessStatus === "not_loaded").length,
+      lockedTopicsCount: topics.filter((topic) => topic.accessStatus === "locked").length,
+      availableTopicsCount: topics.filter((topic) => topic.accessStatus === "available").length
+    };
+  };
+
+  const parseCoursePage = (doc, pageUrl) => {
+    const subject = getText(doc.querySelector("#content h1, .content h1"));
+    const sidebar = doc.querySelector(".materials .materials__container ul.sidebar");
+
+    if (!sidebar) {
+      return {
+        subject,
+        pageUrl,
+        parseOk: false,
+        parseError: "Блок .materials .materials__container ul.sidebar не найден.",
+        topics: []
+      };
+    }
+
+    const topics = Array.from(sidebar.querySelectorAll(":scope > li"))
+      .map((li, topicIndex) => {
+        const fullText = getText(li);
+        const topicTitle = getTopicTitle(fullText);
+        const topicType = classifyTopic(topicTitle);
+        const domSignals = getDomSignals(li);
+
+        const links = Array.from(li.querySelectorAll("a[href]"))
+          .map((a) => {
+            const rawTitle = getText(a);
+            const title = stripTechnicalPrefix(rawTitle);
+            const href = safeUrl(a.getAttribute("href"), pageUrl);
+
+            return {
+              rawTitle,
+              title,
+              key: materialKey(title || rawTitle),
+              href
+            };
+          })
+          .filter((item) => item.title && item.href);
+
+        const textMaterialTitles = extractMaterialTitlesFromText(fullText, topicTitle);
+
+        const titleMap = new Map();
+
+        for (const title of textMaterialTitles) {
+          titleMap.set(materialKey(title), title);
+        }
+
+        for (const link of links) {
+          if (!titleMap.has(link.key)) {
+            titleMap.set(link.key, link.title);
+          }
+        }
+
+        const materials = Array.from(titleMap.entries()).map(([key, title], materialIndex) => {
+          const link = links.find((item) => item.key === key);
+
+          return {
+            index: materialIndex + 1,
+            title,
+            type: classifyMaterial(title, link?.href || ""),
+            accessStatus: link?.href ? "available" : "locked",
+            href: link?.href || null
+          };
+        });
+
+        const availableMaterialsCount = materials.filter((item) => item.accessStatus === "available").length;
+        const lockedMaterialsCount = materials.filter((item) => item.accessStatus === "locked").length;
+        const accessStatus = resolveAccessStatus(materials, domSignals);
+
+        const topic = {
+          index: topicIndex + 1,
+          type: topicType,
+          title: topicTitle,
+          accessStatus,
+          materialsCount: materials.length,
+          availableMaterialsCount,
+          lockedMaterialsCount,
+          materials
+        };
+
+        if (CONFIG.INCLUDE_RAW_TEXT) {
+          topic.rawText = fullText;
+          topic.domSignals = domSignals;
+        }
+
+        return topic;
+      })
+      .filter((item) => item.title);
+
+    return normalizeCourseResult({
+      subject,
+      pageUrl,
+      parseOk: true,
+      topics
+    });
+  };
+
+  const canBuildTopicPageUrls = (pageUrl) => {
+    try {
+      const url = new URL(pageUrl);
+      const parts = url.pathname.split("/").filter(Boolean);
+
+      return (
+        parts.length >= 6 &&
+        parts[0] === "student" &&
+        parts[1] === "updiscipline" &&
+        /^\d+$/.test(parts[parts.length - 2]) &&
+        /^\d+$/.test(parts[parts.length - 1])
+      );
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const buildTopicPageUrl = (pageUrl, topicIndex) => {
+    const url = new URL(pageUrl);
+    const parts = url.pathname.split("/").filter(Boolean);
+
+    parts[parts.length - 2] = String(topicIndex);
+
+    url.pathname = `/${parts.join("/")}`;
+    url.hash = "content";
+
+    return url.href;
+  };
+
+  const fetchHtmlDocument = async (url) => {
+    const response = await fetch(url, {
+      credentials: "include",
+      redirect: "follow"
+    });
+
+    const html = await response.text();
+    const doc = new DOMParser().parseFromString(html, "text/html");
+
+    return {
+      ok: response.ok,
+      status: response.status,
+      finalUrl: response.url || url,
+      doc,
+      html
+    };
+  };
+
+  const mergeTopicVersions = (baseTopic, candidateTopic, sourceUrl) => {
+    if (!candidateTopic) {
+      return {
+        ...baseTopic,
+        sourceUrl: sourceUrl || null
+      };
+    }
+
+    const baseScore =
+      (baseTopic.materialsCount || 0) * 10 +
+      (baseTopic.availableMaterialsCount || 0) * 3 +
+      (baseTopic.lockedMaterialsCount || 0);
+
+    const candidateScore =
+      (candidateTopic.materialsCount || 0) * 10 +
+      (candidateTopic.availableMaterialsCount || 0) * 3 +
+      (candidateTopic.lockedMaterialsCount || 0);
+
+    const selected = candidateScore > baseScore ? candidateTopic : baseTopic;
+
+    return {
+      ...selected,
+      sourceUrl: sourceUrl || null
+    };
+  };
+
+  const enrichCourseByTopicPages = async (course) => {
+    if (!CONFIG.FETCH_TOPIC_PAGES || !course.pageUrl || !canBuildTopicPageUrls(course.pageUrl)) {
+      return course;
+    }
+
+    const enrichedTopics = [];
+
+    for (const topic of course.topics) {
+      const topicUrl = buildTopicPageUrl(course.pageUrl, topic.index);
+
+      console.log(`  → тема ${topic.index}: ${topic.title}`);
+
+      try {
+        const topicResponse = await fetchHtmlDocument(topicUrl);
+        const parsedTopicPage = parseCoursePage(topicResponse.doc, topicResponse.finalUrl);
+
+        const candidateTopic =
+          parsedTopicPage.topics.find((item) => item.index === topic.index) ||
+          parsedTopicPage.topics.find((item) => item.title === topic.title) ||
+          null;
+
+        enrichedTopics.push(
+          mergeTopicVersions(topic, candidateTopic, topicResponse.finalUrl)
+        );
+      } catch (error) {
+        enrichedTopics.push({
+          ...topic,
+          sourceUrl: topicUrl,
+          fetchError: String(error?.message || error)
+        });
+      }
+
+      await sleep(CONFIG.REQUEST_DELAY_MS);
+    }
+
+    return normalizeCourseResult({
+      ...course,
+      topics: enrichedTopics
+    });
+  };
+
+  const parseSubjectDetails = async (subject, subjectIndex) => {
+    if (!subject.href) {
+      return {
+        ...subject,
+        fetchOk: false,
+        fetchStatus: null,
+        fetchError: "У предмета нет href.",
+        topics: [],
+        topicsCount: 0,
+        sectionsCount: 0,
+        materialsCount: 0,
+        availableMaterialsCount: 0,
+        lockedMaterialsCount: 0,
+        notLoadedTopicsCount: 0
+      };
+    }
+
+    console.log(`Предмет ${subjectIndex}: ${subject.title}`);
+
+    try {
+      const courseResponse = await fetchHtmlDocument(subject.href);
+
+      if (!courseResponse.ok) {
+        return {
+          ...subject,
+          fetchOk: false,
+          fetchStatus: courseResponse.status,
+          fetchUrl: subject.href,
+          pageUrl: courseResponse.finalUrl,
+          topics: [],
+          topicsCount: 0,
+          sectionsCount: 0,
+          materialsCount: 0,
+          availableMaterialsCount: 0,
+          lockedMaterialsCount: 0,
+          notLoadedTopicsCount: 0
+        };
+      }
+
+      const parsedCourse = parseCoursePage(courseResponse.doc, courseResponse.finalUrl);
+
+      let enrichedCourse = normalizeCourseResult({
+        ...parsedCourse,
+        pageUrl: courseResponse.finalUrl
+      });
+
+      enrichedCourse = await enrichCourseByTopicPages(enrichedCourse);
+
+      return {
+        ...subject,
+        fetchOk: true,
+        fetchStatus: courseResponse.status,
+        fetchUrl: subject.href,
+        pageUrl: enrichedCourse.pageUrl || courseResponse.finalUrl,
+        subjectTitleFromPage: enrichedCourse.subject,
+        topicsCount: enrichedCourse.topicsCount,
+        sectionsCount: enrichedCourse.sectionsCount,
+        materialsCount: enrichedCourse.materialsCount,
+        availableMaterialsCount: enrichedCourse.availableMaterialsCount,
+        lockedMaterialsCount: enrichedCourse.lockedMaterialsCount,
+        notLoadedTopicsCount: enrichedCourse.notLoadedTopicsCount,
+        lockedTopicsCount: enrichedCourse.lockedTopicsCount,
+        availableTopicsCount: enrichedCourse.availableTopicsCount,
+        topics: enrichedCourse.topics
+      };
+    } catch (error) {
+      return {
+        ...subject,
+        fetchOk: false,
+        fetchStatus: null,
+        fetchUrl: subject.href,
+        fetchError: String(error?.message || error),
+        topics: [],
+        topicsCount: 0,
+        sectionsCount: 0,
+        materialsCount: 0,
+        availableMaterialsCount: 0,
+        lockedMaterialsCount: 0,
+        notLoadedTopicsCount: 0
+      };
+    }
+  };
+
+  const makeSummary = (subjects) => {
+    return {
+      subjectsCount: subjects.length,
+      subjectsFetchedCount: subjects.filter((subject) => subject.fetchOk).length,
+      topicsCount: subjects.reduce((sum, subject) => sum + (subject.topicsCount || 0), 0),
+      sectionsCount: subjects.reduce((sum, subject) => sum + (subject.sectionsCount || 0), 0),
+      materialsCount: subjects.reduce((sum, subject) => sum + (subject.materialsCount || 0), 0),
+      availableMaterialsCount: subjects.reduce((sum, subject) => sum + (subject.availableMaterialsCount || 0), 0),
+      lockedMaterialsCount: subjects.reduce((sum, subject) => sum + (subject.lockedMaterialsCount || 0), 0),
+      notLoadedTopicsCount: subjects.reduce((sum, subject) => sum + (subject.notLoadedTopicsCount || 0), 0)
+    };
+  };
+
+  const collectLmsContext = async (onProgress = () => {}) => {
+    if (!/\/student\/up/.test(location.pathname)) {
+      throw new Error("Скрипт рассчитан на страницу /student/up. Текущая страница: " + location.href);
+    }
+
+    const startedAt = new Date();
+
+    const { group, semesters } = parseSemestersAndSubjects(document, location.href);
+
+    const currentSemester =
+      semesters.find((semester) => semester.isCurrent) ||
+      semesters.find((semester) => semester.semesterNumber === 6) ||
+      semesters[0];
+
+    if (!currentSemester) {
+      throw new Error("Не удалось определить текущий семестр.");
+    }
+
+    const targetSemesters = CONFIG.ONLY_CURRENT_SEMESTER
+      ? [currentSemester]
+      : semesters;
+
+    const baseSubjects = targetSemesters.flatMap((semester) => {
+      return semester.items
+        .filter((item) => item.type === "course")
+        .map((subject) => ({
+          ...subject,
+          semesterNumber: semester.semesterNumber,
+          semesterTitle: semester.semesterTitle
+        }));
+    });
+
+    const subjectsToProcess = CONFIG.MAX_SUBJECTS
+      ? baseSubjects.slice(0, CONFIG.MAX_SUBJECTS)
+      : baseSubjects;
+
+    const subjects = [];
+
+    for (let i = 0; i < subjectsToProcess.length; i++) {
+      const subject = subjectsToProcess[i];
+      onProgress({
+        phase: "subject",
+        current: i + 1,
+        total: subjectsToProcess.length,
+        subject
+      });
+
+      if (CONFIG.FETCH_COURSE_PAGES) {
+        const enrichedSubject = await parseSubjectDetails(subject, i + 1);
+        subjects.push(enrichedSubject);
+      } else {
+        subjects.push(subject);
+      }
+
+      await sleep(CONFIG.REQUEST_DELAY_MS);
+    }
+
+    const finishedAt = new Date();
+
+    const result = {
+      version: "0.1",
+      source: "synergy_lms_dom_extractor",
+      extractedAt: finishedAt.toISOString(),
+      extractionDurationMs: finishedAt.getTime() - startedAt.getTime(),
+      page: {
+        title: document.title,
+        url: location.href
+      },
+      studentContext: {
+        group: CONFIG.INCLUDE_GROUP ? group : null
+      },
+      currentSemester: {
+        semesterNumber: currentSemester.semesterNumber,
+        semesterTitle: currentSemester.semesterTitle,
+        declaredCoursesCount: currentSemester.declaredCoursesCount,
+        parsedCoursesCount: currentSemester.parsedCoursesCount
+      },
+      semestersSummary: semesters.map((semester) => ({
+        semesterNumber: semester.semesterNumber,
+        semesterTitle: semester.semesterTitle,
+        isCurrent: semester.isCurrent,
+        declaredCoursesCount: semester.declaredCoursesCount,
+        parsedCoursesCount: semester.parsedCoursesCount,
+        sectionsCount: semester.sectionsCount
+      })),
+      summary: makeSummary(subjects),
+      subjects
+    };
+
+    console.log("Итоговый контекст LMS:", result);
+
+    console.table(
+      subjects.map((subject) => ({
+        semester: subject.semesterTitle,
+        subject: subject.title,
+        controlType: subject.controlType,
+        fetchOk: subject.fetchOk,
+        topics: subject.topicsCount,
+        materials: subject.materialsCount,
+        available: subject.availableMaterialsCount,
+        locked: subject.lockedMaterialsCount,
+        notLoadedTopics: subject.notLoadedTopicsCount
+      }))
+    );
+
+    return result;
+  };
+
+
+  const UI = {
+    rootId: "synergy-lms-exporter-root",
+    buttonId: "synergy-lms-exporter-button",
+    statusId: "synergy-lms-exporter-status",
+    statsId: "synergy-lms-exporter-stats"
+  };
+
+  const getExportFilename = () => {
+    const base = CONFIG.OUTPUT_FILENAME || "synergy-lms-final-context.json";
+    const dotIndex = base.lastIndexOf(".");
+    const name = dotIndex > 0 ? base.slice(0, dotIndex) : base;
+    const ext = dotIndex > 0 ? base.slice(dotIndex) : ".json";
+    const now = new Date();
+    const pad = (value) => String(value).padStart(2, "0");
+    const stamp = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}_${pad(now.getHours())}-${pad(now.getMinutes())}-${pad(now.getSeconds())}`;
+
+    return `${name}_${stamp}${ext}`;
+  };
+
+  const setButtonState = (text, disabled = false) => {
+    const button = document.getElementById(UI.buttonId);
+    if (!button) return;
+
+    button.textContent = text;
+    button.disabled = disabled;
+    button.style.opacity = disabled ? "0.72" : "1";
+    button.style.cursor = disabled ? "wait" : "pointer";
+  };
+
+  const setStatus = (text, kind = "info") => {
+    const status = document.getElementById(UI.statusId);
+    if (!status) return;
+
+    status.textContent = text;
+    status.dataset.kind = kind;
+  };
+
+  const setStats = (summary) => {
+    const stats = document.getElementById(UI.statsId);
+    if (!stats || !summary) return;
+
+    stats.innerHTML = `
+      <div><b>Предметы:</b> ${summary.subjectsCount ?? 0}</div>
+      <div><b>Темы:</b> ${summary.topicsCount ?? 0}</div>
+      <div><b>Материалы:</b> ${summary.materialsCount ?? 0}</div>
+      <div><b>Доступно:</b> ${summary.availableMaterialsCount ?? 0}</div>
+      <div><b>Закрыто:</b> ${summary.lockedMaterialsCount ?? 0}</div>
+      <div><b>Не загружено тем:</b> ${summary.notLoadedTopicsCount ?? 0}</div>
+    `;
+  };
+
+  const copyTextToClipboard = async (text) => {
+    if (!CONFIG.COPY_TO_CLIPBOARD) return false;
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch (error) {
+      console.warn("Не удалось скопировать JSON через navigator.clipboard:", error);
+    }
+
+    return false;
+  };
+
+  const handleExportClick = async () => {
+    try {
+      setButtonState("Собираю данные...", true);
+      setStatus("Старт сбора контекста LMS", "progress");
+
+      const result = await collectLmsContext(({ current, total, subject }) => {
+        const title = subject?.title ? `: ${subject.title}` : "";
+        setStatus(`Обрабатываю предмет ${current}/${total}${title}`, "progress");
+      });
+
+      const json = JSON.stringify(result, null, 2);
+      const filename = getExportFilename();
+
+      if (CONFIG.DOWNLOAD_JSON) {
+        downloadFile(filename, json, "application/json;charset=utf-8");
+      }
+
+      const copied = await copyTextToClipboard(json);
+
+      setStats(result.summary);
+      setStatus(
+        copied
+          ? `Готово. JSON скачан и скопирован в буфер: ${filename}`
+          : `Готово. JSON скачан: ${filename}`,
+        "success"
+      );
+      setButtonState("Выгрузить данные", false);
+    } catch (error) {
+      console.error("Ошибка Tampermonkey exporter:", error);
+      setStatus(`Ошибка: ${error?.message || error}`, "error");
+      setButtonState("Повторить выгрузку", false);
+    }
+  };
+
+  const injectStyles = () => {
+    if (document.getElementById("synergy-lms-exporter-styles")) return;
+
+    const style = document.createElement("style");
+    style.id = "synergy-lms-exporter-styles";
+    style.textContent = `
+      #${UI.rootId} {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        z-index: 999999;
+        width: 320px;
+        padding: 14px;
+        box-sizing: border-box;
+        border: 1px solid rgba(15, 23, 42, 0.12);
+        border-radius: 16px;
+        background: #ffffff;
+        box-shadow: 0 14px 38px rgba(15, 23, 42, 0.22);
+        font-family: Arial, sans-serif;
+        color: #111827;
+      }
+
+      #${UI.rootId} * {
+        box-sizing: border-box;
+      }
+
+      #${UI.buttonId} {
+        width: 100%;
+        padding: 12px 14px;
+        border: 0;
+        border-radius: 12px;
+        background: #1f6feb;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.2;
+        cursor: pointer;
+      }
+
+      #${UI.buttonId}:hover:not(:disabled) {
+        background: #1158c7;
+      }
+
+      #${UI.statusId} {
+        margin-top: 10px;
+        padding: 10px;
+        min-height: 38px;
+        border-radius: 10px;
+        background: #f3f4f6;
+        color: #374151;
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      #${UI.statusId}[data-kind="progress"] {
+        background: #eff6ff;
+        color: #1d4ed8;
+      }
+
+      #${UI.statusId}[data-kind="success"] {
+        background: #ecfdf5;
+        color: #047857;
+      }
+
+      #${UI.statusId}[data-kind="error"] {
+        background: #fef2f2;
+        color: #b91c1c;
+      }
+
+      #${UI.statsId} {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px 10px;
+        margin-top: 10px;
+        font-size: 12px;
+        line-height: 1.25;
+        color: #374151;
+      }
+    `;
+
+    document.head.appendChild(style);
+  };
+
+  const createUi = () => {
+    if (document.getElementById(UI.rootId)) return;
+
+    injectStyles();
+
+    const root = document.createElement("div");
+    root.id = UI.rootId;
+    root.innerHTML = `
+      <button id="${UI.buttonId}" type="button">Выгрузить данные</button>
+      <div id="${UI.statusId}" data-kind="info">Готов к выгрузке со страницы /student/up</div>
+      <div id="${UI.statsId}"></div>
+    `;
+
+    document.body.appendChild(root);
+    document.getElementById(UI.buttonId).addEventListener("click", handleExportClick);
+  };
+
+  const init = () => {
+    createUi();
+    console.log("[Synergy LMS Exporter] Tampermonkey UI initialized");
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+})();
