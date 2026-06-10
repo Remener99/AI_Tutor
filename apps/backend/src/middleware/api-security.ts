@@ -2,6 +2,7 @@ import type { FastifyInstance, FastifyRequest } from "fastify"
 import { env } from "../config/env.js"
 import { findAccessToken, hashAccessToken, isTokenHashRevoked, maskHash } from "../services/access-control.service.js"
 import { getQuotaStore } from "../services/quota-store.service.js"
+import { recordHttpMetric } from "../services/status-metrics.service.js"
 import { ApiError } from "../utils/errors.js"
 
 type SecurityContext = {
@@ -106,6 +107,13 @@ export const registerApiSecurity = (app: FastifyInstance) => {
 
   app.addHook("onResponse", async (request, reply) => {
     if (!isApiRequest(request)) return
+    const durationMs = Date.now() - (request.securityStartedAt ?? Date.now())
+    recordHttpMetric({
+      method: request.method,
+      url: request.url,
+      statusCode: reply.statusCode,
+      durationMs
+    })
     app.log.info({
       event: "api_audit",
       userId: request.securityContext?.userId ?? "anonymous",
@@ -113,7 +121,7 @@ export const registerApiSecurity = (app: FastifyInstance) => {
       method: request.method,
       url: request.url,
       statusCode: reply.statusCode,
-      durationMs: Date.now() - (request.securityStartedAt ?? Date.now()),
+      durationMs,
       ip: request.ip,
       userAgent: request.headers["user-agent"]
     })

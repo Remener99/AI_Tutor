@@ -33,6 +33,7 @@ type LimitBucket = {
 export interface QuotaStore {
   readonly kind: "memory" | "postgres"
   consume(input: QuotaCheck): Promise<QuotaResult>
+  ping(): Promise<{ ok: true }>
   close(): Promise<void>
 }
 
@@ -74,6 +75,10 @@ class MemoryQuotaStore implements QuotaStore {
   }
 
   async close() {}
+
+  async ping() {
+    return { ok: true as const }
+  }
 }
 
 class PostgresQuotaStore implements QuotaStore {
@@ -168,6 +173,11 @@ class PostgresQuotaStore implements QuotaStore {
   async close() {
     await this.pool.end()
   }
+
+  async ping() {
+    await this.pool.query("select 1")
+    return { ok: true as const }
+  }
 }
 
 let quotaStore: QuotaStore | null = null
@@ -195,4 +205,3 @@ export const getQuotaStore = () => {
   if (!quotaStore) throw new Error("AI quota store is not initialized")
   return quotaStore
 }
-

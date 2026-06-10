@@ -349,6 +349,29 @@ export const llmService = {
   activeProvider,
   generateJson: <T>(prompt: string, parse: (value: unknown) => T, timeoutMs = env.LLM_TIMEOUT_MS) =>
     callProviderJson(prompt, parse, timeoutMs),
+  monitoringCheck: async () => {
+    if (activeProvider === "mock") return { ok: true, provider: activeProvider, model: "mock", message: "mock-ok" }
+    const startedAt = Date.now()
+    const model = activeProvider === "ollama" ? env.OLLAMA_MODEL : env.OPENAI_MODEL
+    const missingOpenAiConfig = activeProvider === "openai" && !env.OPENAI_API_KEY
+    const missingOllamaConfig = activeProvider === "ollama" && !env.OLLAMA_BASE_URL
+    if (missingOpenAiConfig || missingOllamaConfig) {
+      return {
+        ok: false,
+        provider: activeProvider,
+        model,
+        message: `${activeProvider} provider is not configured`,
+        latencyMs: Date.now() - startedAt
+      }
+    }
+    return {
+      ok: true,
+      provider: activeProvider,
+      model,
+      message: "provider configuration is present; external provider ping is handled by the monitor job",
+      latencyMs: Date.now() - startedAt
+    }
+  },
   generatePlan: async (prompt: string, fallback: GeneratePlanRequest) => {
     if (activeProvider === "mock") return mockPlan(fallback)
     try {

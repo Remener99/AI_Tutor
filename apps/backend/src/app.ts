@@ -7,6 +7,7 @@ import { corsOrigins } from "./config/env.js"
 import { registerApiSecurity } from "./middleware/api-security.js"
 import { registerAdminRoutes } from "./routes/admin.route.js"
 import { registerFeedbackRoutes } from "./routes/feedback.route.js"
+import { registerMonitoringRoutes } from "./routes/monitoring.route.js"
 import { registerPdfRoutes } from "./routes/pdf-routes.js"
 import { registerPlanRoute } from "./routes/plan.route.js"
 import { initQuotaStore } from "./services/quota-store.service.js"
@@ -54,6 +55,7 @@ export const buildApp = async () => {
   app.get("/health", async () => ({ ok: true, service: "ai-tutor-backend" }))
 
   await registerAdminRoutes(app)
+  await registerMonitoringRoutes(app)
   await registerPlanRoute(app)
   await registerPdfRoutes(app)
   await registerFeedbackRoutes(app)

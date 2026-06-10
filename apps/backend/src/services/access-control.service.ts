@@ -34,9 +34,17 @@ const safeEqual = (left: string, right: string) => {
   return leftBuffer.length === rightBuffer.length && timingSafeEqual(leftBuffer, rightBuffer)
 }
 
+const getAccessTokensPayload = () => {
+  if (env.AI_ACCESS_TOKENS_BASE64) {
+    return Buffer.from(env.AI_ACCESS_TOKENS_BASE64, "base64").toString("utf8")
+  }
+  return env.AI_ACCESS_TOKENS
+}
+
 const parseAccessTokens = (): AccessTokenRecord[] => {
-  if (!env.AI_ACCESS_TOKENS) return []
-  const parsed = z.array(accessTokenRecordSchema).parse(JSON.parse(env.AI_ACCESS_TOKENS))
+  const payload = getAccessTokensPayload()
+  if (!payload) return []
+  const parsed = z.array(accessTokenRecordSchema).parse(JSON.parse(payload))
   return parsed.map((record) => ({
     id: record.id,
     label: record.label,

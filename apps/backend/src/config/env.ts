@@ -18,6 +18,7 @@ const envSchema = z.object({
   CORS_ORIGIN: z.string().default("chrome-extension://*,https://*.synergy.ru,http://localhost:1815,http://localhost:1012"),
   API_TOKEN: z.string().optional(),
   AI_ACCESS_TOKENS: z.string().optional(),
+  AI_ACCESS_TOKENS_BASE64: z.string().optional(),
   AI_REVOKED_TOKEN_HASHES: z.string().optional(),
   ADMIN_API_TOKEN: z.string().optional(),
   AI_QUOTA_STORAGE: z.enum(["memory", "postgres"]).default("memory"),
@@ -34,6 +35,7 @@ const envSchema = z.object({
   LLM_TIMEOUT_MS: z.coerce.number().int().positive().default(45_000),
   TUTOR_CHAT_TIMEOUT_MS: z.coerce.number().int().positive().default(150_000),
   PLAN_LLM_TIMEOUT_MS: z.coerce.number().int().positive().default(20_000),
+  MONITOR_AI_TIMEOUT_MS: z.coerce.number().int().positive().default(20_000),
   LLM_MOCK: booleanEnv.default(false)
 })
 

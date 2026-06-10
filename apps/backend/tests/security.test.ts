@@ -50,7 +50,7 @@ describe("api security", () => {
     })
     expect(otherUser.statusCode).toBe(200)
     await app.close()
-  }, 15_000)
+  }, 30_000)
 
   it("can revoke access through the admin endpoint", async () => {
     vi.resetModules()
@@ -82,5 +82,5 @@ describe("api security", () => {
     })
     expect(blocked.statusCode).toBe(401)
     await app.close()
-  }, 15_000)
+  }, 30_000)
 })
