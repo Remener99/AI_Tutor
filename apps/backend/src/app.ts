@@ -9,6 +9,7 @@ import { registerAdminRoutes } from "./routes/admin.route.js"
 import { registerFeedbackRoutes } from "./routes/feedback.route.js"
 import { registerPdfRoutes } from "./routes/pdf-routes.js"
 import { registerPlanRoute } from "./routes/plan.route.js"
+import { initQuotaStore } from "./services/quota-store.service.js"
 import { toApiError, ApiError } from "./utils/errors.js"
 
 const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
@@ -43,6 +44,10 @@ export const buildApp = async () => {
     }
   })
   await app.register(rateLimit, { max: 60, timeWindow: "1 minute" })
+  const quotaStore = await initQuotaStore(app.log)
+  app.addHook("onClose", async () => {
+    await quotaStore.close()
+  })
   registerApiSecurity(app)
   await app.register(multipart, { limits: { fileSize: 10 * 1024 * 1024, files: 1 } })
 

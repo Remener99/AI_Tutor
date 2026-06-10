@@ -60,7 +60,35 @@ Extension/backend requests can use any of these:
 
 When a token record has `hourlyLimit` or `dailyLimit`, those values override global `AI_HOURLY_LIMIT` and `AI_DAILY_LIMIT`.
 
-Counters are in memory per backend instance. For a strict multi-instance production limit, move counters to managed storage such as Redis, YDB or PostgreSQL.
+Counters can use either local memory or PostgreSQL-compatible external storage.
+
+### In-memory mode
+
+```text
+AI_QUOTA_STORAGE=memory
+```
+
+Use this only for local development. In serverless production, each instance has its own memory and counters are not shared.
+
+### PostgreSQL mode
+
+```text
+AI_QUOTA_STORAGE=postgres
+DATABASE_URL=postgresql://user:password@host:6432/dbname
+DATABASE_SSL=true
+```
+
+On startup, the backend creates the `ai_quota_counters` table if it does not exist.
+
+The table stores:
+
+- `user_id`
+- `window_name`: `hour` or `day`
+- `window_started_at`
+- `request_count`
+- `updated_at`
+
+This makes limits shared across serverless instances.
 
 ## Audit log
 
@@ -96,4 +124,3 @@ curl -X POST \
 ```
 
 Runtime revoke works immediately for the current backend instance. For permanent revoke across deploys and serverless instances, add the token hash to `AI_REVOKED_TOKEN_HASHES` and redeploy.
-
