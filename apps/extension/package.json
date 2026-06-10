@@ -1,6 +1,6 @@
 {
   "name": "@ai-tutor/extension",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": true,
   "type": "module",
   "scripts": {
@@ -34,7 +34,7 @@
     "name": "Семпейс AI",
     "short_name": "Семпейс AI",
     "description": "AI-тьютор для Synergy LMS: маршрут недели, разбор PDF, мини-конспект, глоссарий и практические задания.",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "manifest_version": 3,
     "permissions": ["storage", "activeTab", "scripting"],
     "host_permissions": [

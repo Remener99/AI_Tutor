@@ -9,3 +9,4 @@ coverage
 *.log
 apps/backend/data/*.json
 pilot-package/
+.local-secrets/

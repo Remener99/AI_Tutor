@@ -17,7 +17,10 @@ import { ClientApiError, mapNetworkError } from "./errors"
 
 const API_BASE = "https://bba9tns6u21vsn66e7fq.containers.yandexcloud.net"
 const API_TOKEN = "si-EQp-H0Ug2TI3RlTyD8zun4hYuZJSKZ22Z7We54f8"
-const API_HEADERS = { "x-ai-tutor-api-token": API_TOKEN }
+const API_HEADERS = {
+  "x-ai-tutor-api-token": API_TOKEN,
+  "x-ai-tutor-user-token": API_TOKEN
+}
 
 const isExtensionContextError = (error: unknown) =>
   error instanceof Error && /extension context invalidated|context invalidated|receiving end does not exist/i.test(error.message)

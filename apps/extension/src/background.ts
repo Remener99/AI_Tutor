@@ -27,7 +27,8 @@ chrome.runtime.onMessage.addListener((message: ApiProxyMessage, _sender, sendRes
         method: "POST",
         headers: {
           "content-type": "application/json",
-          "x-ai-tutor-api-token": API_TOKEN
+          "x-ai-tutor-api-token": API_TOKEN,
+          "x-ai-tutor-user-token": API_TOKEN
         },
         body: JSON.stringify(message.payload)
       }, message.timeoutMs)
