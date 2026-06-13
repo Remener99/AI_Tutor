@@ -22,7 +22,7 @@ body { margin: 0; font-family: Inter, Arial, sans-serif; color: var(--ai-text); 
 .ai-topbar { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: -14px -14px 12px; padding: 14px 14px 12px; border-bottom: 1px solid rgba(222, 222, 222, 0.72); background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(12px); }
 .ai-brand { display: inline-flex; align-items: center; gap: 10px; min-width: 0; }
 .ai-brand-mark { width: 28px; height: 28px; display: grid; place-items: center; border: 4px solid var(--ai-accent); color: var(--ai-accent); font-size: 22px; line-height: 1; font-weight: 900; }
-.ai-brand-logo { width: 32px; height: 32px; display: block; border-radius: 8px; object-fit: cover; box-shadow: 0 8px 18px rgba(17, 17, 17, 0.14); }
+.ai-brand-logo { width: 34px; height: 34px; display: block; object-fit: contain; }
 .ai-brand strong { font-size: 18px; letter-spacing: 0; }
 .ai-top-actions { display: inline-flex; align-items: center; gap: 10px; color: var(--ai-text); }
 .ai-icon-button { width: 30px; height: 30px; display: grid; place-items: center; border: 1px solid transparent; border-radius: 8px; color: #111; background: transparent; cursor: pointer; }
