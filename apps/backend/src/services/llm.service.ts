@@ -1,4 +1,4 @@
-﻿import OpenAI from "openai"
+import OpenAI from "openai"
 import {
   feedbackResponseSchema,
   generateCaseResponseSchema,
@@ -35,14 +35,14 @@ const parseJson = <T>(content: string, parse: (value: unknown) => T): T => {
     return parse(JSON.parse(content))
   } catch {
     const match = content.match(/\{[\s\S]*\}/)
-    if (!match) throw new ApiError("LLM_ERROR", "РќРµ СѓРґР°Р»РѕСЃСЊ СЂР°Р·РѕР±СЂР°С‚СЊ РѕС‚РІРµС‚ AI.", 502)
+    if (!match) throw new ApiError("LLM_ERROR", "Не удалось разобрать ответ AI.", 502)
     return parse(JSON.parse(match[0]))
   }
 }
 
 const callOpenAiJson = async <T>(prompt: string, parse: (value: unknown) => T, timeoutMs = env.LLM_TIMEOUT_MS): Promise<T> => {
   if (!openAiClient) {
-    throw new ApiError("LLM_ERROR", "OpenAI РЅРµ РЅР°СЃС‚СЂРѕРµРЅ. РЈРєР°Р¶РёС‚Рµ OPENAI_API_KEY РёР»Рё РїРµСЂРµРєР»СЋС‡РёС‚Рµ LLM_PROVIDER.", 502)
+    throw new ApiError("LLM_ERROR", "OpenAI не настроен. Укажите OPENAI_API_KEY или переключите LLM_PROVIDER.", 502)
   }
 
   const completion = await openAiClient.chat.completions.create(
@@ -59,7 +59,7 @@ const callOpenAiJson = async <T>(prompt: string, parse: (value: unknown) => T, t
   )
 
   const content = completion.choices[0]?.message?.content
-  if (!content) throw new ApiError("LLM_ERROR", "AI РІРµСЂРЅСѓР» РїСѓСЃС‚РѕР№ РѕС‚РІРµС‚.", 502)
+  if (!content) throw new ApiError("LLM_ERROR", "AI вернул пустой ответ.", 502)
   return parseJson(content, parse)
 }
 
@@ -86,19 +86,19 @@ const callOllamaJson = async <T>(prompt: string, parse: (value: unknown) => T, t
 
   if (!response.ok) {
     const text = await response.text().catch(() => "")
-    throw new ApiError("LLM_ERROR", `Ollama РЅРµРґРѕСЃС‚СѓРїРЅР° РёР»Рё РјРѕРґРµР»СЊ РЅРµ РѕС‚РІРµС‚РёР»Р°. ${text}`.trim(), 502)
+    throw new ApiError("LLM_ERROR", `Ollama недоступна или модель не ответила. ${text}`.trim(), 502)
   }
 
   const data = await response.json() as { message?: { content?: string }; response?: string }
   const content = data.message?.content ?? data.response
-  if (!content) throw new ApiError("LLM_ERROR", "Ollama РІРµСЂРЅСѓР»Р° РїСѓСЃС‚РѕР№ РѕС‚РІРµС‚.", 502)
+  if (!content) throw new ApiError("LLM_ERROR", "Ollama вернула пустой ответ.", 502)
   return parseJson(content, parse)
 }
 
 const callProviderJson = async <T>(prompt: string, parse: (value: unknown) => T, timeoutMs = env.LLM_TIMEOUT_MS): Promise<T> => {
   if (activeProvider === "openai") return callOpenAiJson(prompt, parse, timeoutMs)
   if (activeProvider === "ollama") return callOllamaJson(prompt, parse, timeoutMs)
-  throw new ApiError("LLM_ERROR", "LLM mock РЅРµ РґРѕР»Р¶РµРЅ РІС‹Р·С‹РІР°С‚СЊ РІРЅРµС€РЅРёР№ provider.", 500)
+  throw new ApiError("LLM_ERROR", "LLM mock не должен вызывать внешний provider.", 500)
 }
 
 const weekdayIndex: Record<string, number> = {
@@ -253,24 +253,24 @@ const planNeedsFallback = (request: GeneratePlanRequest, response: GeneratePlanR
 }
 
 export const mockQuiz = (): GenerateQuizResponse => generateQuizResponseSchema.parse({
-  summary: "Р›РµРєС†РёСЏ СЂР°СЃРєСЂС‹РІР°РµС‚ РєР»СЋС‡РµРІСѓСЋ РёРґРµСЋ С‚РµРјС‹ Рё РїРѕРєР°Р·С‹РІР°РµС‚, РєР°Рє РїСЂРёРјРµРЅСЏС‚СЊ РµРµ РІ СѓС‡РµР±РЅРѕР№ РёР»Рё СЂР°Р±РѕС‡РµР№ СЃРёС‚СѓР°С†РёРё. Р“Р»Р°РІРЅС‹Р№ Р°РєС†РµРЅС‚ СЃРґРµР»Р°РЅ РЅР° РїРѕРЅРёРјР°РЅРёРё РїСЂРёС‡РёРЅ, РїРѕСЃР»РµРґСЃС‚РІРёР№ Рё РѕРіСЂР°РЅРёС‡РµРЅРёР№. РњР°С‚РµСЂРёР°Р» РїРѕР»РµР·РЅРѕ СЂР°Р·Р±РёСЂР°С‚СЊ С‡РµСЂРµР· СЃРѕР±СЃС‚РІРµРЅРЅС‹Рµ РїСЂРёРјРµСЂС‹, Р° РЅРµ С‡РµСЂРµР· Р·Р°СѓС‡РёРІР°РЅРёРµ С„РѕСЂРјСѓР»РёСЂРѕРІРѕРє.",
+  summary: "Лекция раскрывает ключевую идею темы и показывает, как применять ее в учебной или рабочей ситуации. Главный акцент сделан на понимании причин, последствий и ограничений. Материал полезно разбирать через собственные примеры, а не через заучивание формулировок.",
   concepts: [
-    { title: "РћСЃРЅРѕРІРЅР°СЏ РёРґРµСЏ", explanation: "Р­С‚Рѕ С†РµРЅС‚СЂР°Р»СЊРЅР°СЏ РјС‹СЃР»СЊ Р»РµРєС†РёРё, РІРѕРєСЂСѓРі РєРѕС‚РѕСЂРѕР№ СЃС‚СЂРѕСЏС‚СЃСЏ РѕСЃС‚Р°Р»СЊРЅС‹Рµ РїСЂРёРјРµСЂС‹.", example: "Р’ РїСЂРѕРµРєС‚Рµ РѕРЅР° РїРѕРјРѕРіР°РµС‚ РІС‹Р±СЂР°С‚СЊ РІРµСЂРЅС‹Р№ РїРѕСЂСЏРґРѕРє РґРµР№СЃС‚РІРёР№." },
-    { title: "РџСЂР°РєС‚РёС‡РµСЃРєРѕРµ РїСЂРёРјРµРЅРµРЅРёРµ", explanation: "Р­С‚Рѕ СЃРїРѕСЃРѕР± РїРµСЂРµРЅРµСЃС‚Рё С‚РµРѕСЂРёСЋ РІ СЂРµР°Р»СЊРЅСѓСЋ Р·Р°РґР°С‡Сѓ.", example: "РќР°РїСЂРёРјРµСЂ, РѕС†РµРЅРёС‚СЊ СЂРµС€РµРЅРёРµ РїРµСЂРµРґ Р·Р°РїСѓСЃРєРѕРј РєР°РјРїР°РЅРёРё." }
+    { title: "Основная идея", explanation: "Это центральная мысль лекции, вокруг которой строятся остальные примеры.", example: "В проекте она помогает выбрать верный порядок действий." },
+    { title: "Практическое применение", explanation: "Это способ перенести теорию в реальную задачу.", example: "Например, оценить решение перед запуском кампании." }
   ],
   questions: [
-    { id: "q1", kind: "open", question: "РљР°Рє Р±С‹ РІС‹ РѕР±СЉСЏСЃРЅРёР»Рё РіР»Р°РІРЅСѓСЋ РёРґРµСЋ Р»РµРєС†РёРё РєРѕР»Р»РµРіРµ РїСЂРѕСЃС‚С‹РјРё СЃР»РѕРІР°РјРё?", goodAnswerCriteria: ["Р•СЃС‚СЊ С†РµРЅС‚СЂР°Р»СЊРЅР°СЏ РјС‹СЃР»СЊ", "РќРµС‚ СЃР»РѕР¶РЅС‹С… С‚РµСЂРјРёРЅРѕРІ Р±РµР· РѕР±СЉСЏСЃРЅРµРЅРёСЏ"] },
-    { id: "q2", kind: "practical", question: "РљР°Рє РјРѕР¶РЅРѕ РїСЂРёРјРµРЅРёС‚СЊ СЌС‚Сѓ РёРґРµСЋ РІ СѓС‡РµР±РЅРѕРј РёР»Рё СЂР°Р±РѕС‡РµРј РїСЂРѕРµРєС‚Рµ?", goodAnswerCriteria: ["Р•СЃС‚СЊ РєРѕРЅРєСЂРµС‚РЅР°СЏ СЃРёС‚СѓР°С†РёСЏ", "РџРѕРєР°Р·Р°РЅР° СЃРІСЏР·СЊ СЃ РјР°С‚РµСЂРёР°Р»РѕРј"] },
-    { id: "q3", kind: "open", question: "РљР°РєРёРµ РѕРіСЂР°РЅРёС‡РµРЅРёСЏ Сѓ РїРѕРґС…РѕРґР°, РѕРїРёСЃР°РЅРЅРѕРіРѕ РІ Р»РµРєС†РёРё?", goodAnswerCriteria: ["РќР°Р·РІР°РЅС‹ СѓСЃР»РѕРІРёСЏ РїСЂРёРјРµРЅРёРјРѕСЃС‚Рё", "Р•СЃС‚СЊ РїСЂРёРјРµСЂ СЂРёСЃРєР°"] },
-    { id: "q4", kind: "reflective", question: "Р§С‚Рѕ РІ РјР°С‚РµСЂРёР°Р»Рµ РІС‹Р·РІР°Р»Рѕ СЃРѕРјРЅРµРЅРёРµ РёР»Рё СѓРґРёРІР»РµРЅРёРµ?", goodAnswerCriteria: ["Р•СЃС‚СЊ Р»РёС‡РЅР°СЏ СЂРµР°РєС†РёСЏ", "РћР±СЉСЏСЃРЅРµРЅР° РїСЂРёС‡РёРЅР°"] },
-    { id: "q5", kind: "open", question: "РљР°РєРёРµ РґРІР° РІС‹РІРѕРґР° РёР· Р»РµРєС†РёРё СЃС‚РѕРёС‚ Р·Р°РїРѕРјРЅРёС‚СЊ РґР»СЏ РїСЂР°РєС‚РёРєРё?", goodAnswerCriteria: ["Р’С‹РІРѕРґС‹ СЃС„РѕСЂРјСѓР»РёСЂРѕРІР°РЅС‹ СЃРІРѕРёРјРё СЃР»РѕРІР°РјРё", "РћРЅРё РїСЂРёРјРµРЅРёРјС‹ РЅР° РїСЂР°РєС‚РёРєРµ"] }
+    { id: "q1", kind: "open", question: "Как бы вы объяснили главную идею лекции коллеге простыми словами?", goodAnswerCriteria: ["Есть центральная мысль", "Нет сложных терминов без объяснения"] },
+    { id: "q2", kind: "practical", question: "Как можно применить эту идею в учебном или рабочем проекте?", goodAnswerCriteria: ["Есть конкретная ситуация", "Показана связь с материалом"] },
+    { id: "q3", kind: "open", question: "Какие ограничения у подхода, описанного в лекции?", goodAnswerCriteria: ["Названы условия применимости", "Есть пример риска"] },
+    { id: "q4", kind: "reflective", question: "Что в материале вызвало сомнение или удивление?", goodAnswerCriteria: ["Есть личная реакция", "Объяснена причина"] },
+    { id: "q5", kind: "open", question: "Какие два вывода из лекции стоит запомнить для практики?", goodAnswerCriteria: ["Выводы сформулированы своими словами", "Они применимы на практике"] }
   ]
 })
 
 export const mockTestPrep = (): GenerateTestPrepResponse => generateTestPrepResponseSchema.parse({
   summary: "Материал раскрывает ключевую тему занятия и показывает, как основные понятия связаны между собой. Важно понять не только определения, но и логику применения: зачем нужен подход, какие задачи он решает и где у него есть ограничения. Для электронного LMS-теста полезнее всего держать в голове структуру темы, различия между близкими понятиями и один практический пример.",
   coreIdeas: [
-    "Тема объясняет базовую логику явления или инструмента, с которым работает дисциплина.",
+    "Тема помогает объяснить не только что происходит, но и почему это происходит.",
     "Понятия нужно понимать в связке: одно определяет цель, другое описывает способ действия.",
     "Практическая ценность материала появляется, когда теорию применяют к конкретной ситуации."
   ],
@@ -294,14 +294,14 @@ export const mockTestPrep = (): GenerateTestPrepResponse => generateTestPrepResp
 
 export const mockFeedback = (criteria: string[]): FeedbackResponse => feedbackResponseSchema.parse({
   tone: "supportive",
-  summary: "РћС‚РІРµС‚ РїРѕРєР°Р·С‹РІР°РµС‚ РїРѕРЅРёРјР°РЅРёРµ РѕР±С‰РµР№ РёРґРµРё. Р•РіРѕ РјРѕР¶РЅРѕ СѓСЃРёР»РёС‚СЊ Р±РѕР»РµРµ РєРѕРЅРєСЂРµС‚РЅС‹Рј РїСЂРёРјРµСЂРѕРј Рё СЃРІСЏР·СЊСЋ СЃ РјР°С‚РµСЂРёР°Р»РѕРј Р»РµРєС†РёРё.",
-  strengths: ["Р•СЃС‚СЊ РїРѕРїС‹С‚РєР° РѕР±СЉСЏСЃРЅРёС‚СЊ СЃРІРѕРёРјРё СЃР»РѕРІР°РјРё", "РћС‚РІРµС‚ РЅРµ СЃРІРѕРґРёС‚СЃСЏ Рє Р·Р°СѓС‡РµРЅРЅРѕР№ С„РѕСЂРјСѓР»РёСЂРѕРІРєРµ"],
-  improve: ["Р”РѕР±Р°РІСЊС‚Рµ РѕРґРёРЅ РїСЂР°РєС‚РёС‡РµСЃРєРёР№ РїСЂРёРјРµСЂ", "РћС‚РґРµР»СЊРЅРѕ СѓРєР°Р¶РёС‚Рµ РѕРіСЂР°РЅРёС‡РµРЅРёРµ РёР»Рё СѓСЃР»РѕРІРёРµ РїСЂРёРјРµРЅРёРјРѕСЃС‚Рё"],
+  summary: "Ответ показывает понимание общей идеи. Его можно усилить более конкретным примером и связью с материалом лекции.",
+  strengths: ["Есть попытка объяснить своими словами", "Ответ не сводится к заученной формулировке"],
+  improve: ["Добавьте один практический пример", "Отдельно укажите ограничение или условие применимости"],
   criteriaChecklist: criteria.map((criterion, index) => ({
     criterion,
     status: index === 0 ? "covered" : "partially_covered"
   })),
-  nextStep: "РљРѕСЂРѕС‚РєРѕ РґРѕРїРёС€РёС‚Рµ РїСЂРёРјРµСЂ РёР· СѓС‡РµР±РЅРѕР№ РёР»Рё СЂР°Р±РѕС‡РµР№ СЃРёС‚СѓР°С†РёРё."
+  nextStep: "Коротко допишите пример из учебной или рабочей ситуации."
 })
 
 export const mockCase = (): GenerateCaseResponse => generateCaseResponseSchema.parse({

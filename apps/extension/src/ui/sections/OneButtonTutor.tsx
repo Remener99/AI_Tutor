@@ -19,7 +19,7 @@ const defaultPreferences: PlanPreferences = {
   sessionDuration: "short"
 }
 
-const ROUTE_SCHEMA_VERSION = "lms-entities-v11"
+const ROUTE_SCHEMA_VERSION = "lms-entities-v12"
 
 const tutorQuickCommandLabels = ["Мини-конспект", "Глоссарий", "Практическая работа"]
 
@@ -975,6 +975,37 @@ export const OneButtonTutor = ({ enabled }: { enabled: boolean }) => {
     }
   }, [hydrated, plan, loading, autoPlanning, weekItemStates])
 
+  useEffect(() => {
+    if (!enabled || !hydrated || plan || loading || autoPlanning) return
+    let cancelled = false
+    const todayKey = formatIsoDate(new Date())
+
+    void (async () => {
+      setAutoPlanning(true)
+      try {
+        const progress = await readCurrentProgress()
+        if (cancelled) return
+        setSnapshot(progress)
+        await setLocal(STORAGE_KEYS.lastLmsSnapshot, progress)
+        if (!progress.isSupportedPage || progress.isForbiddenTestPage) return
+        await generatePlanFromProgress(progress, { silent: true })
+        await setLocal<AutoPlanState>(STORAGE_KEYS.autoPlanState, {
+          lastAutoDate: todayKey,
+          lastRunAt: new Date().toISOString(),
+          lastProgressKey: routeRefreshKey(progress, false)
+        })
+      } catch {
+        // Initial auto-plan is best effort; the main button still exposes manual retry.
+      } finally {
+        if (!cancelled) setAutoPlanning(false)
+      }
+    })()
+
+    return () => {
+      cancelled = true
+    }
+  }, [enabled, hydrated, plan, loading, autoPlanning])
+
   const generateTestPrep = async () => {
     const validation = validatePdfFile(file)
     if (validation || !file) return setError(validation || "Добавьте PDF с материалом занятия.")
@@ -1211,9 +1242,9 @@ export const OneButtonTutor = ({ enabled }: { enabled: boolean }) => {
                       <div className="lms-activity-list">
                         {item.activities.map((activity, activityIndex) => (
                           <div key={`${activity.disciplineTitle}-${activity.topicTitle}-${activity.activityTitle || activityIndex}`}>
-                            <strong>{activity.disciplineTitle}</strong>
-                            <span>{activity.topicTitle}</span>
+                            <strong>{activity.topicTitle}</strong>
                             {activity.activityTitle && <small>{activity.activityTitle}</small>}
+                            {activity.estimatedMinutes ? <small>{activity.estimatedMinutes} мин</small> : null}
                           </div>
                         ))}
                       </div>

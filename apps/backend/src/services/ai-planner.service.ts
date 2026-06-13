@@ -1,4 +1,4 @@
-﻿import { generatePlanResponseSchema, type GeneratePlanRequest, type GeneratePlanResponse, type StudentState } from "@ai-tutor/shared"
+import { generatePlanResponseSchema, type GeneratePlanRequest, type GeneratePlanResponse, type StudentState } from "@ai-tutor/shared"
 import { z } from "zod"
 import { env } from "../config/env.js"
 import { buildAiPlannerPrompt } from "../prompts/plan-pipeline.js"
@@ -21,8 +21,8 @@ const formatActivityHours = (hours: number) => {
   const value = minutes / 60
   return `${Number(value.toFixed(2)).toString().replace(".", ",")} ч`
 }
-const isGenericAction = (value: string) => /Р·Р°Р№С‚Рё\s+РІ\s+lms,\s*РїСЂРѕР№С‚Рё\s+РјР°С‚РµСЂРёР°Р»/i.test(value) ||
-  /^РїСЂРѕР№С‚Рё\s+РјР°С‚РµСЂРёР°Р»$/i.test(value.trim())
+const isGenericAction = (value: string) => /зайти\s+в\s+lms,\s*пройти\s+материал/i.test(value) ||
+  /^пройти\s+материал$/i.test(value.trim())
 
 const aiEnrichmentSchema = z.object({
   orderedActions: z.array(z.string()).optional(),
@@ -35,16 +35,16 @@ const aiEnrichmentSchema = z.object({
 
 const normalizeText = (value: string) => value
   .toLowerCase()
-  .replace(/С‘/g, "Рµ")
+  .replace(/ё/g, "е")
   .replace(/[^\p{L}\p{N}]+/gu, " ")
   .replace(/\s+/g, " ")
   .trim()
 
 const canonicalAction = (item: StudentState["remainingItems"][number]) => {
   const topic = item.activityTitle && !normalizeText(item.topicTitle).includes(normalizeText(item.activityTitle))
-    ? `${item.topicTitle} вЂ” ${item.activityTitle}`
+    ? `${item.topicTitle} — ${item.activityTitle}`
     : item.topicTitle
-  return `${item.disciplineTitle} вЂ” ${topic}`
+  return `${item.disciplineTitle} — ${topic}`
 }
 
 const matchRemainingItem = (
@@ -94,11 +94,11 @@ const applyAiCalendarToState = (state: StudentState, plan: GeneratePlanResponse)
   const first = calendar[0]
   const todayItems = first
     ? [
-        ...(first.date === state.semester.currentDate ? [] : [`Р‘Р»РёР¶Р°Р№С€Р°СЏ РґР°С‚Р°: ${formatRuDate(first.date)}`]),
+        ...(first.date === state.semester.currentDate ? [] : [`Ближайшая дата: ${formatRuDate(first.date)}`]),
         first.action,
-        `РџРѕС‚СЂР°С‚РёС‚СЊ ${first.time}`
+        `Потратить ${first.time}`
       ]
-    : ["Р’СЃРµ С‚РµРјС‹ Р·Р°РєСЂС‹С‚С‹"]
+    : ["Все темы закрыты"]
 
   return {
     ...plan,
@@ -120,34 +120,34 @@ const applyAiCalendarToState = (state: StudentState, plan: GeneratePlanResponse)
 
 const validatePlanFacts = (state: StudentState, plan: GeneratePlanResponse) => {
   const warnings: string[] = []
-  if (plan.progress.daysLeft !== state.semester.daysLeft) warnings.push("progress.daysLeft РЅРµ СЃРѕРІРїР°РґР°РµС‚ СЃРѕ student_state")
-  if (plan.progress.completedTopics !== state.progress.completedTopics) warnings.push("progress.completedTopics РЅРµ СЃРѕРІРїР°РґР°РµС‚ СЃРѕ student_state")
-  if (plan.progress.totalTopics !== state.progress.totalTopics) warnings.push("progress.totalTopics РЅРµ СЃРѕРІРїР°РґР°РµС‚ СЃРѕ student_state")
+  if (plan.progress.daysLeft !== state.semester.daysLeft) warnings.push("progress.daysLeft не совпадает со student_state")
+  if (plan.progress.completedTopics !== state.progress.completedTopics) warnings.push("progress.completedTopics не совпадает со student_state")
+  if (plan.progress.totalTopics !== state.progress.totalTopics) warnings.push("progress.totalTopics не совпадает со student_state")
 
   const start = asDateTime(state.semester.currentDate)
   const end = state.semester.endDate ? asDateTime(state.semester.endDate) : Number.POSITIVE_INFINITY
   for (const item of plan.calendar) {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(item.date)) warnings.push(`РќРµРєРѕСЂСЂРµРєС‚РЅР°СЏ РґР°С‚Р° РІ РєР°Р»РµРЅРґР°СЂРµ: ${item.date}`)
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(item.date)) warnings.push(`Некорректная дата в календаре: ${item.date}`)
     const time = asDateTime(item.date)
-    if (time < start) warnings.push(`Р”Р°С‚Р° ${item.date} СЂР°РЅСЊС€Рµ С‚РµРєСѓС‰РµР№ РґР°С‚С‹`)
-    if (time > end) warnings.push(`Р”Р°С‚Р° ${item.date} РїРѕР·Р¶Рµ РѕРєРѕРЅС‡Р°РЅРёСЏ СЃРµРјРµСЃС‚СЂР°`)
-    if (isGenericAction(item.action)) warnings.push(`РЎР»РёС€РєРѕРј С€Р°Р±Р»РѕРЅРЅРѕРµ РґРµР№СЃС‚РІРёРµ: ${item.action}`)
+    if (time < start) warnings.push(`Дата ${item.date} раньше текущей даты`)
+    if (time > end) warnings.push(`Дата ${item.date} позже окончания семестра`)
+    if (isGenericAction(item.action)) warnings.push(`Слишком шаблонное действие: ${item.action}`)
   }
 
   const plannedActions = new Set(plan.calendar.flatMap((item) => [
     normalizeText(item.action),
-    ...(item.activities ?? []).map((activity) => normalizeText(`${activity.disciplineTitle} вЂ” ${activity.topicTitle}${activity.activityTitle ? ` вЂ” ${activity.activityTitle}` : ""}`))
+    ...(item.activities ?? []).map((activity) => normalizeText(`${activity.disciplineTitle} — ${activity.topicTitle}${activity.activityTitle ? ` — ${activity.activityTitle}` : ""}`))
   ]))
   for (const item of state.remainingItems) {
     if (!plannedActions.has(normalizeText(canonicalAction(item)))) {
-      warnings.push(`Р’ РєР°Р»РµРЅРґР°СЂРµ РЅРµС‚ СЌР»РµРјРµРЅС‚Р° РёР· remainingItems: ${canonicalAction(item)}`)
+      warnings.push(`В календаре нет элемента из remainingItems: ${canonicalAction(item)}`)
     }
   }
 
-  if (state.progress.remainingTopics > 0 && plan.calendar.length === 0) warnings.push("РљР°Р»РµРЅРґР°СЂСЊ РїСѓСЃС‚РѕР№ РїСЂРё РЅР°Р»РёС‡РёРё РѕСЃС‚Р°РІС€РёС…СЃСЏ С‚РµРј")
+  if (state.progress.remainingTopics > 0 && plan.calendar.length === 0) warnings.push("Календарь пустой при наличии оставшихся тем")
   const plannedActivityCount = plan.calendar.reduce((sum, item) => sum + Math.max(item.activities?.length ?? 1, 1), 0)
-  if (plannedActivityCount < state.remainingItems.length) warnings.push(`РљР°Р»РµРЅРґР°СЂСЊ РїРѕРєСЂС‹РІР°РµС‚ ${plannedActivityCount} РёР· ${state.remainingItems.length} РѕСЃС‚Р°РІС€РёС…СЃСЏ СЌР»РµРјРµРЅС‚РѕРІ`)
-  if (plan.calendar.length > state.constraints.maxCalendarItems) warnings.push(`РљР°Р»РµРЅРґР°СЂСЊ РґР»РёРЅРЅРµРµ ${state.constraints.maxCalendarItems} РїСѓРЅРєС‚РѕРІ`)
+  if (plannedActivityCount < state.remainingItems.length) warnings.push(`Календарь покрывает ${plannedActivityCount} из ${state.remainingItems.length} оставшихся элементов`)
+  if (plan.calendar.length > state.constraints.maxCalendarItems) warnings.push(`Календарь длиннее ${state.constraints.maxCalendarItems} пунктов`)
   return [...new Set(warnings)]
 }
 
@@ -192,27 +192,27 @@ const buildEnrichmentPrompt = (state: StudentState, calendar: GeneratePlanRespon
     }))
   }
 
-  return `РўС‹ AI-С‚СЊСЋС‚РѕСЂ. РќСѓР¶РЅРѕ Р±С‹СЃС‚СЂРѕ СѓР»СѓС‡С€РёС‚СЊ Р±Р»РёР¶Р°Р№С€РёР№ СѓС‡РµР±РЅС‹Р№ РјР°СЂС€СЂСѓС‚, РЅРµ РїРµСЂРµРїРёСЃС‹РІР°СЏ РІРµСЃСЊ РїР»Р°РЅ.
+  return `Ты AI-тьютор. Нужно быстро улучшить ближайший учебный маршрут, не переписывая весь план.
 
-РљРѕРЅС‚РµРєСЃС‚ JSON:
+Контекст JSON:
 ${JSON.stringify(compactState)}
 
-Р’РµСЂРЅРё СЃС‚СЂРѕРіРѕ JSON:
+Верни строго JSON:
 {
-  "orderedActions": ["action РёР· visibleItems РІ Р»СѓС‡С€РµРј РїРѕСЂСЏРґРєРµ РЅР° Р±Р»РёР¶Р°Р№С€СѓСЋ РЅРµРґРµР»СЋ"],
+  "orderedActions": ["action из visibleItems в лучшем порядке на ближайшую неделю"],
   "practiceRecommendations": [
-    {"action": "С‚РѕС‡РЅС‹Р№ action РёР· visibleItems", "practiceRecommendation": "1 РєРѕРЅРєСЂРµС‚РЅРѕРµ РїСЂР°РєС‚РёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ РїРѕРґ РґРёСЃС†РёРїР»РёРЅСѓ, С‚РµРјСѓ Рё РїСЂРѕС„РёР»СЊ СЃС‚СѓРґРµРЅС‚Р°"}
+    {"action": "точный action из visibleItems", "practiceRecommendation": "1 конкретное практическое задание под дисциплину, тему и профиль студента"}
   ],
-  "recommendations": ["1-2 РєРѕСЂРѕС‚РєРёС… СЃРѕРІРµС‚Р° РїРѕ СѓСЃРІРѕРµРЅРёСЋ Р±Р»РёР¶Р°Р№С€РµР№ РЅРµРґРµР»Рё"]
+  "recommendations": ["1-2 коротких совета по усвоению ближайшей недели"]
 }
 
-РџСЂР°РІРёР»Р°:
-- РСЃРїРѕР»СЊР·СѓР№ С‚РѕР»СЊРєРѕ action РёР· visibleItems, РЅРµ РїСЂРёРґСѓРјС‹РІР°Р№ РЅРѕРІС‹Рµ С‚РµРјС‹.
-- orderedActions РјРѕР¶РµС‚ РІРєР»СЋС‡Р°С‚СЊ РЅРµ РІСЃРµ visibleItems, РЅРѕ С‚РѕР»СЊРєРѕ С‚РѕС‡РЅС‹Рµ action РёР· СЃРїРёСЃРєР°.
-- practiceRecommendation РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РєРѕРЅРєСЂРµС‚РЅРѕР№: РјРёРЅРё-РєРµР№СЃ, Р·Р°РґР°С‡Р°, РїСЂРёРјРµСЂ РїСЂРёРјРµРЅРµРЅРёСЏ РёР»Рё РІРѕРїСЂРѕСЃ РґР»СЏ СЃР°РјРѕРїСЂРѕРІРµСЂРєРё.
-- РЈС‡РёС‚С‹РІР°Р№ РїСЂРѕС„РёР»СЊ СЃС‚СѓРґРµРЅС‚Р°, РґРёСЃС†РёРїР»РёРЅСѓ Рё С‚РµРјСѓ.
-- РќРµ РїРёС€Рё С€Р°Р±Р»РѕРЅС‹ РІСЂРѕРґРµ "РІС‹РїРёС€РёС‚Рµ РѕРґРёРЅ РїСЂР°РєС‚РёС‡РµСЃРєРёР№ РІС‹РІРѕРґ" РёР»Рё "РїРѕРІС‚РѕСЂРёС‚Рµ РєР»СЋС‡РµРІС‹Рµ РїРѕРЅСЏС‚РёСЏ".
-- РќРµ РґР°РІР°Р№ РѕС‚РІРµС‚С‹ РЅР° LMS-С‚РµСЃС‚С‹.`
+Правила:
+- Используй только action из visibleItems, не придумывай новые темы.
+- orderedActions может включать не все visibleItems, но только точные action из списка.
+- practiceRecommendation должна быть конкретной: мини-кейс, задача, пример применения или вопрос для самопроверки.
+- Учитывай профиль студента, дисциплину и тему.
+- Не пиши шаблоны вроде "выпишите один практический вывод" или "повторите ключевые понятия".
+- Не давай ответы на LMS-тесты.`
 }
 
 const findCalendarItemByAction = (
@@ -275,7 +275,7 @@ const enrichPlanWithAi = async (state: StudentState, plan: GeneratePlanResponse)
       }
     })
   } catch (error) {
-    const message = error instanceof Error ? error.message : "AI enrichment РЅРµ РІРµСЂРЅСѓР» РІР°Р»РёРґРЅС‹Р№ JSON"
+    const message = error instanceof Error ? error.message : "AI enrichment не вернул валидный JSON"
     return generatePlanResponseSchema.parse({
       ...plan,
       planMeta: {
@@ -296,7 +296,7 @@ export const generateAiPersonalPlan = async (request: GeneratePlanRequest) => {
 
   let plan: GeneratePlanResponse
   if (llmService.activeProvider === "mock") {
-    plan = fallbackPlan(request, state, ["LLM mock РІРєР»СЋС‡С‘РЅ, РёСЃРїРѕР»СЊР·РѕРІР°РЅ Р»РѕРєР°Р»СЊРЅС‹Р№ fallback"])
+    plan = fallbackPlan(request, state, ["LLM mock включён, использован локальный fallback"])
   } else {
     try {
       const first = await requestAiPlan(state)
@@ -313,7 +313,7 @@ export const generateAiPersonalPlan = async (request: GeneratePlanRequest) => {
           : fallbackPlan(request, state, secondWarnings)
       }
     } catch (error) {
-      const message = error instanceof Error ? error.message : "LLM РЅРµ РІРµСЂРЅСѓР» РІР°Р»РёРґРЅС‹Р№ РѕС‚РІРµС‚"
+      const message = error instanceof Error ? error.message : "LLM не вернул валидный ответ"
       plan = fallbackPlan(request, state, [message])
     }
   }

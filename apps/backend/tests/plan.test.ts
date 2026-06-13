@@ -45,6 +45,57 @@ describe("plan endpoint", () => {
     const plannedActivities = json.calendar.reduce((sum: number, item: { activities?: unknown[] }) => sum + (item.activities?.length ?? 1), 0)
     expect(plannedActivities).toBeGreaterThanOrEqual(remainingTopics.length)
     expect(json.calendar[0].action).toContain("—")
+    expect(JSON.stringify(json)).not.toMatch(/Рџ|Рљ|Рќ|РЎ|Р§|вЂ|пїЅ/)
+    await app.close()
+  }, 15_000)
+
+  it("groups multiple short lessons from one discipline into a single study day", async () => {
+    const { buildApp } = await import("../src/app.js")
+    const app = await buildApp()
+    const request: GeneratePlanRequest = {
+      ...payload,
+      preferences: {
+        hoursPerWeek: 7.5,
+        availableDays: ["Пн", "Вт", "Ср", "Чт", "Пт"],
+        strategy: "sequential",
+        sessionDuration: "long"
+      },
+      snapshot: {
+        ...mockLmsSnapshot,
+        disciplines: [{
+          id: "python",
+          title: "Программирование на Python для сбора и анализа данных",
+          status: "in_progress",
+          topics: [
+            { id: "py-1", title: "Тема 1 — Занятие 1.1", topicTitle: "Тема 1", activityTitle: "Занятие 1.1", status: "not_started", estimatedComplexity: "medium" },
+            { id: "py-2", title: "Тема 1 — Занятие 1.2", topicTitle: "Тема 1", activityTitle: "Занятие 1.2", status: "not_started", estimatedComplexity: "medium" },
+            { id: "py-3", title: "Тема 1 — Занятие 1.3", topicTitle: "Тема 1", activityTitle: "Занятие 1.3", status: "not_started", estimatedComplexity: "medium" },
+            { id: "py-4", title: "Тема 1 — Конспект 1", topicTitle: "Тема 1", activityTitle: "Конспект 1", status: "not_started", estimatedComplexity: "low" }
+          ]
+        }],
+        progress: {
+          ...mockLmsSnapshot.progress,
+          totalDisciplines: 1,
+          completedDisciplines: 0,
+          totalTopics: 4,
+          completedTopics: 0
+        }
+      }
+    }
+
+    const response = await app.inject({
+      method: "POST",
+      url: "/api/plan/generate",
+      payload: request
+    })
+
+    const json = response.json()
+    expect(response.statusCode).toBe(200)
+    expect(json.calendar[0].activities.length).toBeGreaterThan(1)
+    const firstDayActivities = json.calendar[0].activities.map((activity: { activityTitle?: string }) => activity.activityTitle)
+    expect(firstDayActivities).toContain("Занятие 1.1")
+    expect(firstDayActivities).toContain("Занятие 1.2")
+    expect(json.calendar[0].time).toMatch(/мин|ч/)
     await app.close()
   }, 15_000)
 

@@ -95,30 +95,18 @@ const orderItems = (state: StudentState) => {
     const leftFinal = isFinal(left)
     const rightFinal = isFinal(right)
     if (leftFinal !== rightFinal) return leftFinal ? 1 : -1
-    const complexityDiff = complexityWeight[left.complexity] - complexityWeight[right.complexity]
-    if (complexityDiff !== 0) return complexityDiff
-    return left.disciplineTitle.localeCompare(right.disciplineTitle, "ru")
+    const disciplineDiff = left.disciplineTitle.localeCompare(right.disciplineTitle, "ru")
+    if (disciplineDiff !== 0) return disciplineDiff
+    const topicDiff = left.topicTitle.localeCompare(right.topicTitle, "ru", { numeric: true })
+    if (topicDiff !== 0) return topicDiff
+    const leftActivity = left.activityTitle || ""
+    const rightActivity = right.activityTitle || ""
+    const activityDiff = leftActivity.localeCompare(rightActivity, "ru", { numeric: true })
+    if (activityDiff !== 0) return activityDiff
+    return complexityWeight[left.complexity] - complexityWeight[right.complexity]
   })
 
-  const groups = new Map<string, typeof state.remainingItems>()
-  for (const item of sortByLearningValue(state.remainingItems)) {
-    groups.set(item.disciplineId, [...(groups.get(item.disciplineId) || []), item])
-  }
-  const result: typeof state.remainingItems = []
-  while (result.length < state.remainingItems.length) {
-    const orderedGroups = [...groups.entries()]
-      .filter(([, items]) => items.length > 0)
-      .sort((left, right) => {
-        const leftItem = left[1][0]
-        const rightItem = right[1][0]
-        return complexityWeight[leftItem.complexity] - complexityWeight[rightItem.complexity]
-      })
-    for (const [key] of orderedGroups) {
-      const next = groups.get(key)?.shift()
-      if (next) result.push(next)
-    }
-  }
-  return result
+  return sortByLearningValue(state.remainingItems)
 }
 
 const buildDailyBuckets = (state: StudentState) => {

@@ -99,11 +99,11 @@ body { margin: 0; font-family: Inter, Arial, sans-serif; color: var(--ai-text); 
 .lms-chip { display: inline-flex; align-items: center; border-radius: 7px; padding: 5px 9px; color: #fff; background: var(--ai-primary); font-size: 11px; font-weight: 900; }
 .lms-chip.is-completed { background: var(--ai-success); }
 .lms-lesson em { margin-left: auto; border-radius: 10px; padding: 5px 9px; color: var(--ai-text); background: #eef0f6; font-style: normal; font-size: 12px; font-weight: 900; }
-.lms-lesson h3 { margin: 0; font-size: 15px; line-height: 1.25; }
+.lms-lesson h3 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; font-size: 15px; line-height: 1.25; overflow-wrap: anywhere; }
 .lms-lesson p { margin: 8px 0 0; color: var(--ai-text-muted); font-size: 12px; line-height: 1.35; }
 .lms-activity-list { display: grid; gap: 6px; margin-top: 10px; }
 .lms-activity-list div { display: grid; gap: 2px; padding: 8px 10px; border: 1px solid #ececf1; border-radius: 8px; background: #fafafa; }
-.lms-activity-list strong { font-size: 12px; line-height: 1.25; }
+.lms-activity-list strong { font-size: 12px; line-height: 1.25; overflow-wrap: anywhere; }
 .lms-activity-list span { color: var(--ai-text); font-size: 12px; line-height: 1.3; }
 .lms-activity-list small { margin: 0; color: var(--ai-text-muted); font-size: 11px; }
 .lms-lesson .lms-practice-tip { padding: 8px 10px; border-radius: 10px; background: rgba(227, 27, 35, 0.06); color: var(--ai-text); }

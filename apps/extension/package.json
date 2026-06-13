@@ -39,7 +39,7 @@
     "permissions": ["storage", "activeTab", "scripting"],
     "host_permissions": [
       "https://*.synergy.ru/*",
-      "https://bba9tns6u21vsn66e7fq.containers.yandexcloud.net/*"
+      "https://*.containerapps.ru/*"
     ]
   }
 }

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import type { ReactNode } from "react"
 import { CalendarDays, CheckCircle2, RefreshCw, Shield, Target } from "lucide-react"
 import type { GeneratePlanResponse, LmsSnapshot, PlanPreferences } from "@ai-tutor/shared"
@@ -168,6 +168,11 @@ export const PlanSection = ({ enabled }: { enabled: boolean }) => {
       setReadingProgress(false)
     }
   }
+
+  useEffect(() => {
+    if (!enabled || snapshot || readingProgress) return
+    void readProgress()
+  }, [enabled, snapshot, readingProgress])
 
   const generate = async () => {
     if (!snapshot || !canGenerate) return

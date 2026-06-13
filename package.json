@@ -10,6 +10,7 @@
     "build": "pnpm -r build",
     "build:extension": "pnpm --filter @ai-tutor/extension build",
     "build:backend": "pnpm --filter @ai-tutor/backend build",
+    "build:landing": "pnpm --filter @ai-tutor/landing build",
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck"

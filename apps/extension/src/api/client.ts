@@ -15,8 +15,8 @@ import type {
 } from "@ai-tutor/shared"
 import { ClientApiError, mapNetworkError } from "./errors"
 
-const API_BASE = "https://bba9tns6u21vsn66e7fq.containers.yandexcloud.net"
-const API_TOKEN = "si-EQp-H0Ug2TI3RlTyD8zun4hYuZJSKZ22Z7We54f8"
+const API_BASE = process.env.PLASMO_PUBLIC_API_BASE || "https://replace-with-cloudru.containerapps.ru"
+const API_TOKEN = process.env.PLASMO_PUBLIC_API_TOKEN || "replace-with-pilot-api-token"
 const API_HEADERS = {
   "x-ai-tutor-api-token": API_TOKEN,
   "x-ai-tutor-user-token": API_TOKEN
