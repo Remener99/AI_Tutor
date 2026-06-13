@@ -8,6 +8,8 @@
       name="description"
       content="Семпейс AI помогает студентам понять, что учить сегодня, разобраться в PDF-лекциях и двигаться по курсу без хаоса перед дедлайнами."
     />
+    <link rel="icon" type="image/png" href="./logo.png" />
+    <link rel="apple-touch-icon" href="./logo.png" />
     <style>
 :root {
   color-scheme: light;
@@ -134,18 +136,12 @@ p {
   white-space: nowrap;
 }
 
-.brand-mark {
-  align-items: center;
-  background: #151515;
-  border-radius: 8px;
-  color: var(--red);
-  display: inline-flex;
-  font-size: 11px;
-  font-weight: 900;
-  height: 36px;
-  justify-content: center;
-  letter-spacing: 0;
-  width: 36px;
+.brand-logo {
+  display: inline-block;
+  flex: 0 0 auto;
+  height: 38px;
+  object-fit: contain;
+  width: 38px;
 }
 
 .brand.tiny {
@@ -153,11 +149,9 @@ p {
   gap: 8px;
 }
 
-.brand.tiny .brand-mark {
-  border-radius: 5px;
-  font-size: 7px;
-  height: 18px;
-  width: 18px;
+.brand.tiny .brand-logo {
+  height: 20px;
+  width: 20px;
 }
 
 .nav-links {
@@ -1116,7 +1110,7 @@ small {
       <section class="hero section-card" id="hero">
         <nav class="nav">
           <a class="brand" href="#hero" aria-label="Семпейс AI">
-            <span class="brand-mark">AI</span>
+            <img class="brand-logo" src="./logo.png" alt="" />
             <span>Семпейс AI</span>
           </a>
           <div class="nav-links" aria-label="Навигация">
@@ -1152,7 +1146,7 @@ small {
             <div class="arrow-line" aria-hidden="true"></div>
             <div class="app-window app-window-floating">
               <div class="window-top">
-                <span class="brand tiny"><span class="brand-mark">AI</span>Семпейс AI</span>
+                <span class="brand tiny"><img class="brand-logo" src="./logo.png" alt="" />Семпейс AI</span>
                 <span class="toggle"></span>
                 <span class="close">×</span>
               </div>
@@ -1227,7 +1221,7 @@ small {
         <div class="mini-window-wrap">
           <div class="app-window mini">
             <div class="window-top">
-              <span class="brand tiny"><span class="brand-mark">AI</span>Семпейс AI</span>
+              <span class="brand tiny"><img class="brand-logo" src="./logo.png" alt="" />Семпейс AI</span>
               <span class="toggle"></span>
               <span class="close">×</span>
             </div>
@@ -1265,7 +1259,7 @@ small {
           </ul>
         </div>
         <div class="app-window tall">
-          <div class="window-top"><span class="brand tiny"><span class="brand-mark">AI</span>Семпейс AI</span><span class="toggle"></span><span class="close">×</span></div>
+          <div class="window-top"><span class="brand tiny"><img class="brand-logo" src="./logo.png" alt="" />Семпейс AI</span><span class="toggle"></span><span class="close">×</span></div>
           <div class="route-card calendar"><h3>Маршрут недели</h3><div class="calendar-row"><i>Пн<br><b>9</b></i><i>Вт<br><b>10</b></i><i>Ср<br><b>11</b></i><i>Чт<br><b>12</b></i><i>Пт<br><b>13</b></i><i>Сб<br><b>14</b></i></div></div>
           <article class="lesson lesson-red"><span class="lesson-badge">1Г</span><div><strong>Программирование на Python для сбора и анализа данных</strong><small>Тема 1 - Занятие 1.3</small></div><span class="time">30 мин</span></article>
           <article class="lesson"><span class="lesson-badge green">1Э</span><div><strong>Риск-менеджмент в инновационной деятельности</strong><small>Тема 1 - Конспект 1.3</small></div><span class="time">30 мин</span></article>
