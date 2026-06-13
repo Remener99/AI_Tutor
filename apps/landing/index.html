@@ -14,7 +14,7 @@
   </head>
   <body>
     <main class="page-shell">
-      <section class="hero section-card" id="hero">
+      <section class="hero section-card pitch-hero" id="hero">
         <nav class="nav">
           <a class="brand" href="#hero" aria-label="Семпейс AI">
             <img class="brand-logo" src="./logo.png" alt="" />
@@ -29,61 +29,64 @@
           </div>
         </nav>
 
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <h1>Семпейс AI <span>AI-тьютор</span> внутри LMS</h1>
+        <div class="hero-grid pitch-hero-grid">
+          <div class="hero-copy pitch-copy">
+            <p class="product-label">Презентация продукта</p>
+            <h1>Семпейс <span>AI</span></h1>
+            <p class="hero-subtitle">Безопасный AI-тьютор поверх LMS</p>
             <p>
-              Помогает студенту понять, что учить сегодня, разобраться в PDF-лекциях и двигаться по курсу без хаоса
-              перед дедлайнами.
+              Строит маршрут недели, объясняет материалы PDF-лекций и помогает двигаться по курсу без хаоса перед
+              дедлайнами.
             </p>
-            <div class="hero-actions">
+            <div class="pitch-feature-grid" aria-label="Ключевые возможности">
+              <div class="pitch-feature-tile"><span>01</span><strong>Маршрут<br />недели</strong></div>
+              <div class="pitch-feature-tile"><span>PDF</span><strong>Разбор PDF</strong></div>
+              <div class="pitch-feature-tile"><span>AI</span><strong>Ответы<br />и feedback</strong></div>
+              <div class="pitch-feature-tile"><span>Safe</span><strong>Без подсказок<br />на тестах</strong></div>
+            </div>
+            <div class="hero-actions pitch-badges">
               <a class="button button-primary" href="./downloads/sempace-ai-pilot-0.1.5.zip" download>
                 Скачать pilot-package
               </a>
-            </div>
-            <div class="notice">
-              <span class="notice-icon">↓</span>
-              <p>
-                Пилотная версия устанавливается вручную в Chrome, Chromium или Яндекс Браузер. Публикация в Chrome Web
-                Store будет добавлена после прохождения регистрационных ограничений.
-              </p>
+              <span class="hero-pill">MVP готов к пилоту</span>
+              <span class="hero-pill">B2B SaaS для университетов и EdTech</span>
             </div>
           </div>
-          <div class="hero-visual">
-            <div class="arrow-line" aria-hidden="true"></div>
-            <div class="app-window app-window-floating">
+          <div class="hero-visual pitch-showcase" aria-label="Интерфейс расширения Семпейс AI">
+            <div class="app-window route-window hero-route-window">
               <div class="window-top">
                 <span class="brand tiny"><img class="brand-logo" src="./logo.png" alt="" />Семпейс AI</span>
                 <span class="toggle"></span>
                 <span class="close">×</span>
               </div>
-              <div class="route-card">
+              <div class="route-card route-card-hero">
                 <div>
-                  <h3>Маршрут<br />недели</h3>
+                  <h3>Маршрут недели</h3>
                   <small>Ваш персональный план на 8-14 июня</small>
                 </div>
                 <div class="rhythm">
                   <b>Ритм недели</b>
-                  <span>2 дн. подряд</span>
+                  <span>3 дн. подряд</span>
                   <div class="days"><i></i><i></i><i></i><i></i><i></i></div>
                 </div>
               </div>
-              <article class="lesson lesson-red">
-                <span class="lesson-badge">1Г</span>
-                <div>
-                  <strong>Программирование на Python для сбора и анализа данных</strong>
-                  <small>Тема 1 - Занятие 1.3</small>
-                </div>
-                <button>Открыть занятие →</button>
-              </article>
-              <article class="lesson">
-                <span class="lesson-badge green">1Э</span>
-                <div>
-                  <strong>Риск-менеджмент в инновационной деятельности</strong>
-                  <small>Тема 1 - Конспект 1.3</small>
-                </div>
-                <span class="time">30 мин</span>
-              </article>
+              <div class="calendar-row pitch-calendar"><i>Пн<br><b>9</b></i><i>Вт<br><b>10</b></i><i>Ср<br><b>11</b></i><i>Чт<br><b>12</b></i><i>Пт<br><b>13</b></i><i>Сб<br><b>14</b></i></div>
+              <article class="lesson lesson-red"><span class="lesson-badge">9</span><div><strong>Язык программирования</strong><small>Тема 1 - Занятие 1.3</small></div><span class="time">30 мин</span></article>
+              <article class="lesson"><span class="lesson-badge green">9</span><div><strong>Данные и алгоритмы</strong><small>Тема 1 - Конспект 1.3</small></div><span class="time">30 мин</span></article>
+            </div>
+
+            <div class="app-window tutor-window hero-tutor-window">
+              <div class="window-top">
+                <span class="brand tiny"><img class="brand-logo" src="./logo.png" alt="" />Семпейс AI</span>
+                <span class="toggle"></span>
+                <span class="close">×</span>
+              </div>
+              <div class="select-row">AI репетитор <span>⌄</span></div>
+              <div class="upload-box">Загрузите лекцию (PDF)<br /><small>Поддерживаются PDF. Макс. размер: 10 MB</small></div>
+              <div class="chips"><span>Мини-конспект</span><span>Глоссарий</span><span>Практическая работа</span></div>
+              <p class="answer">Я изучил ваш учебный материал. Могу объяснить сложные определения, собрать краткий конспект и предложить задания.</p>
+              <div class="question">Спросите по материалу: термины, пример, суть темы... <span>↗</span></div>
+              <button class="button button-primary">Отправить вопрос</button>
             </div>
           </div>
         </div>
@@ -154,46 +157,63 @@
         <div class="wide-note">Все функции работают прямо в вашем LMS через браузерное расширение.</div>
       </section>
 
-      <section class="section-card two-col" id="route">
-        <div>
-          <p class="section-kicker">5. Маршрут недели</p>
-          <h2>План на неделю, который экономит время</h2>
-          <ul class="check-list green-icons">
-            <li>Персональный план на ближайшие дни</li>
-            <li>Указывает, какие занятия открыть и сколько времени заложить</li>
-            <li>Объединяет несколько коротких занятий в один слот (1-1,5 часа)</li>
-            <li>Добавляет AI-рекомендации для закрепления темы</li>
-          </ul>
+      <section class="section-card pitch-route-section" id="route">
+        <div class="section-heading-wide">
+          <p class="section-kicker">5. Ключевая функция</p>
+          <h2>Маршрут недели</h2>
+          <p>Показывает студенту, что открыть на этой неделе и как двигаться без перегруза.</p>
         </div>
-        <div class="app-window tall">
-          <div class="window-top"><span class="brand tiny"><img class="brand-logo" src="./logo.png" alt="" />Семпейс AI</span><span class="toggle"></span><span class="close">×</span></div>
-          <div class="route-card calendar"><h3>Маршрут недели</h3><div class="calendar-row"><i>Пн<br><b>9</b></i><i>Вт<br><b>10</b></i><i>Ср<br><b>11</b></i><i>Чт<br><b>12</b></i><i>Пт<br><b>13</b></i><i>Сб<br><b>14</b></i></div></div>
-          <article class="lesson lesson-red"><span class="lesson-badge">1Г</span><div><strong>Программирование на Python для сбора и анализа данных</strong><small>Тема 1 - Занятие 1.3</small></div><span class="time">30 мин</span></article>
-          <article class="lesson"><span class="lesson-badge green">1Э</span><div><strong>Риск-менеджмент в инновационной деятельности</strong><small>Тема 1 - Конспект 1.3</small></div><span class="time">30 мин</span></article>
+        <div class="route-feature-layout">
+          <div class="app-window route-window route-window-large">
+            <div class="window-top"><span class="brand tiny"><img class="brand-logo" src="./logo.png" alt="" />Семпейс AI</span><span class="toggle"></span><span class="close">×</span></div>
+            <div class="route-card route-card-hero">
+              <div>
+                <h3>Маршрут недели</h3>
+                <small>Ваш персональный план на 8-14 июня</small>
+              </div>
+              <div class="rhythm rhythm-large">
+                <b>Ритм недели</b>
+                <span>4 дн. подряд</span>
+                <div class="days"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+            <div class="calendar-row pitch-calendar"><i>Пн<br><b>9</b></i><i>Вт<br><b>10</b></i><i>Ср<br><b>11</b></i><i>Чт<br><b>12</b></i><i>Пт<br><b>13</b></i><i>Сб<br><b>14</b></i></div>
+            <article class="lesson lesson-red"><span class="lesson-badge">9</span><div><strong>Язык программирования</strong><small>Тема 1 - Занятие 1.3</small></div><span class="time">30 мин</span></article>
+            <article class="lesson"><span class="lesson-badge green">9</span><div><strong>Данные и алгоритмы</strong><small>Тема 1 - Конспект 1.3</small></div><span class="time">30 мин</span></article>
+          </div>
+          <div class="route-benefits">
+            <article><span>01</span><div><h3>Снижает тревожность</h3><p>Студент видит конкретный план вместо длинного списка материалов.</p></div></article>
+            <article><span>02</span><div><h3>Экономит время</h3><p>Объединяет короткие занятия в удобный учебный слот.</p></div></article>
+            <article><span>03</span><div><h3>Поддерживает ритм</h3><p>Подсказывает следующий шаг и помогает возвращаться в LMS регулярно.</p></div></article>
+          </div>
         </div>
       </section>
 
-      <section class="section-card two-col pdf" id="pdf">
-        <div>
-          <p class="section-kicker">6. AI-тьютор по PDF</p>
-          <h2>Разбирайте PDF-лекции быстрее и глубже</h2>
-          <ul class="pdf-list">
-            <li>Загрузите PDF-лекцию в расширение</li>
-            <li>Задавайте вопросы по материалу</li>
-            <li>Получайте мини-конспект</li>
-            <li>Получайте глоссарий</li>
-            <li>Получайте практическое задание</li>
-            <li>Разбирайтесь в теме простым языком</li>
-          </ul>
+      <section class="section-card pitch-pdf-section" id="pdf">
+        <div class="section-heading-wide">
+          <p class="section-kicker">6. Ключевая функция</p>
+          <h2><span>AI-тьютор</span> по материалу</h2>
+          <p>Помогает быстро понять тему и задать вопросы прямо по учебному PDF.</p>
         </div>
-        <div class="pdf-panel">
-          <div class="select-row">AI репетитор <span>⌄</span></div>
-          <div class="upload-box">Загрузите лекцию (PDF)<br /><small>Поддерживаются PDF. Макс. размер: 10 MB</small></div>
-          <div class="chips"><span>Мини-конспект</span><span>Глоссарий</span><span>Практическая работа</span></div>
-          <p class="answer">Я изучил материал «Введение в бизнес-планирование». Материал объясняет, что такое бизнес-план и зачем он нужен, описывает ключевые разделы, оценивает риски и помогает принимать управленческие решения.</p>
-          <div class="question">Спросите по материалу: термины, пример, суть темы... <span>↗</span></div>
-          <button class="button button-primary">Отправить вопрос</button>
+        <div class="pdf-feature-layout">
+          <div class="app-window tutor-window tutor-window-large">
+            <div class="window-top"><span class="brand tiny"><img class="brand-logo" src="./logo.png" alt="" />Семпейс AI</span><span class="toggle"></span><span class="close">×</span></div>
+            <div class="select-row">AI репетитор <span>⌄</span></div>
+            <div class="upload-box">Загрузите лекцию (PDF)<br /><small>Поддерживаются PDF. Макс. размер: 10 MB</small></div>
+            <div class="chips"><span>Мини-конспект</span><span>Глоссарий</span><span>Практическая работа</span></div>
+            <p class="answer">Я изучил материал «Введение в бизнес-планирование». Материал объясняет, что такое бизнес-план, зачем он нужен, какие разделы включает и как оценивать риски.</p>
+            <div class="question">Спросите по материалу: термины, пример, суть темы... <span>↗</span></div>
+            <button class="button button-primary">Отправить вопрос</button>
+          </div>
+          <div class="pdf-capabilities">
+            <article><span>PDF</span><div><h3>Разбор PDF-лекций</h3><p>Студент работает с материалом курса без выхода из учебной страницы.</p></div></article>
+            <article><span>01</span><div><h3>Мини-конспект</h3><p>Короткая структура темы и главные тезисы перед занятием.</p></div></article>
+            <article><span>02</span><div><h3>Глоссарий</h3><p>Ключевые термины с простыми объяснениями.</p></div></article>
+            <article><span>03</span><div><h3>Практическая работа</h3><p>Задания и вопросы для проверки понимания материала.</p></div></article>
+            <article><span>AI</span><div><h3>Вопросы по теме</h3><p>Пояснения, примеры и подсказки для самостоятельного обучения.</p></div></article>
+          </div>
         </div>
+        <div class="wide-note">AI помогает учиться и не подменяет итоговый контроль знаний.</div>
       </section>
 
       <section class="section-card two-col feedback" id="feedback">

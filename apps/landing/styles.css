@@ -1089,3 +1089,510 @@ small {
     min-height: auto;
   }
 }
+
+/* Pitch deck aligned landing updates */
+.pitch-hero {
+  background:
+    radial-gradient(circle at 77% 21%, rgba(237, 28, 36, 0.14), transparent 25%),
+    linear-gradient(135deg, #fff 0%, #f8f9fb 56%, #f2f4f8 100%);
+}
+
+.pitch-hero-grid {
+  align-items: center;
+  gap: 42px;
+  grid-template-columns: minmax(0, 0.95fr) minmax(520px, 1.05fr);
+}
+
+.product-label {
+  color: var(--red);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  margin: 0 0 14px;
+  text-transform: uppercase;
+}
+
+.pitch-copy h1 {
+  font-size: clamp(56px, 6vw, 96px);
+  letter-spacing: 0;
+  line-height: 0.94;
+  margin-bottom: 16px;
+}
+
+.pitch-copy h1 span {
+  color: var(--red);
+}
+
+.hero-subtitle {
+  color: #171a21;
+  font-size: clamp(25px, 2.2vw, 36px);
+  font-weight: 900;
+  line-height: 1.08;
+  margin: 0 0 18px;
+  max-width: 680px;
+}
+
+.pitch-feature-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 28px 0 24px;
+}
+
+.pitch-feature-tile {
+  background: #fff;
+  border: 1px solid rgba(35, 38, 45, 0.09);
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(21, 24, 31, 0.06);
+  color: #292d36;
+  font-size: 15px;
+  font-weight: 850;
+  line-height: 1.25;
+  padding: 16px 18px;
+}
+
+.pitch-feature-tile span {
+  color: var(--red);
+  display: block;
+  font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.pitch-feature-tile strong {
+  display: block;
+}
+
+.pitch-badges {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hero-pill {
+  background: #fff;
+  border: 1px solid rgba(35, 38, 45, 0.1);
+  border-radius: 999px;
+  color: #3d4148;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 12px 16px;
+}
+
+.pitch-showcase {
+  min-height: 640px;
+  position: relative;
+}
+
+.pitch-showcase::before {
+  background:
+    radial-gradient(circle at center, rgba(237, 28, 36, 0.08), transparent 58%),
+    conic-gradient(from -35deg, transparent 0 22%, rgba(237, 28, 36, 0.16) 23% 29%, transparent 30% 100%);
+  border-radius: 999px;
+  content: "";
+  inset: 34px 10px auto auto;
+  height: 460px;
+  position: absolute;
+  width: 460px;
+}
+
+.pitch-showcase .app-window,
+.route-window-large,
+.tutor-window-large {
+  background: #fff;
+  border: 1px solid rgba(21, 24, 31, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 28px 80px rgba(21, 24, 31, 0.18);
+}
+
+.hero-route-window {
+  left: 0;
+  min-height: 560px;
+  position: absolute;
+  top: 18px;
+  width: min(520px, 82%);
+  z-index: 2;
+}
+
+.hero-tutor-window {
+  min-height: 360px;
+  position: absolute;
+  right: 0;
+  top: 190px;
+  width: min(410px, 66%);
+  z-index: 3;
+}
+
+.route-window,
+.tutor-window {
+  padding: 18px;
+}
+
+.window-top {
+  border-bottom: 1px solid #eef0f3;
+  margin: -18px -18px 18px;
+  padding: 16px 18px;
+}
+
+.brand.tiny {
+  font-size: 13px;
+  gap: 6px;
+}
+
+.brand.tiny .brand-logo {
+  height: 28px;
+  width: 28px;
+}
+
+.toggle {
+  background: #fff;
+  border: 1px solid #e0e3e8;
+  border-radius: 999px;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+}
+
+.toggle span {
+  border-radius: 999px;
+  color: #6a707a;
+  font-size: 11px;
+  font-weight: 850;
+  padding: 6px 9px;
+}
+
+.toggle .active {
+  background: #171a21;
+  color: #fff;
+}
+
+.route-card-hero {
+  background: #171a21;
+  border-radius: 14px;
+  color: #fff;
+  margin-bottom: 14px;
+  padding: 18px;
+}
+
+.route-card-hero h3 {
+  color: #fff;
+  font-size: 22px;
+  margin: 6px 0 8px;
+}
+
+.route-card-hero p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  margin: 0;
+}
+
+.pitch-calendar {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.pitch-calendar span,
+.pitch-calendar i {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 11px;
+  font-weight: 850;
+  padding: 9px 4px;
+  text-align: center;
+}
+
+.pitch-calendar .active,
+.pitch-calendar i:first-child {
+  background: var(--red);
+  color: #fff;
+}
+
+.lesson {
+  align-items: flex-start;
+  background: #f6f7f9;
+  border: 1px solid #eceff3;
+  border-radius: 14px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: auto 1fr auto;
+  margin-top: 10px;
+  padding: 14px;
+}
+
+.lesson strong {
+  color: #171a21;
+  display: block;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.lesson small,
+.time,
+.answer-card p,
+.upload-box p,
+.question-row p {
+  color: #68707b;
+  font-size: 12px;
+}
+
+.lesson-badge {
+  align-items: center;
+  background: rgba(237, 28, 36, 0.09);
+  border-radius: 10px;
+  color: var(--red);
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 900;
+  height: 34px;
+  justify-content: center;
+  width: 34px;
+}
+
+.time {
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.section-heading-wide {
+  max-width: 860px;
+}
+
+.pitch-route-section,
+.pitch-pdf-section {
+  background: linear-gradient(135deg, #fff 0%, #f7f8fb 100%);
+}
+
+.route-feature-layout,
+.pdf-feature-layout {
+  align-items: center;
+  display: grid;
+  gap: 34px;
+  grid-template-columns: minmax(500px, 1.05fr) minmax(320px, 0.95fr);
+  margin-top: 30px;
+}
+
+.pdf-feature-layout {
+  grid-template-columns: minmax(500px, 1.1fr) minmax(340px, 0.9fr);
+}
+
+.route-window-large,
+.tutor-window-large {
+  max-width: 650px;
+  min-height: 540px;
+}
+
+.route-window-large .route-card-hero h3 {
+  font-size: 26px;
+}
+
+.route-window-large .lesson {
+  min-height: 88px;
+}
+
+.route-benefits,
+.pdf-capabilities {
+  display: grid;
+  gap: 14px;
+}
+
+.route-benefit,
+.capability,
+.route-benefits article,
+.pdf-capabilities article {
+  background: #fff;
+  border: 1px solid rgba(35, 38, 45, 0.09);
+  border-radius: 8px;
+  box-shadow: 0 16px 36px rgba(21, 24, 31, 0.07);
+  min-height: 116px;
+  padding: 22px;
+}
+
+.route-benefit strong,
+.capability strong,
+.route-benefits h3,
+.pdf-capabilities h3 {
+  color: #171a21;
+  display: block;
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.route-benefit p,
+.capability p,
+.route-benefits p,
+.pdf-capabilities p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.route-benefits article,
+.pdf-capabilities article {
+  align-items: flex-start;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: auto 1fr;
+}
+
+.route-benefits article > span,
+.pdf-capabilities article > span {
+  align-items: center;
+  background: rgba(237, 28, 36, 0.09);
+  border-radius: 10px;
+  color: var(--red);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 900;
+  height: 36px;
+  justify-content: center;
+  min-width: 36px;
+  padding: 0 8px;
+}
+
+.tutor-window-large .upload-box,
+.hero-tutor-window .upload-box {
+  background: #f7f8fb;
+  border: 1px dashed #cfd5de;
+  border-radius: 14px;
+  margin: 14px 0;
+  padding: 18px;
+}
+
+.upload-icon {
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(21, 24, 31, 0.08);
+  display: inline-flex;
+  height: 42px;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: 42px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.chips span {
+  background: #fff;
+  border: 1px solid #e2e6ec;
+  border-radius: 999px;
+  color: #3d4148;
+  font-size: 11px;
+  font-weight: 850;
+  padding: 7px 10px;
+}
+
+.answer-card,
+.question-row {
+  background: #f6f7f9;
+  border-radius: 14px;
+  margin-top: 12px;
+  padding: 14px;
+}
+
+.question-row {
+  align-items: center;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr auto;
+}
+
+.mini-button {
+  background: var(--red);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  padding: 10px 12px;
+  white-space: nowrap;
+}
+
+.wide-note {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 1100px) {
+  .pitch-hero-grid,
+  .route-feature-layout,
+  .pdf-feature-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .pitch-showcase {
+    min-height: 600px;
+  }
+
+  .route-window-large,
+  .tutor-window-large {
+    max-width: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .pitch-copy h1 {
+    font-size: 46px;
+    width: auto;
+  }
+
+  .hero-subtitle {
+    font-size: 26px;
+  }
+
+  .pitch-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pitch-showcase {
+    display: grid;
+    gap: 16px;
+    min-height: auto;
+  }
+
+  .pitch-showcase::before {
+    display: none;
+  }
+
+  .hero-route-window,
+  .hero-tutor-window {
+    left: auto;
+    min-height: auto;
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 100%;
+  }
+
+  .route-feature-layout,
+  .pdf-feature-layout {
+    gap: 20px;
+  }
+
+  .route-window,
+  .tutor-window {
+    padding: 14px;
+  }
+
+  .lesson {
+    grid-template-columns: auto 1fr;
+  }
+
+  .lesson .time {
+    grid-column: 2;
+  }
+
+  .question-row {
+    grid-template-columns: 1fr;
+  }
+
+  .mini-button {
+    text-align: center;
+  }
+}
