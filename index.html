@@ -6,25 +6,23 @@
     <title>Семпейс AI</title>
     <meta
       name="description"
-      content="Семпейс AI помогает студентам понять, что учить сегодня, разобраться в PDF-лекциях и двигаться по курсу без хаоса перед дедлайнами."
+      content="Семпейс AI — AI-тьютор для LMS: строит маршрут недели, помогает разбирать PDF-лекции и поддерживает студента без подсказок на итоговых тестах."
     />
     <link rel="icon" type="image/png" href="./favicon.png" />
     <link rel="apple-touch-icon" href="./favicon.png" />
     <style>
 :root {
   color-scheme: light;
-  --bg: #f3f3f4;
+  --bg: #f5f6f8;
   --surface: #ffffff;
-  --surface-soft: #fbfbfc;
-  --ink: #151515;
-  --muted: #60646c;
-  --line: #e5e7eb;
-  --red: #ed1c24;
-  --red-dark: #c71118;
-  --green: #31b768;
-  --purple: #8067d8;
-  --orange: #f29f3d;
-  --shadow: 0 18px 50px rgba(21, 21, 21, 0.09);
+  --ink: #111722;
+  --muted: #566176;
+  --soft: #f8f9fb;
+  --line: #e6e9ef;
+  --red: #f2141f;
+  --red-dark: #c90913;
+  --green: #20bf63;
+  --shadow: 0 26px 70px rgba(22, 31, 48, 0.11);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 16px;
 }
@@ -38,9 +36,9 @@ html {
 }
 
 body {
-  margin: 0;
   background: var(--bg);
   color: var(--ink);
+  margin: 0;
   overflow-x: hidden;
 }
 
@@ -49,1888 +47,1107 @@ a {
   text-decoration: none;
 }
 
-button,
-.button {
-  border: 0;
-  cursor: pointer;
+button {
   font: inherit;
 }
 
-.page-shell {
-  display: grid;
-  gap: 10px;
+.browser-frame {
+  background: var(--surface);
+  border: 1px solid #d9dde5;
+  border-radius: 20px;
+  box-shadow: 0 18px 70px rgba(25, 33, 48, 0.1);
   margin: 0 auto;
-  max-width: 1640px;
-  padding: 10px;
+  max-width: 1500px;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-.section-card {
-  background:
-    radial-gradient(circle at 84% 12%, rgba(237, 28, 36, 0.035), transparent 30%),
-    linear-gradient(180deg, #fff 0%, #fdfdfd 100%);
-  border: 1px solid #ececef;
-  border-radius: 8px;
-  min-height: 350px;
+.browser-bar {
+  align-items: center;
+  background: #fbfcfe;
+  border-bottom: 1px solid #e4e7ed;
+  display: grid;
+  grid-template-columns: 180px 1fr 180px;
+  height: 64px;
+  padding: 0 24px;
+}
+
+.traffic-lights {
+  display: flex;
+  gap: 12px;
+}
+
+.traffic-lights span {
+  border-radius: 50%;
+  display: block;
+  height: 16px;
+  width: 16px;
+}
+
+.traffic-lights span:nth-child(1) {
+  background: #ff3b30;
+}
+
+.traffic-lights span:nth-child(2) {
+  background: #ffbd2e;
+}
+
+.traffic-lights span:nth-child(3) {
+  background: #28c840;
+}
+
+.address {
+  align-items: center;
+  background: #f0f2f5;
+  border-radius: 10px;
+  color: #777f8c;
+  display: flex;
+  font-size: 14px;
+  gap: 10px;
+  height: 36px;
+  justify-self: center;
+  max-width: 680px;
+  padding: 0 18px;
+  width: 100%;
+}
+
+.lock {
+  color: #6d7480;
+  font-size: 11px;
+}
+
+.browser-actions {
+  color: #667083;
+  display: flex;
+  font-size: 24px;
+  gap: 22px;
+  justify-self: end;
+}
+
+.page {
+  padding: 58px 74px 88px;
+}
+
+.hero {
+  border-bottom: 1px solid var(--line);
+  min-height: 1080px;
   overflow: hidden;
-  padding: clamp(24px, 3vw, 40px);
+  padding-bottom: 58px;
   position: relative;
 }
 
-.section-kicker {
-  color: #151515;
-  font-size: 18px;
-  font-weight: 800;
-  margin: 0 0 20px;
+.hero::after {
+  background:
+    repeating-linear-gradient(165deg, rgba(242, 20, 31, 0.08) 0 1px, transparent 1px 21px);
+  border-radius: 50%;
+  content: "";
+  filter: blur(0.2px);
+  height: 420px;
+  left: 330px;
+  opacity: 0.32;
+  position: absolute;
+  top: 690px;
+  transform: rotate(-12deg);
+  width: 660px;
 }
 
-h1,
-h2,
-h3,
-p {
-  margin-top: 0;
-}
-
-h1 {
-  font-size: clamp(44px, 5vw, 70px);
-  line-height: 0.98;
-  margin-bottom: 24px;
-  max-width: 720px;
-}
-
-h1 span {
-  color: var(--red);
-}
-
-h2 {
-  font-size: clamp(28px, 3.15vw, 48px);
-  letter-spacing: 0;
-  line-height: 1.12;
-  margin-bottom: 24px;
-  max-width: 760px;
-}
-
-h3 {
-  font-size: 18px;
-  line-height: 1.2;
-  margin-bottom: 10px;
-}
-
-p {
-  color: var(--muted);
-  line-height: 1.55;
-}
-
-.nav {
-  align-items: center;
-  display: grid;
-  gap: 20px;
-  grid-template-columns: auto 1fr auto;
-  margin-bottom: clamp(42px, 8vw, 88px);
+.brand-row {
+  margin-bottom: 130px;
 }
 
 .brand {
   align-items: center;
   display: inline-flex;
-  font-weight: 800;
-  gap: 12px;
+  gap: 20px;
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.brand img {
+  height: 72px;
+  object-fit: contain;
+  width: 84px;
+}
+
+.brand b,
+.hero h1 span {
+  color: var(--red);
+}
+
+.hero-grid {
+  display: grid;
+  gap: 70px;
+  grid-template-columns: minmax(410px, 0.9fr) minmax(560px, 1.1fr);
+}
+
+.hero-copy {
+  padding-top: 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: clamp(72px, 6.8vw, 104px);
+  letter-spacing: -0.045em;
+  line-height: 0.94;
+  margin: 0 0 42px;
   white-space: nowrap;
 }
 
-.brand-logo {
-  display: inline-block;
-  flex: 0 0 auto;
-  height: 38px;
-  object-fit: contain;
-  width: 38px;
-}
-
-.brand.tiny {
-  font-size: 12px;
-  gap: 8px;
-}
-
-.brand.tiny .brand-logo {
-  height: 20px;
-  width: 20px;
-}
-
-.nav-links {
-  display: flex;
-  gap: clamp(18px, 2.6vw, 44px);
-  justify-content: center;
-}
-
-.nav-links a {
-  color: #202124;
-  font-size: 13px;
-}
-
-.button {
-  align-items: center;
-  border-radius: 8px;
-  display: inline-flex;
-  font-weight: 800;
-  justify-content: center;
-  min-height: 54px;
-  padding: 0 28px;
-  text-align: center;
-}
-
-.button-primary {
-  background: linear-gradient(180deg, #f42830 0%, #e4131c 100%);
-  box-shadow: 0 14px 26px rgba(237, 28, 36, 0.18);
-  color: #fff;
-}
-
-.button-ghost {
-  background: #fff;
-  border: 1px solid #9da1aa;
-  color: #151515;
-}
-
-.hero-grid,
-.two-col {
-  align-items: center;
-  display: grid;
-  gap: clamp(32px, 6vw, 90px);
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
-}
-
-.hero-copy > p {
-  font-size: 19px;
-  max-width: 610px;
-}
-
-.hero-copy,
-.two-col > * {
-  min-width: 0;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  margin: 34px 0;
-}
-
-.notice {
-  align-items: flex-start;
-  background: linear-gradient(90deg, rgba(237, 28, 36, 0.06), rgba(237, 28, 36, 0.02));
-  border-radius: 8px;
-  display: flex;
-  gap: 14px;
-  max-width: 720px;
-  padding: 20px;
-}
-
-.notice p,
-.notice {
-  color: #4f535a;
-  font-size: 14px;
-  line-height: 1.55;
+.hero-copy p {
+  color: #293349;
+  font-size: 29px;
+  line-height: 1.75;
   margin: 0;
+  max-width: 660px;
 }
 
-.notice-icon {
-  align-items: center;
-  color: var(--red);
-  display: inline-flex;
-  font-size: 22px;
-  font-weight: 900;
-  justify-content: center;
-  min-width: 24px;
-}
-
-.hero-visual {
-  min-height: 560px;
+.hero-product {
+  min-height: 720px;
   position: relative;
+  z-index: 2;
 }
 
-.arrow-line {
-  border-right: 2px solid #6b6f76;
-  border-top: 2px solid #6b6f76;
-  height: 76px;
-  left: -54px;
-  position: absolute;
-  top: 190px;
-  transform: rotate(-28deg);
-  width: 34px;
-}
-
-.app-window {
+.extension-card {
   background: #fff;
-  border: 1px solid #e2e3e7;
-  border-radius: 8px;
+  border: 1px solid #e7eaf0;
+  border-radius: 16px;
   box-shadow: var(--shadow);
-  padding: 16px;
-}
-
-.app-window-floating {
-  max-width: 360px;
-  position: absolute;
-  right: 28px;
-  top: 0;
-  transform: rotate(-0.5deg);
-  width: min(100%, 360px);
-}
-
-.window-top {
-  align-items: center;
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.window-top .brand {
-  margin-right: auto;
-}
-
-.toggle {
-  background: var(--red);
-  border-radius: 999px;
-  display: inline-block;
-  height: 13px;
-  position: relative;
-  width: 28px;
-}
-
-.toggle::after {
-  background: #fff;
-  border-radius: 50%;
-  content: "";
-  height: 9px;
-  position: absolute;
-  right: 3px;
-  top: 2px;
-  width: 9px;
-}
-
-.close {
-  color: #626872;
-  font-size: 18px;
+  padding: 24px;
 }
 
 .route-card {
+  margin: 0 0 26px auto;
+  max-width: 660px;
+}
+
+.tutor-card {
+  margin-left: auto;
+  max-width: 660px;
+}
+
+.card-top {
+  align-items: center;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr auto auto;
+  margin-bottom: 24px;
+}
+
+.mini-brand {
+  align-items: center;
+  display: inline-flex;
+  font-size: 15px;
+  font-weight: 900;
+  gap: 8px;
+}
+
+.mini-brand img {
+  height: 28px;
+  object-fit: contain;
+  width: 34px;
+}
+
+.switch {
+  background: #f4f6f9;
+  border: 1px solid #dce1e9;
+  border-radius: 999px;
+  display: block;
+  height: 18px;
+  position: relative;
+  width: 38px;
+}
+
+.switch::after {
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+  content: "";
+  height: 14px;
+  position: absolute;
+  right: 2px;
+  top: 1px;
+  width: 14px;
+}
+
+.switch.on {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.close {
+  color: #6b7382;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.route-head {
   align-items: start;
   display: grid;
-  gap: 14px;
-  grid-template-columns: 1fr auto;
-  margin-bottom: 14px;
+  gap: 18px;
+  grid-template-columns: 1fr 160px;
+  margin-bottom: 20px;
 }
 
-.route-card h3 {
-  font-size: 22px;
-  margin-bottom: 6px;
+.route-head h2 {
+  font-size: 29px;
+  line-height: 1.1;
+  margin: 0 0 8px;
 }
 
-small {
-  color: #707580;
-  display: block;
-  line-height: 1.35;
+.route-head p {
+  color: #7a8292;
+  font-size: 14px;
+  margin: 0;
 }
 
 .rhythm {
-  background: #fff;
-  border: 1px solid #edf0f4;
-  border-radius: 8px;
-  min-width: 128px;
-  padding: 10px;
+  border: 1px solid #e5e9f0;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.rhythm b,
+.rhythm small {
+  display: block;
 }
 
 .rhythm b {
-  display: block;
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+.rhythm small {
+  color: #5b6473;
   font-size: 10px;
 }
 
 .rhythm span {
-  color: #151515;
-  display: block;
-  font-size: 9px;
-  font-weight: 700;
-  margin: 4px 0 8px;
-}
-
-.days {
   display: flex;
   gap: 7px;
+  margin-top: 12px;
 }
 
-.days i {
-  background: #f6ccd0;
+.rhythm i {
+  background: #ffd3d7;
   border-radius: 3px;
   display: block;
-  height: 8px;
-  width: 8px;
+  height: 10px;
+  width: 10px;
 }
 
-.days i:nth-child(-n + 3) {
+.rhythm i:nth-child(-n + 4) {
   background: var(--red);
+}
+
+.calendar-strip {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(6, 1fr);
+  margin-bottom: 22px;
+}
+
+.calendar-strip span {
+  background: #fafbfc;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  color: #5b6474;
+  display: grid;
+  font-size: 13px;
+  font-weight: 900;
+  gap: 8px;
+  min-height: 70px;
+  padding: 12px;
+  place-items: center;
+}
+
+.calendar-strip b {
+  color: #111722;
+  font-size: 20px;
+}
+
+.calendar-strip .active {
+  background: #fff;
+  border-color: var(--red);
+  color: var(--red);
 }
 
 .lesson {
-  align-items: flex-start;
+  align-items: center;
   background: #fff;
-  border: 1px solid #e7e9ee;
-  border-radius: 8px;
+  border: 1px solid #eef1f5;
+  border-radius: 14px;
   display: grid;
-  gap: 12px;
+  gap: 18px;
   grid-template-columns: auto 1fr auto;
-  margin-top: 12px;
-  padding: 14px;
-}
-
-.lesson strong {
-  display: block;
-  font-size: 14px;
-  line-height: 1.25;
-}
-
-.lesson-red {
-  background: #181818;
-  border-color: #181818;
-  color: #fff;
-}
-
-.lesson-red small {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.lesson button {
-  background: var(--red);
-  border-radius: 6px;
-  color: #fff;
-  grid-column: 1 / -1;
-  height: 42px;
-  width: 100%;
-}
-
-.lesson-badge,
-.time {
-  align-items: center;
-  background: var(--red);
-  border-radius: 50%;
-  color: #fff;
-  display: inline-flex;
-  font-size: 12px;
-  font-weight: 800;
-  height: 32px;
-  justify-content: center;
-  min-width: 32px;
-}
-
-.lesson-badge.green {
-  background: var(--green);
-}
-
-.time {
-  background: #f1f2f5;
-  border-radius: 999px;
-  color: #151515;
-  font-size: 10px;
-  height: 26px;
-  min-width: 56px;
-}
-
-.cross-list,
-.check-list,
-.pdf-list,
-.pilot-list,
-.metrics ul,
-.privacy ul {
-  display: grid;
-  gap: 20px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.cross-list li,
-.check-list li,
-.pdf-list li,
-.pilot-list li,
-.metrics li,
-.privacy li {
-  color: #333840;
-  line-height: 1.45;
-  padding-left: 42px;
-  position: relative;
-}
-
-.cross-list li::before,
-.check-list li::before,
-.pdf-list li::before,
-.pilot-list li::before,
-.metrics li::before,
-.privacy li::before {
-  align-items: center;
-  border-radius: 50%;
-  display: inline-flex;
-  font-size: 13px;
-  font-weight: 900;
-  height: 24px;
-  justify-content: center;
-  left: 0;
-  position: absolute;
-  top: -1px;
-  width: 24px;
-}
-
-.cross-list li::before {
-  background: rgba(237, 28, 36, 0.08);
-  color: var(--red);
-  content: "×";
-}
-
-.check-list li::before,
-.metrics li::before,
-.privacy.ok li::before {
-  background: rgba(49, 183, 104, 0.12);
-  color: var(--green);
-  content: "✓";
-}
-
-.pdf-list li::before,
-.pilot-list li::before {
-  background: rgba(128, 103, 216, 0.12);
-  color: var(--purple);
-  content: "▣";
-}
-
-.privacy.bad li::before {
-  background: rgba(237, 28, 36, 0.08);
-  color: var(--red);
-  content: "×";
-}
-
-.result-note,
-.target-note,
-.wide-note,
-.lock-note {
-  background: linear-gradient(90deg, rgba(237, 28, 36, 0.06), rgba(128, 103, 216, 0.06));
-  border-radius: 8px;
-  color: #3d4148;
-  margin-top: 42px;
-  padding: 20px 24px;
-}
-
-.result-note {
-  align-items: center;
-  display: flex;
-  gap: 18px;
-  max-width: 470px;
-}
-
-.result-note span {
-  align-items: center;
-  border: 2px solid var(--red);
-  border-radius: 50%;
-  color: var(--red);
-  display: inline-flex;
-  font-size: 24px;
-  height: 48px;
-  justify-content: center;
-  min-width: 48px;
-}
-
-.student-illustration,
-.person-card {
-  min-height: 430px;
-  position: relative;
-}
-
-.scribbles {
-  color: #c7c9ce;
-  font-size: 72px;
-  font-weight: 300;
-  left: 52px;
-  position: absolute;
-  top: 25px;
-  word-spacing: 36px;
-}
-
-.student-head {
-  background: #f2b8a2;
-  border-radius: 48% 48% 44% 44%;
-  height: 105px;
-  left: 230px;
-  position: absolute;
-  top: 125px;
-  width: 92px;
-}
-
-.student-head::before {
-  background: #1e1f22;
-  border-radius: 48% 52% 40% 38%;
-  content: "";
-  height: 58px;
-  left: -4px;
-  position: absolute;
-  top: -24px;
-  width: 102px;
-}
-
-.student-body {
-  background: #f5252e;
-  border-radius: 42px 42px 8px 8px;
-  height: 170px;
-  left: 176px;
-  position: absolute;
-  top: 220px;
-  width: 210px;
-}
-
-.laptop {
-  background: linear-gradient(180deg, #f2f3f5, #dfe1e6);
-  border-radius: 8px 8px 2px 2px;
-  bottom: 20px;
-  height: 150px;
-  left: 104px;
-  position: absolute;
-  width: 260px;
-}
-
-.laptop::after {
-  background: #d1d4db;
-  border-radius: 2px;
-  bottom: -10px;
-  content: "";
-  height: 12px;
-  left: -24px;
-  position: absolute;
-  width: 320px;
-}
-
-.plant {
-  border-bottom: 95px solid #ced4da;
-  border-left: 18px solid transparent;
-  border-right: 18px solid transparent;
-  bottom: 22px;
-  height: 0;
-  position: absolute;
-  right: 92px;
-  width: 52px;
-}
-
-.feature-grid {
-  display: grid;
-  gap: 18px;
-  grid-template-columns: repeat(4, 1fr);
-  margin-top: 32px;
-}
-
-.feature {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  min-height: 260px;
-  padding: 28px;
-}
-
-.feature-icon {
-  align-items: center;
-  border-radius: 8px;
-  display: inline-flex;
-  font-size: 32px;
-  height: 72px;
-  justify-content: center;
-  margin-bottom: 32px;
-  width: 72px;
-}
-
-.feature-icon.red {
-  background: rgba(237, 28, 36, 0.08);
-  color: var(--red);
-}
-
-.feature-icon.purple {
-  background: rgba(128, 103, 216, 0.12);
-  color: var(--purple);
-}
-
-.feature-icon.green {
-  background: rgba(49, 183, 104, 0.12);
-  color: var(--green);
-}
-
-.feature-icon.orange {
-  background: rgba(242, 159, 61, 0.14);
-  color: var(--orange);
-}
-
-.wide-note {
-  margin-top: 24px;
-  text-align: center;
-}
-
-.mini-window-wrap {
-  display: flex;
-  justify-content: center;
-}
-
-.app-window.mini {
-  max-width: 430px;
-  width: 100%;
-}
-
-.route-card.compact {
-  grid-template-columns: 1fr auto;
-}
-
-.app-window.tall {
-  margin: 0 auto;
-  max-width: 470px;
-  width: 100%;
-}
-
-.calendar {
-  display: block;
-}
-
-.calendar-row {
-  display: grid;
-  gap: 8px;
-  grid-template-columns: repeat(6, 1fr);
-  margin-top: 18px;
-}
-
-.calendar-row i {
-  background: #f6f7f9;
-  border-radius: 8px;
-  color: #777d87;
-  font-size: 11px;
-  font-style: normal;
-  padding: 10px 0;
-  text-align: center;
-}
-
-.calendar-row b {
-  color: #151515;
-  display: block;
-  font-size: 15px;
-  margin-top: 4px;
-}
-
-.pdf-panel {
-  background: #fff;
-  border: 1px solid #e4e6eb;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
+  margin-top: 14px;
+  min-height: 88px;
   padding: 18px;
 }
 
-.select-row,
-.question {
+.lesson > span {
   align-items: center;
-  border: 1px solid #e1e4ea;
+  background: var(--green);
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  font-size: 18px;
+  font-weight: 900;
+  height: 46px;
+  justify-content: center;
+  width: 46px;
+}
+
+.lesson b,
+.lesson small {
+  display: block;
+}
+
+.lesson b {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.lesson small {
+  color: #6d7583;
+  font-size: 13px;
+}
+
+.lesson em {
+  background: #fff;
+  border-radius: 999px;
+  color: #141a25;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 900;
+  padding: 12px 15px;
+  white-space: nowrap;
+}
+
+.lesson-dark {
+  background: linear-gradient(135deg, #181a1f, #101217);
+  border-color: #101217;
+  color: #fff;
+}
+
+.lesson-dark > span {
+  background: var(--red);
+}
+
+.lesson-dark small {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.select-line,
+.question-line {
+  align-items: center;
+  border: 1px solid #dfe4ec;
   border-radius: 8px;
+  color: #273044;
   display: flex;
+  font-size: 14px;
   justify-content: space-between;
-  min-height: 48px;
+  min-height: 44px;
   padding: 0 16px;
 }
 
 .upload-box {
+  align-items: center;
   background: #fff6f6;
-  border: 1px dashed #ee9b9f;
-  border-radius: 8px;
-  font-weight: 800;
-  margin-top: 14px;
-  padding: 24px;
+  border: 1px dashed #ffb7bc;
+  border-radius: 10px;
+  display: grid;
+  justify-items: center;
+  margin: 18px 0;
+  min-height: 88px;
+  padding: 16px;
   text-align: center;
 }
 
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 14px 0;
-}
-
-.chips span {
-  border: 1px solid #d7dbe2;
-  border-radius: 999px;
-  font-size: 12px;
-  padding: 8px 12px;
-}
-
-.answer {
-  border: 1px solid #e1e4ea;
-  border-radius: 8px;
-  color: #4a4f58;
-  font-size: 14px;
-  min-height: 160px;
-  padding: 16px;
-}
-
-.pdf-panel .button {
-  margin-top: 12px;
-  width: 100%;
-}
-
-.feedback-card {
-  border: 1px solid #dfe3ea;
-  border-radius: 8px;
-  margin-bottom: 12px;
-  max-width: 420px;
-  padding: 18px;
-}
-
-.feedback-card p {
-  font-size: 14px;
-  margin: 8px 0 0;
-}
-
-.purple-note {
-  background: rgba(128, 103, 216, 0.06);
-}
-
-.person {
-  background: #62c583;
-  border-radius: 48px 48px 12px 12px;
-  bottom: 56px;
-  height: 230px;
-  left: 190px;
-  position: absolute;
-  width: 185px;
-}
-
-.person::before {
-  background: #f2b8a2;
-  border-radius: 50% 50% 44% 44%;
-  content: "";
-  height: 92px;
-  left: 48px;
-  position: absolute;
-  top: -76px;
-  width: 86px;
-}
-
-.person::after {
-  background: #1e1f22;
-  border-radius: 52% 52% 45% 45%;
-  content: "";
-  height: 105px;
-  left: 31px;
-  position: absolute;
-  top: -98px;
-  width: 104px;
-}
-
-.bubble {
-  align-items: center;
-  border-radius: 8px;
-  color: #fff;
-  display: inline-flex;
-  font-size: 26px;
-  height: 62px;
-  justify-content: center;
-  position: absolute;
-  width: 62px;
-}
-
-.bubble.one {
-  background: #b894f1;
-  right: 122px;
-  top: 82px;
-}
-
-.bubble.two {
-  background: #67c781;
-  left: 116px;
-  top: 170px;
-}
-
-.laptop.wide {
-  bottom: 30px;
-  height: 138px;
-  left: 70px;
-  width: 285px;
-}
-
-.privacy-grid {
-  display: grid;
-  gap: 24px;
-  grid-template-columns: 1fr 1fr;
-  margin-top: 24px;
-}
-
-.privacy {
-  border-radius: 8px;
-  padding: 28px;
-}
-
-.privacy.ok {
-  background: rgba(49, 183, 104, 0.06);
-  border: 1px solid rgba(49, 183, 104, 0.28);
-}
-
-.privacy.bad {
-  background: rgba(237, 28, 36, 0.05);
-  border: 1px solid rgba(237, 28, 36, 0.18);
-}
-
-.privacy.ok h3 {
-  color: #0c9c4a;
-}
-
-.privacy.bad h3 {
-  color: var(--red);
-}
-
-.metrics {
-  border: 1px solid rgba(237, 28, 36, 0.2);
-  border-radius: 8px;
-  padding: 28px;
-}
-
-.metrics h3 {
-  color: var(--purple);
-}
-
-.target-note {
-  grid-column: 1 / -1;
-  margin-top: 0;
-}
-
-.notice.plain {
-  display: block;
-  margin-top: 26px;
-  max-width: 560px;
-}
-
-.install-guide {
-  grid-column: span 3;
-}
-
-.guide-grid {
-  display: grid;
-  gap: 18px;
-  grid-template-columns: repeat(3, 1fr);
-  margin-top: 30px;
-}
-
-.guide-card {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  min-height: 260px;
-  padding: 26px;
-}
-
-.guide-card p {
-  font-size: 15px;
-  margin-bottom: 0;
-}
-
-.guide-card strong {
-  color: #151515;
-}
-
-.guide-step {
-  align-items: center;
-  background: rgba(237, 28, 36, 0.08);
-  border-radius: 8px;
-  color: var(--red);
-  display: inline-flex;
+.upload-box span {
+  color: #314059;
   font-size: 22px;
-  font-weight: 900;
-  height: 54px;
-  justify-content: center;
-  margin-bottom: 24px;
-  width: 54px;
 }
 
-.guide-note {
-  background: linear-gradient(90deg, rgba(237, 28, 36, 0.06), rgba(128, 103, 216, 0.06));
-  border-radius: 8px;
-  color: #3d4148;
-  line-height: 1.55;
-  margin-top: 22px;
-  padding: 22px 24px;
-}
-
-
-@media (min-width: 1180px) {
-  .page-shell {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .hero,
-  #features,
-  #pdf,
-  #security,
-  #pilot,
-  .install-guide {
-    grid-column: span 3;
-  }
-
-  #problem,
-  #solution,
-  #route,
-  #feedback {
-    grid-column: span 3;
-  }
-}
-
-@media (max-width: 980px) {
-  .nav {
-    grid-template-columns: 1fr;
-  }
-
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-
-  .hero-grid,
-  .two-col {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-visual {
-    min-height: 520px;
-  }
-
-  .app-window-floating {
-    left: 0;
-    right: auto;
-  }
-
-  .feature-grid,
-  .privacy-grid,
-  .guide-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 640px) {
-  .page-shell {
-    padding: 6px;
-  }
-
-  .section-card {
-    max-width: calc(100vw - 12px);
-    padding: 22px;
-  }
-
-  h1 {
-    font-size: 34px;
-    line-height: 1.04;
-    max-width: 100%;
-    overflow-wrap: anywhere;
-    width: min(330px, calc(100vw - 56px));
-  }
-
-  h1 span {
-    display: block;
-  }
-
-  h2 {
-    font-size: 24px;
-    max-width: 100%;
-    overflow-wrap: anywhere;
-    width: min(330px, calc(100vw - 56px));
-  }
-
-  .hero-copy > p,
-  p,
-  li {
-    overflow-wrap: break-word;
-  }
-
-  .hero-copy > p,
-  .notice,
-  .cross-list,
-  .check-list,
-  .pdf-list,
-  .pilot-list,
-  .feedback-card,
-  .result-note,
-  .target-note,
-  .lock-note,
-  .wide-note {
-    width: min(330px, calc(100vw - 56px));
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .hero-actions {
-    display: grid;
-  }
-
-  .hero-grid,
-  .two-col {
-    display: block;
-  }
-
-  .button {
-    width: 100%;
-  }
-
-  .hero-visual {
-    min-height: auto;
-    transform: none;
-    width: 100%;
-  }
-
-  .app-window-floating {
-    position: static;
-    transform: none;
-    width: 100%;
-  }
-
-  .arrow-line {
-    display: none;
-  }
-
-  .student-illustration,
-  .person-card {
-    min-height: 430px;
-    transform: scale(0.86);
-    transform-origin: top left;
-    width: 100%;
-  }
-
-  .feature-grid,
-  .privacy-grid,
-  .guide-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .feature {
-    min-height: auto;
-  }
-}
-
-/* Pitch deck aligned landing updates */
-.pitch-hero {
-  background:
-    radial-gradient(circle at 77% 21%, rgba(237, 28, 36, 0.14), transparent 25%),
-    linear-gradient(135deg, #fff 0%, #f8f9fb 56%, #f2f4f8 100%);
-}
-
-.pitch-hero-grid {
-  align-items: center;
-  gap: 42px;
-  grid-template-columns: minmax(0, 0.95fr) minmax(520px, 1.05fr);
-}
-
-.product-label {
-  color: var(--red);
-  font-size: 14px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  margin: 0 0 14px;
-  text-transform: uppercase;
-}
-
-.pitch-copy h1 {
-  font-size: clamp(56px, 6vw, 96px);
-  letter-spacing: 0;
-  line-height: 0.94;
-  margin-bottom: 16px;
-}
-
-.pitch-copy h1 span {
-  color: var(--red);
-}
-
-.hero-subtitle {
-  color: #171a21;
-  font-size: clamp(25px, 2.2vw, 36px);
-  font-weight: 900;
-  line-height: 1.08;
-  margin: 0 0 18px;
-  max-width: 680px;
-}
-
-.pitch-feature-grid {
-  display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin: 28px 0 24px;
-}
-
-.pitch-feature-tile {
-  background: #fff;
-  border: 1px solid rgba(35, 38, 45, 0.09);
-  border-radius: 8px;
-  box-shadow: 0 12px 28px rgba(21, 24, 31, 0.06);
-  color: #292d36;
+.upload-box b {
   font-size: 15px;
-  font-weight: 850;
-  line-height: 1.25;
-  padding: 16px 18px;
+  margin-top: 2px;
 }
 
-.pitch-feature-tile span {
-  color: var(--red);
-  display: block;
+.upload-box small {
+  color: #667184;
   font-size: 12px;
-  font-weight: 900;
-  margin-bottom: 8px;
-  text-transform: uppercase;
+  font-weight: 800;
 }
 
-.pitch-feature-tile strong {
-  display: block;
-}
-
-.pitch-badges {
-  align-items: center;
+.chip-row {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin-bottom: 16px;
 }
 
-.hero-pill {
-  background: #fff;
-  border: 1px solid rgba(35, 38, 45, 0.1);
+.chip-row span {
+  border: 1px solid #dfe4ec;
   border-radius: 999px;
-  color: #3d4148;
-  font-size: 14px;
-  font-weight: 800;
-  padding: 12px 16px;
-}
-
-.pitch-showcase {
-  min-height: 640px;
-  position: relative;
-}
-
-.pitch-showcase::before {
-  background:
-    radial-gradient(circle at center, rgba(237, 28, 36, 0.08), transparent 58%),
-    conic-gradient(from -35deg, transparent 0 22%, rgba(237, 28, 36, 0.16) 23% 29%, transparent 30% 100%);
-  border-radius: 999px;
-  content: "";
-  inset: 34px 10px auto auto;
-  height: 460px;
-  position: absolute;
-  width: 460px;
-}
-
-.pitch-showcase .app-window,
-.route-window-large,
-.tutor-window-large {
-  background: #fff;
-  border: 1px solid rgba(21, 24, 31, 0.08);
-  border-radius: 18px;
-  box-shadow: 0 28px 80px rgba(21, 24, 31, 0.18);
-}
-
-.hero-route-window {
-  left: 0;
-  min-height: 560px;
-  position: absolute;
-  top: 18px;
-  width: min(520px, 82%);
-  z-index: 2;
-}
-
-.hero-tutor-window {
-  min-height: 360px;
-  position: absolute;
-  right: 0;
-  top: 190px;
-  width: min(410px, 66%);
-  z-index: 3;
-}
-
-.route-window,
-.tutor-window {
-  padding: 18px;
-}
-
-.window-top {
-  border-bottom: 1px solid #eef0f3;
-  margin: -18px -18px 18px;
-  padding: 16px 18px;
-}
-
-.brand.tiny {
-  font-size: 13px;
-  gap: 6px;
-}
-
-.brand.tiny .brand-logo {
-  height: 28px;
-  width: 28px;
-}
-
-.toggle {
-  background: #fff;
-  border: 1px solid #e0e3e8;
-  border-radius: 999px;
-  display: flex;
-  gap: 4px;
-  padding: 4px;
-}
-
-.toggle span {
-  border-radius: 999px;
-  color: #6a707a;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 850;
-  padding: 6px 9px;
+  padding: 8px 14px;
 }
 
-.toggle .active {
-  background: #171a21;
-  color: #fff;
-}
-
-.route-card-hero {
-  background: #171a21;
-  border-radius: 14px;
-  color: #fff;
-  margin-bottom: 14px;
-  padding: 18px;
-}
-
-.route-card-hero h3 {
-  color: #fff;
-  font-size: 22px;
-  margin: 6px 0 8px;
-}
-
-.route-card-hero p {
-  color: rgba(255, 255, 255, 0.7);
+.answer-box {
+  border: 1px solid #dfe4ec;
+  border-radius: 8px;
+  color: #566176;
   font-size: 13px;
+  line-height: 1.55;
+  margin: 0 0 16px;
+  min-height: 94px;
+  padding: 16px;
+}
+
+.button-primary,
+.download-button {
+  align-items: center;
+  background: linear-gradient(180deg, #ff1b26, #df0712);
+  border: 0;
+  border-radius: 9px;
+  box-shadow: 0 18px 28px rgba(242, 20, 31, 0.18);
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 16px;
+  font-weight: 900;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 22px;
+}
+
+.button-primary {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.section {
+  padding: 46px 4px 0;
+}
+
+.section h2,
+.install-panel h2,
+.security-panel h2 {
+  font-size: 34px;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  margin: 0 0 30px;
+}
+
+.capability-grid {
+  display: grid;
+  gap: 22px 28px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.capability-grid article {
+  align-items: start;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: auto 1fr;
+  min-height: 168px;
+  padding: 30px 28px;
+}
+
+.line-icon {
+  align-items: center;
+  border: 2px solid #121822;
+  border-radius: 6px;
+  color: var(--red);
+  display: inline-flex;
+  font-size: 26px;
+  height: 50px;
+  justify-content: center;
+  width: 50px;
+}
+
+.capability-grid h3 {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.capability-grid p {
+  color: #1f2735;
+  font-size: 16px;
+  line-height: 1.45;
   margin: 0;
 }
 
-.pitch-calendar {
-  display: grid;
-  gap: 8px;
-  grid-template-columns: repeat(5, 1fr);
+.workflow {
+  padding-top: 42px;
 }
 
-.pitch-calendar span,
-.pitch-calendar i {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  color: rgba(255, 255, 255, 0.74);
-  font-size: 11px;
+.steps {
+  display: grid;
+  gap: 26px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.steps article {
+  min-height: 132px;
+  position: relative;
+}
+
+.steps article:not(:last-child)::after {
+  border-top: 3px dotted #cbd4e2;
+  content: "";
+  left: 132px;
+  position: absolute;
+  right: -22px;
+  top: 36px;
+}
+
+.steps span {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #dfe5ee;
+  border-radius: 50%;
+  display: inline-flex;
+  font-size: 24px;
+  font-weight: 900;
+  height: 66px;
+  justify-content: center;
+  margin-right: 26px;
+  width: 66px;
+}
+
+.steps i {
+  color: #111722;
+  font-size: 52px;
+  font-style: normal;
+  vertical-align: middle;
+}
+
+.steps p {
+  color: #141b28;
+  font-size: 15px;
   font-weight: 850;
-  padding: 9px 4px;
+  line-height: 1.45;
+  margin: 22px 0 0 10px;
+  max-width: 230px;
+}
+
+.install-panel {
+  background: linear-gradient(135deg, #fff 0%, #fff8f8 100%);
+  border: 1px solid rgba(242, 20, 31, 0.38);
+  border-radius: 12px;
+  margin-top: 44px;
+  padding: 30px 34px 36px;
+}
+
+.install-head {
+  align-items: center;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr auto;
+  margin-bottom: 30px;
+}
+
+.install-head h2 {
+  margin: 0;
+}
+
+.download-button {
+  min-width: 390px;
+}
+
+.download-button span {
+  font-size: 28px;
+  line-height: 1;
+  margin-right: 14px;
+}
+
+.install-steps {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.install-steps article {
+  position: relative;
   text-align: center;
 }
 
-.pitch-calendar .active,
-.pitch-calendar i:first-child {
-  background: var(--red);
-  color: #fff;
+.install-steps article:not(:last-child)::after {
+  border-top: 2px dotted #cbd4e2;
+  content: "";
+  left: calc(50% + 34px);
+  position: absolute;
+  right: calc(-50% + 34px);
+  top: 24px;
 }
 
-.lesson {
-  align-items: flex-start;
-  background: #f6f7f9;
-  border: 1px solid #eceff3;
-  border-radius: 14px;
-  display: grid;
-  gap: 12px;
-  grid-template-columns: auto 1fr auto;
-  margin-top: 10px;
-  padding: 14px;
-}
-
-.lesson strong {
-  color: #171a21;
-  display: block;
-  font-size: 14px;
-  line-height: 1.25;
-}
-
-.lesson small,
-.time,
-.answer-card p,
-.upload-box p,
-.question-row p {
-  color: #68707b;
-  font-size: 12px;
-}
-
-.lesson-badge {
+.install-steps span {
   align-items: center;
-  background: rgba(237, 28, 36, 0.09);
-  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #f2c8cb;
+  border-radius: 50%;
   color: var(--red);
   display: inline-flex;
-  font-size: 14px;
+  font-size: 22px;
   font-weight: 900;
+  height: 58px;
+  justify-content: center;
+  margin-bottom: 18px;
+  position: relative;
+  width: 58px;
+  z-index: 2;
+}
+
+.install-steps p {
+  color: #1d2533;
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.35;
+  margin: 0 auto;
+  max-width: 150px;
+}
+
+.security-panel {
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 1fr auto;
+  margin-top: 26px;
+  padding: 26px 34px;
+}
+
+.security-main {
+  align-items: center;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: auto 1fr;
+}
+
+.shield {
+  align-items: center;
+  border: 3px solid #111722;
+  border-radius: 14px;
+  color: var(--red);
+  display: inline-flex;
+  font-size: 40px;
+  height: 78px;
+  justify-content: center;
+  width: 78px;
+}
+
+.security-panel h2 {
+  font-size: 22px;
+  margin: 0 0 8px;
+}
+
+.security-panel p {
+  color: #1f2735;
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 760px;
+}
+
+.security-badges {
+  display: flex;
+  gap: 18px;
+}
+
+.security-badges span {
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 800;
+  gap: 14px;
+  min-height: 76px;
+  min-width: 194px;
+  padding: 16px 22px;
+}
+
+.security-badges i {
+  align-items: center;
+  border: 2px solid currentColor;
+  border-radius: 8px;
+  color: var(--red);
+  display: inline-flex;
+  font-style: normal;
   height: 34px;
   justify-content: center;
   width: 34px;
 }
 
-.time {
-  font-weight: 850;
-  white-space: nowrap;
+.security-badges span:last-child i {
+  color: var(--green);
 }
 
-.section-heading-wide {
-  max-width: 860px;
-}
+@media (max-width: 1200px) {
+  .page {
+    padding: 42px 38px 64px;
+  }
 
-.pitch-route-section,
-.pitch-pdf-section {
-  background: linear-gradient(135deg, #fff 0%, #f7f8fb 100%);
-}
-
-.route-feature-layout,
-.pdf-feature-layout {
-  align-items: center;
-  display: grid;
-  gap: 34px;
-  grid-template-columns: minmax(500px, 1.05fr) minmax(320px, 0.95fr);
-  margin-top: 30px;
-}
-
-.pdf-feature-layout {
-  grid-template-columns: minmax(500px, 1.1fr) minmax(340px, 0.9fr);
-}
-
-.route-window-large,
-.tutor-window-large {
-  max-width: 650px;
-  min-height: 540px;
-}
-
-.route-window-large .route-card-hero h3 {
-  font-size: 26px;
-}
-
-.route-window-large .lesson {
-  min-height: 88px;
-}
-
-.route-benefits,
-.pdf-capabilities {
-  display: grid;
-  gap: 14px;
-}
-
-.route-benefit,
-.capability,
-.route-benefits article,
-.pdf-capabilities article {
-  background: #fff;
-  border: 1px solid rgba(35, 38, 45, 0.09);
-  border-radius: 8px;
-  box-shadow: 0 16px 36px rgba(21, 24, 31, 0.07);
-  min-height: 116px;
-  padding: 22px;
-}
-
-.route-benefit strong,
-.capability strong,
-.route-benefits h3,
-.pdf-capabilities h3 {
-  color: #171a21;
-  display: block;
-  font-size: 17px;
-  margin-bottom: 8px;
-}
-
-.route-benefit p,
-.capability p,
-.route-benefits p,
-.pdf-capabilities p {
-  font-size: 14px;
-  margin: 0;
-}
-
-.route-benefits article,
-.pdf-capabilities article {
-  align-items: flex-start;
-  display: grid;
-  gap: 14px;
-  grid-template-columns: auto 1fr;
-}
-
-.route-benefits article > span,
-.pdf-capabilities article > span {
-  align-items: center;
-  background: rgba(237, 28, 36, 0.09);
-  border-radius: 10px;
-  color: var(--red);
-  display: inline-flex;
-  font-size: 12px;
-  font-weight: 900;
-  height: 36px;
-  justify-content: center;
-  min-width: 36px;
-  padding: 0 8px;
-}
-
-.tutor-window-large .upload-box,
-.hero-tutor-window .upload-box {
-  background: #f7f8fb;
-  border: 1px dashed #cfd5de;
-  border-radius: 14px;
-  margin: 14px 0;
-  padding: 18px;
-}
-
-.upload-icon {
-  align-items: center;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 10px 24px rgba(21, 24, 31, 0.08);
-  display: inline-flex;
-  height: 42px;
-  justify-content: center;
-  margin-bottom: 10px;
-  width: 42px;
-}
-
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 14px 0;
-}
-
-.chips span {
-  background: #fff;
-  border: 1px solid #e2e6ec;
-  border-radius: 999px;
-  color: #3d4148;
-  font-size: 11px;
-  font-weight: 850;
-  padding: 7px 10px;
-}
-
-.answer-card,
-.question-row {
-  background: #f6f7f9;
-  border-radius: 14px;
-  margin-top: 12px;
-  padding: 14px;
-}
-
-.question-row {
-  align-items: center;
-  display: grid;
-  gap: 12px;
-  grid-template-columns: 1fr auto;
-}
-
-.mini-button {
-  background: var(--red);
-  border-radius: 10px;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 900;
-  padding: 10px 12px;
-  white-space: nowrap;
-}
-
-.wide-note {
-  grid-column: 1 / -1;
-}
-
-@media (max-width: 1100px) {
-  .pitch-hero-grid,
-  .route-feature-layout,
-  .pdf-feature-layout {
+  .hero-grid,
+  .install-head,
+  .security-panel {
     grid-template-columns: 1fr;
   }
 
-  .pitch-showcase {
-    min-height: 600px;
-  }
-
-  .route-window-large,
-  .tutor-window-large {
-    max-width: none;
-  }
-}
-
-@media (max-width: 760px) {
-  .pitch-copy h1 {
-    font-size: 46px;
-    width: auto;
-  }
-
-  .hero-subtitle {
-    font-size: 26px;
-  }
-
-  .pitch-feature-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .pitch-showcase {
-    display: grid;
-    gap: 16px;
+  .hero {
     min-height: auto;
   }
 
-  .pitch-showcase::before {
+  .route-card,
+  .tutor-card {
+    margin-left: 0;
+    max-width: none;
+  }
+
+  .capability-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .steps,
+  .install-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .steps article::after,
+  .install-steps article::after {
     display: none;
   }
 
-  .hero-route-window,
-  .hero-tutor-window {
-    left: auto;
-    min-height: auto;
-    position: relative;
-    right: auto;
-    top: auto;
+  .download-button {
+    min-width: 0;
+  }
+
+  .security-badges {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 720px) {
+  * {
+    min-width: 0;
+  }
+
+  .browser-frame {
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    max-width: 100%;
     width: 100%;
   }
 
-  .route-feature-layout,
-  .pdf-feature-layout {
-    gap: 20px;
+  .browser-bar {
+    grid-template-columns: auto 1fr auto;
+    padding: 0 12px;
   }
 
-  .route-window,
-  .tutor-window {
-    padding: 14px;
+  .traffic-lights {
+    gap: 6px;
+  }
+
+  .traffic-lights span {
+    height: 10px;
+    width: 10px;
+  }
+
+  .browser-actions {
+    display: none;
+  }
+
+  .page {
+    max-width: 100vw;
+    overflow: hidden;
+    padding: 28px 18px 44px;
+    width: 100vw;
+  }
+
+  .hero,
+  .section,
+  .install-panel,
+  .security-panel {
+    max-width: calc(100vw - 36px);
+  }
+
+  .brand-row {
+    margin-bottom: 54px;
+  }
+
+  .brand {
+    font-size: 25px;
+  }
+
+  .brand img {
+    height: 52px;
+    width: 62px;
+  }
+
+  .hero h1 {
+    font-size: 44px;
+    white-space: normal;
+  }
+
+  .hero-copy {
+    max-width: 320px;
+  }
+
+  .hero-grid {
+    display: block;
+  }
+
+  .hero-copy p {
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    width: 100%;
+  }
+
+  .hero-grid,
+  .hero-product,
+  .extension-card,
+  .route-card,
+  .tutor-card {
+    max-width: 320px;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .hero-product {
+    margin-top: 34px;
+  }
+
+  .extension-card {
+    padding: 16px;
+  }
+
+  .route-head {
+    gap: 12px;
+  }
+
+  .route-head h2 {
+    font-size: 24px;
+  }
+
+  .calendar-strip {
+    gap: 8px;
   }
 
   .lesson {
-    grid-template-columns: auto 1fr;
+    gap: 12px;
+    padding: 16px;
   }
 
-  .lesson .time {
-    grid-column: 2;
-  }
-
-  .question-row {
+  .route-head,
+  .lesson,
+  .capability-grid article,
+  .security-main {
     grid-template-columns: 1fr;
   }
 
-  .mini-button {
-    text-align: center;
+  .calendar-strip {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .capability-grid,
+  .steps,
+  .install-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .install-panel,
+  .security-panel {
+    padding: 24px 18px;
+  }
+
+  .download-button {
+    width: 100%;
+  }
+
+  .security-badges span {
+    width: 100%;
   }
 }
 
     </style>
   </head>
   <body>
-    <main class="page-shell">
-      <section class="hero section-card pitch-hero" id="hero">
-        <nav class="nav">
-          <a class="brand" href="#hero" aria-label="Семпейс AI">
-            <img class="brand-logo" src="./logo.png" alt="" />
-            <span>Семпейс AI</span>
-          </a>
-          <div class="nav-links" aria-label="Навигация">
-            <a href="#features">Возможности</a>
-            <a href="#problem">Как это работает</a>
-            <a href="#pilot">Пилот</a>
-            <a href="#security">Безопасность</a>
-            <a href="#faq">FAQ</a>
-          </div>
-        </nav>
+    <main class="browser-frame">
+      <div class="browser-bar" aria-hidden="true">
+        <div class="traffic-lights"><span></span><span></span><span></span></div>
+        <div class="address"><span class="lock">▣</span> sempreis.ai</div>
+        <div class="browser-actions"><span>↻</span><span>＋</span><span>⋮</span></div>
+      </div>
 
-        <div class="hero-grid pitch-hero-grid">
-          <div class="hero-copy pitch-copy">
-            <p class="product-label">Презентация продукта</p>
-            <h1>Семпейс <span>AI</span></h1>
-            <p class="hero-subtitle">Безопасный AI-тьютор поверх LMS</p>
-            <p>
-              Строит маршрут недели, объясняет материалы PDF-лекций и помогает двигаться по курсу без хаоса перед
-              дедлайнами.
-            </p>
-            <div class="pitch-feature-grid" aria-label="Ключевые возможности">
-              <div class="pitch-feature-tile"><span>01</span><strong>Маршрут<br />недели</strong></div>
-              <div class="pitch-feature-tile"><span>PDF</span><strong>Разбор PDF</strong></div>
-              <div class="pitch-feature-tile"><span>AI</span><strong>Ответы<br />и feedback</strong></div>
-              <div class="pitch-feature-tile"><span>Safe</span><strong>Без подсказок<br />на тестах</strong></div>
-            </div>
-            <div class="hero-actions pitch-badges">
-              <a class="button button-primary" href="./downloads/sempace-ai-pilot-0.1.5.zip" download>
-                Скачать pilot-package
-              </a>
-              <span class="hero-pill">MVP готов к пилоту</span>
-              <span class="hero-pill">B2B SaaS для университетов и EdTech</span>
-            </div>
+      <div class="page">
+        <section class="hero" id="hero">
+          <div class="brand-row">
+            <a class="brand" href="#hero" aria-label="Семпейс AI">
+              <img src="./logo.png" alt="" />
+              <span>Семпейс <b>AI</b></span>
+            </a>
           </div>
-          <div class="hero-visual pitch-showcase" aria-label="Интерфейс расширения Семпейс AI">
-            <div class="app-window route-window hero-route-window">
-              <div class="window-top">
-                <span class="brand tiny"><img class="brand-logo" src="./logo.png" alt="" />Семпейс AI</span>
-                <span class="toggle"></span>
-                <span class="close">×</span>
-              </div>
-              <div class="route-card route-card-hero">
-                <div>
-                  <h3>Маршрут недели</h3>
-                  <small>Ваш персональный план на 8-14 июня</small>
+
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <h1>Семпейс <span>AI</span></h1>
+              <p>
+                AI-тьютор для LMS, который строит маршрут недели, помогает разбирать PDF-лекции
+                и поддерживает студента без подсказок на итоговых тестах.
+              </p>
+            </div>
+
+            <div class="hero-product" aria-label="Интерфейс расширения Семпейс AI">
+              <article class="extension-card route-card">
+                <div class="card-top">
+                  <span class="mini-brand"><img src="./logo.png" alt="" />Семпейс AI</span>
+                  <span class="switch on"></span>
+                  <span class="close">×</span>
                 </div>
-                <div class="rhythm">
-                  <b>Ритм недели</b>
-                  <span>3 дн. подряд</span>
-                  <div class="days"><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="route-head">
+                  <div>
+                    <h2>Маршрут недели</h2>
+                    <p>Ваш персональный план на 9-14 июня</p>
+                  </div>
+                  <div class="rhythm">
+                    <b>Ритм недели</b>
+                    <small>4 дня в неделю</small>
+                    <span><i></i><i></i><i></i><i></i><i></i></span>
+                  </div>
                 </div>
-              </div>
-              <div class="calendar-row pitch-calendar"><i>Пн<br><b>9</b></i><i>Вт<br><b>10</b></i><i>Ср<br><b>11</b></i><i>Чт<br><b>12</b></i><i>Пт<br><b>13</b></i><i>Сб<br><b>14</b></i></div>
-              <article class="lesson lesson-red"><span class="lesson-badge">9</span><div><strong>Язык программирования</strong><small>Тема 1 - Занятие 1.3</small></div><span class="time">30 мин</span></article>
-              <article class="lesson"><span class="lesson-badge green">9</span><div><strong>Данные и алгоритмы</strong><small>Тема 1 - Конспект 1.3</small></div><span class="time">30 мин</span></article>
+                <div class="calendar-strip">
+                  <span class="active">Пн<b>9</b></span>
+                  <span>Вт<b>10</b></span>
+                  <span>Ср<b>11</b></span>
+                  <span>Чт<b>12</b></span>
+                  <span>Пт<b>13</b></span>
+                  <span>Сб<b>14</b></span>
+                </div>
+                <div class="lesson lesson-dark">
+                  <span>9</span>
+                  <div><b>Основы программирования</b><small>Тема 1 - Занятие 1.3</small></div>
+                  <em>30 мин</em>
+                </div>
+                <div class="lesson">
+                  <span>9</span>
+                  <div><b>Введение в менеджмент</b><small>Тема 1 - Конспект 1.3</small></div>
+                  <em>30 мин</em>
+                </div>
+              </article>
+
+              <article class="extension-card tutor-card">
+                <div class="card-top">
+                  <span class="mini-brand"><img src="./logo.png" alt="" />Семпейс AI</span>
+                  <span class="switch on"></span>
+                  <span class="close">×</span>
+                </div>
+                <div class="select-line">AI репетитор <span>⌄</span></div>
+                <div class="upload-box">
+                  <span>⇧</span>
+                  <b>Загрузите лекцию (PDF)</b>
+                  <small>Поддерживаем: PDF. Макс. размер: 10 MB</small>
+                </div>
+                <div class="chip-row">
+                  <span>Мой конспект</span>
+                  <span>Глоссарий</span>
+                  <span>Практическое задание</span>
+                </div>
+                <p class="answer-box">
+                  Я изучил материал «Основы менеджмента». Материал объясняет ключевые понятия менеджмента,
+                  функции менеджера, этапы управления и основы принятия управленческих решений.
+                </p>
+                <div class="question-line">Спросите по материалу: термины, пример, суть темы... <span>↗</span></div>
+                <button class="button-primary">Отправить вопрос</button>
+              </article>
             </div>
+          </div>
+        </section>
 
-            <div class="app-window tutor-window hero-tutor-window">
-              <div class="window-top">
-                <span class="brand tiny"><img class="brand-logo" src="./logo.png" alt="" />Семпейс AI</span>
-                <span class="toggle"></span>
-                <span class="close">×</span>
-              </div>
-              <div class="select-row">AI репетитор <span>⌄</span></div>
-              <div class="upload-box">Загрузите лекцию (PDF)<br /><small>Поддерживаются PDF. Макс. размер: 10 MB</small></div>
-              <div class="chips"><span>Мини-конспект</span><span>Глоссарий</span><span>Практическая работа</span></div>
-              <p class="answer">Я изучил ваш учебный материал. Могу объяснить сложные определения, собрать краткий конспект и предложить задания.</p>
-              <div class="question">Спросите по материалу: термины, пример, суть темы... <span>↗</span></div>
-              <button class="button button-primary">Отправить вопрос</button>
+        <section class="section capabilities" id="features">
+          <h2>Что умеет Семпейс AI</h2>
+          <div class="capability-grid">
+            <article>
+              <span class="line-icon">▣</span>
+              <div><h3>Маршрут недели</h3><p>Показывает, что учить на этой неделе, и помогает не теряться в LMS.</p></div>
+            </article>
+            <article>
+              <span class="line-icon">▧</span>
+              <div><h3>Разбор PDF</h3><p>Загружает лекцию и превращает её в понятную структуру.</p></div>
+            </article>
+            <article>
+              <span class="line-icon">▤</span>
+              <div><h3>Мини-конспект</h3><p>Кратко объясняет материал без перегруза.</p></div>
+            </article>
+            <article>
+              <span class="line-icon">▥</span>
+              <div><h3>Глоссарий</h3><p>Выделяет термины и помогает быстрее войти в тему.</p></div>
+            </article>
+            <article>
+              <span class="line-icon">☷</span>
+              <div><h3>Практическая работа</h3><p>Предлагает упражнения и помогает закрепить понимание.</p></div>
+            </article>
+            <article>
+              <span class="line-icon">◇</span>
+              <div><h3>Безопасность</h3><p>AI-функции блокируются на страницах итоговых тестов.</p></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section workflow" id="workflow">
+          <h2>Как это работает</h2>
+          <div class="steps">
+            <article><span>1</span><i>▭</i><p>Студент открывает LMS</p></article>
+            <article><span>2</span><i>▣</i><p>Семпейс AI строит маршрут недели</p></article>
+            <article><span>3</span><i>▧</i><p>Студент разбирает занятия или PDF через AI</p></article>
+            <article><span>4</span><i>◇</i><p>Прогресс обновляется, а на итоговом тестах AI блокируется</p></article>
+          </div>
+        </section>
+
+        <section class="install-panel" id="install">
+          <div class="install-head">
+            <h2>Установка расширения вручную</h2>
+            <a class="download-button" href="./downloads/sempace-ai-pilot-0.1.5.zip" download>
+              <span>↓</span> Скачать установочный архив
+            </a>
+          </div>
+          <div class="install-steps">
+            <article><span>1</span><p>Скачайте pilot_package</p></article>
+            <article><span>2</span><p>Распакуйте архив на компьютер</p></article>
+            <article><span>3</span><p>Откройте chrome://extensions</p></article>
+            <article><span>4</span><p>Включите режим разработчика</p></article>
+            <article><span>5</span><p>Нажмите «Загрузить распакованное расширение»</p></article>
+            <article><span>6</span><p>Выберите папку расширения и откройте LMS</p></article>
+            <article><span>7</span><p>Расширение готово к работе</p></article>
+          </div>
+        </section>
+
+        <section class="security-panel" id="security">
+          <div class="security-main">
+            <span class="shield">◇</span>
+            <div>
+              <h2>Безопасно и готово к использованию</h2>
+              <p>
+                Семпейс AI работает в вашем браузере и не хранит данные на сторонних устройствах.
+                AI-функции автоматически отключаются на страницах итоговых тестов.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section class="section-card two-col" id="problem">
-        <div>
-          <p class="section-kicker">2. Проблема</p>
-          <h2>Студенты теряются в материалах и не знают, с чего начать</h2>
-          <ul class="cross-list">
-            <li>Много тем, лекций, PDF и тестов в LMS</li>
-            <li>Непонятно, что учить сегодня и сколько это займет времени</li>
-            <li>Сложно быстро разобраться в PDF-лекции</li>
-            <li>Трудно подготовиться к тесту без списывания</li>
-            <li>Прокрастинация и дедлайны в последний момент</li>
-            <li>Кураторы узнают о проблемах слишком поздно</li>
-          </ul>
-          <div class="result-note"><span>☹</span>В результате - низкая вовлеченность и недозавершенные курсы.</div>
-        </div>
-        <div class="student-illustration" aria-label="Иллюстрация студента за ноутбуком">
-          <div class="scribbles">? ○ ?</div>
-          <div class="student-head"></div>
-          <div class="student-body"></div>
-          <div class="laptop"></div>
-          <div class="plant"></div>
-        </div>
-      </section>
-
-      <section class="section-card two-col solution" id="solution">
-        <div>
-          <p class="section-kicker">3. Решение</p>
-          <h2>AI-тьютор, который становится вашим учебным навигатором</h2>
-          <ul class="check-list">
-            <li>Видит страницу LMS и ваш прогресс</li>
-            <li>Строит персональный маршрут недели</li>
-            <li>Учитывает, что занятие занимает от 2 до 30 минут</li>
-            <li>Объединяет занятия в удобные слоты и дает AI-рекомендации</li>
-            <li>Помогает разбирать PDF-лекции</li>
-            <li>Блокирует AI-функции на страницах итогового теста</li>
-          </ul>
-        </div>
-        <div class="mini-window-wrap">
-          <div class="app-window mini">
-            <div class="window-top">
-              <span class="brand tiny"><img class="brand-logo" src="./logo.png" alt="" />Семпейс AI</span>
-              <span class="toggle"></span>
-              <span class="close">×</span>
-            </div>
-            <div class="route-card compact">
-              <h3>Маршрут недели</h3>
-              <div class="rhythm compact"><b>Ритм недели</b><span>2 дн. подряд</span></div>
-            </div>
-            <article class="lesson lesson-red"><span class="lesson-badge">1Г</span><div><strong>Программирование на Python для сбора и анализа данных</strong><small>Тема 1 - Занятие 1.3</small></div><button>Открыть занятие →</button></article>
-            <article class="lesson"><span class="lesson-badge green">1Э</span><div><strong>Полезно</strong><small>Рекомендуем начать с конспекта</small></div><span class="time">30 мин</span></article>
+          <div class="security-badges">
+            <span><i>▣</i>Данные не передаются</span>
+            <span><i>✓</i>Работает в браузере</span>
           </div>
-        </div>
-      </section>
-
-      <section class="section-card" id="features">
-        <p class="section-kicker">4. Возможности</p>
-        <h2>Все, что нужно для эффективного обучения</h2>
-        <div class="feature-grid">
-          <article class="feature"><span class="feature-icon red">▦</span><h3>Маршрут недели</h3><p>Понятный план на ближайшие дни: какие занятия открыть, сколько времени заложить и что сделать для закрепления.</p></article>
-          <article class="feature"><span class="feature-icon purple">▤</span><h3>AI-тьютор по PDF</h3><p>Задавайте вопросы по лекции, получайте мини-конспект, глоссарий, практическое задание и объяснения.</p></article>
-          <article class="feature"><span class="feature-icon green">▰</span><h3>AI Feedback</h3><p>Отвечайте на учебные вопросы, а AI дает обратную связь и показывает следующий шаг.</p></article>
-          <article class="feature"><span class="feature-icon orange">◇</span><h3>Безопасность на тестах</h3><p>На страницах итогового теста AI-функции блокируются. Мы помогаем учиться, а не обходить контроль знаний.</p></article>
-        </div>
-        <div class="wide-note">Все функции работают прямо в вашем LMS через браузерное расширение.</div>
-      </section>
-
-      <section class="section-card pitch-route-section" id="route">
-        <div class="section-heading-wide">
-          <p class="section-kicker">5. Ключевая функция</p>
-          <h2>Маршрут недели</h2>
-          <p>Показывает студенту, что открыть на этой неделе и как двигаться без перегруза.</p>
-        </div>
-        <div class="route-feature-layout">
-          <div class="app-window route-window route-window-large">
-            <div class="window-top"><span class="brand tiny"><img class="brand-logo" src="./logo.png" alt="" />Семпейс AI</span><span class="toggle"></span><span class="close">×</span></div>
-            <div class="route-card route-card-hero">
-              <div>
-                <h3>Маршрут недели</h3>
-                <small>Ваш персональный план на 8-14 июня</small>
-              </div>
-              <div class="rhythm rhythm-large">
-                <b>Ритм недели</b>
-                <span>4 дн. подряд</span>
-                <div class="days"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-              </div>
-            </div>
-            <div class="calendar-row pitch-calendar"><i>Пн<br><b>9</b></i><i>Вт<br><b>10</b></i><i>Ср<br><b>11</b></i><i>Чт<br><b>12</b></i><i>Пт<br><b>13</b></i><i>Сб<br><b>14</b></i></div>
-            <article class="lesson lesson-red"><span class="lesson-badge">9</span><div><strong>Язык программирования</strong><small>Тема 1 - Занятие 1.3</small></div><span class="time">30 мин</span></article>
-            <article class="lesson"><span class="lesson-badge green">9</span><div><strong>Данные и алгоритмы</strong><small>Тема 1 - Конспект 1.3</small></div><span class="time">30 мин</span></article>
-          </div>
-          <div class="route-benefits">
-            <article><span>01</span><div><h3>Снижает тревожность</h3><p>Студент видит конкретный план вместо длинного списка материалов.</p></div></article>
-            <article><span>02</span><div><h3>Экономит время</h3><p>Объединяет короткие занятия в удобный учебный слот.</p></div></article>
-            <article><span>03</span><div><h3>Поддерживает ритм</h3><p>Подсказывает следующий шаг и помогает возвращаться в LMS регулярно.</p></div></article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-card pitch-pdf-section" id="pdf">
-        <div class="section-heading-wide">
-          <p class="section-kicker">6. Ключевая функция</p>
-          <h2><span>AI-тьютор</span> по материалу</h2>
-          <p>Помогает быстро понять тему и задать вопросы прямо по учебному PDF.</p>
-        </div>
-        <div class="pdf-feature-layout">
-          <div class="app-window tutor-window tutor-window-large">
-            <div class="window-top"><span class="brand tiny"><img class="brand-logo" src="./logo.png" alt="" />Семпейс AI</span><span class="toggle"></span><span class="close">×</span></div>
-            <div class="select-row">AI репетитор <span>⌄</span></div>
-            <div class="upload-box">Загрузите лекцию (PDF)<br /><small>Поддерживаются PDF. Макс. размер: 10 MB</small></div>
-            <div class="chips"><span>Мини-конспект</span><span>Глоссарий</span><span>Практическая работа</span></div>
-            <p class="answer">Я изучил материал «Введение в бизнес-планирование». Материал объясняет, что такое бизнес-план, зачем он нужен, какие разделы включает и как оценивать риски.</p>
-            <div class="question">Спросите по материалу: термины, пример, суть темы... <span>↗</span></div>
-            <button class="button button-primary">Отправить вопрос</button>
-          </div>
-          <div class="pdf-capabilities">
-            <article><span>PDF</span><div><h3>Разбор PDF-лекций</h3><p>Студент работает с материалом курса без выхода из учебной страницы.</p></div></article>
-            <article><span>01</span><div><h3>Мини-конспект</h3><p>Короткая структура темы и главные тезисы перед занятием.</p></div></article>
-            <article><span>02</span><div><h3>Глоссарий</h3><p>Ключевые термины с простыми объяснениями.</p></div></article>
-            <article><span>03</span><div><h3>Практическая работа</h3><p>Задания и вопросы для проверки понимания материала.</p></div></article>
-            <article><span>AI</span><div><h3>Вопросы по теме</h3><p>Пояснения, примеры и подсказки для самостоятельного обучения.</p></div></article>
-          </div>
-        </div>
-        <div class="wide-note">AI помогает учиться и не подменяет итоговый контроль знаний.</div>
-      </section>
-
-      <section class="section-card two-col feedback" id="feedback">
-        <div>
-          <p class="section-kicker">7. AI Feedback</p>
-          <h2>Обратная связь, которая помогает расти</h2>
-          <div class="feedback-card"><b>Ваш ответ</b><p>Бизнес-план нужен для того, чтобы оценить идею и понять, будет ли она прибыльной.</p></div>
-          <div class="feedback-card"><b>AI Feedback</b><p>Хорошая мысль. Вы верно отметили оценку идеи и прибыльность. Можно добавить, что бизнес-план также помогает привлечь инвесторов и служит планом действий для команды.</p></div>
-          <div class="feedback-card purple-note"><b>Следующий шаг</b><p>Попробуйте описать ключевые разделы бизнес-плана и их назначение.</p></div>
-        </div>
-        <div class="person-card">
-          <span class="bubble one">★</span><span class="bubble two">★</span>
-          <div class="person"></div>
-          <div class="laptop wide"></div>
-        </div>
-      </section>
-
-      <section class="section-card" id="security">
-        <p class="section-kicker">8. Безопасность и приватность</p>
-        <h2>Данные под защитой</h2>
-        <div class="privacy-grid">
-          <div class="privacy ok"><h3>Мы используем только то, что нужно для учебной помощи</h3><ul><li>Структуру страницы LMS</li><li>Названия дисциплин, тем и занятий</li><li>Учебный прогресс</li><li>Загруженные PDF-материалы</li><li>Вопросы и ответы в AI-тьюторе</li></ul></div>
-          <div class="privacy bad"><h3>Мы не используем</h3><ul><li>Пароли</li><li>Платежные данные</li><li>Личную переписку</li><li>Данные вне учебного сценария</li></ul></div>
-        </div>
-        <div class="lock-note">Данные отправляются на сервер только для генерации учебных рекомендаций, объяснений и обратной связи. Доступ ограничен токенами, лимитами и audit log.</div>
-      </section>
-
-      <section class="section-card two-col" id="pilot">
-        <div>
-          <p class="section-kicker">9. Пилот</p>
-          <h2>Проверим эффективность вместе с вашим университетом</h2>
-          <ul class="pilot-list">
-            <li>1 программа или 1-2 группы</li>
-            <li>20-100 студентов</li>
-            <li>Срок: 2-4 недели</li>
-            <li>Установка вручную через pilot-package</li>
-            <li>Сбор обратной связи от студентов и кураторов</li>
-          </ul>
-        </div>
-        <div class="metrics">
-          <h3>Что измеряем</h3>
-          <ul>
-            <li>Активных пользователей</li>
-            <li>Построенные маршруты</li>
-            <li>Загруженные PDF</li>
-            <li>AI-вопросы по материалам</li>
-            <li>Долю тех, кому помог следующий шаг</li>
-            <li>Качественную обратную связь о полезности функций</li>
-          </ul>
-        </div>
-        <div class="target-note">Цель пилота - помочь студентам чаще возвращаться в LMS, быстрее разбирать материалы и регулярнее двигаться по курсу.</div>
-      </section>
-
-      <section class="section-card install-guide" id="install">
-        <p class="section-kicker">10. Инструкция после скачивания</p>
-        <h2>Как установить pilot-package и запустить Семпейс AI</h2>
-        <div class="guide-grid">
-          <article class="guide-card">
-            <span class="guide-step">1</span>
-            <h3>Скачайте архив</h3>
-            <p>
-              Нажмите кнопку «Скачать pilot-package». В загрузках появится архив
-              <strong>sempace-ai-pilot-0.1.5.zip</strong>. Не устанавливайте его как обычную программу:
-              внутри находится браузерное расширение для ручной установки.
-            </p>
-          </article>
-          <article class="guide-card">
-            <span class="guide-step">2</span>
-            <h3>Распакуйте ZIP</h3>
-            <p>
-              Нажмите по архиву правой кнопкой мыши и выберите «Извлечь все». После распаковки откройте папку
-              <strong>sempace-ai-pilot-0.1.5</strong>. Внутри должна быть папка <strong>extension</strong>:
-              именно ее нужно выбрать в браузере.
-            </p>
-          </article>
-          <article class="guide-card">
-            <span class="guide-step">3</span>
-            <h3>Откройте страницу расширений</h3>
-            <p>
-              В Chrome или Chromium откройте <strong>chrome://extensions/</strong>. В Яндекс Браузере откройте
-              <strong>browser://extensions/</strong>. Если адрес в Яндекс Браузере не открылся, используйте
-              <strong>chrome://extensions/</strong>.
-            </p>
-          </article>
-          <article class="guide-card">
-            <span class="guide-step">4</span>
-            <h3>Включите режим разработчика</h3>
-            <p>
-              На странице расширений включите переключатель «Режим разработчика». Обычно он находится в правом
-              верхнем углу. После включения появится кнопка «Загрузить распакованное расширение».
-            </p>
-          </article>
-          <article class="guide-card">
-            <span class="guide-step">5</span>
-            <h3>Загрузите папку extension</h3>
-            <p>
-              Нажмите «Загрузить распакованное расширение» и выберите папку
-              <strong>extension</strong> внутри распакованного pilot-package. Выбирать сам ZIP-архив не нужно.
-              После выбора расширение появится в списке установленных.
-            </p>
-          </article>
-          <article class="guide-card">
-            <span class="guide-step">6</span>
-            <h3>Откройте LMS и проверьте работу</h3>
-            <p>
-              Перейдите в Synergy LMS и откройте учебную страницу. Семпейс AI должен увидеть страницу LMS,
-              показать маршрут недели и открыть AI-функции для учебных материалов. На страницах итоговых тестов
-              AI-функции блокируются.
-            </p>
-          </article>
-        </div>
-        <div class="guide-note">
-          Если расширение не появилось, проверьте, что выбрана именно папка <strong>extension</strong>, а не родительская
-          папка и не ZIP-архив. Если браузер показывает предупреждение, оставьте режим разработчика включенным и
-          обновите страницу LMS.
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
   </body>
 </html>
