@@ -548,14 +548,42 @@ button {
 
 .line-icon {
   align-items: center;
-  border: 2px solid #121822;
-  border-radius: 6px;
-  color: var(--red);
   display: inline-flex;
-  font-size: 26px;
   height: 50px;
   justify-content: center;
   width: 50px;
+}
+
+.line-icon svg,
+.steps i svg,
+.shield svg,
+.security-badges i svg {
+  display: block;
+  height: 100%;
+  overflow: visible;
+  width: 100%;
+}
+
+.line-icon svg *,
+.steps i svg *,
+.shield svg *,
+.security-badges i svg * {
+  fill: none;
+  stroke: #111722;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+
+.line-icon .red-stroke,
+.steps i .red-stroke,
+.shield .red-stroke,
+.security-badges i .red-stroke {
+  stroke: var(--red);
+}
+
+.steps i .badge {
+  fill: #fff;
 }
 
 .capability-grid h3 {
@@ -609,10 +637,11 @@ button {
 }
 
 .steps i {
-  color: #111722;
-  font-size: 52px;
   font-style: normal;
+  display: inline-flex;
+  height: 52px;
   vertical-align: middle;
+  width: 52px;
 }
 
 .steps p {
@@ -720,11 +749,7 @@ button {
 
 .shield {
   align-items: center;
-  border: 3px solid #111722;
-  border-radius: 14px;
-  color: var(--red);
   display: inline-flex;
-  font-size: 40px;
   height: 78px;
   justify-content: center;
   width: 78px;
@@ -763,9 +788,6 @@ button {
 
 .security-badges i {
   align-items: center;
-  border: 2px solid currentColor;
-  border-radius: 8px;
-  color: var(--red);
   display: inline-flex;
   font-style: normal;
   height: 34px;
@@ -773,8 +795,8 @@ button {
   width: 34px;
 }
 
-.security-badges span:last-child i {
-  color: var(--green);
+.security-badges span:last-child i svg * {
+  stroke: var(--green);
 }
 
 @media (max-width: 1200px) {
